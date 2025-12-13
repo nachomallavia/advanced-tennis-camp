@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button } from '@/components/starwind/button';
+
+const title = "Accommodation - Advanced Tennis Camp";
+const description = "Accommodation for families and children in Verbier. Family pack in partnership with Chalet d'Adrien and chalets for kids.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-12">
+        Accomodation
+      </h1>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Family Pack -->
+        <div class="prose prose-lg max-w-none">
+          <h2 class="text-2xl font-bold text-primary mb-4">Family pack</h2>
+          <p>
+            <strong>Since 2018, we suggested to the families taking advantage of the mountain in 'any freedom'.</strong> In partnership with Chalet d'Adrien the team at Advanced Tennis Camp will take care of your sports stay as well as that of your children.
+          </p>
+          <p>
+            <a href="/en/accommodation/chalet-dadrien/" class="text-primary font-bold hover:underline">Let's discover more here !</a>
+          </p>
+          <p>
+            Playing tennis, exploring the region on E-Bike, discovering the walking paths of Verbier – we'll take care of you. The green and majestic mountain settings of Verbier will make for an unforgettable stay!
+          </p>
+          <p>
+            All about Le Chalet d'Adrien – Charme & Prestige in Verbier, <a href="https://chalet-adrien.com/en/" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">click here !</a>
+          </p>
+        </div>
+        
+        <!-- Kids -->
+        <div class="prose prose-lg max-w-none">
+          <h2 class="text-2xl font-bold text-primary mb-4">"Kids"</h2>
+          <p>
+            <strong>During your children's stay in Verbier we will comfortably accomodate them in these two chalets</strong>. The team of coaches/trainers will ensure both chalets are used to their best arrangment to ensure your children will not stay alone. <strong>We provide single, double or triple rooms in a classical mountain atmosphere.</strong>
+          </p>
+        </div>
+      </div>
+      
+      <!-- Images Section -->
+      <div class="grid md:grid-cols-2 gap-8 mt-12">
+        <div>
+          <img 
+            src="/images/2019/01/image-11-1024x800.png" 
+            alt="Chalet d'Adrien" 
+            class="w-full rounded-lg shadow-xl"
+          />
+        </div>
+        <div>
+          <img 
+            src="/images/2019/01/image-2.png" 
+            alt="Kids accommodation" 
+            class="w-full rounded-lg shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,238 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button } from '@/components/starwind/button';
+
+const title = "Programmes et Tarifs - Advanced Tennis Camp";
+const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'autres sports, le camp vous offre des programmes multiactivités pour le plus grand plaisir des enfants.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Header -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+        PROGRAMMES & TARIFS
+      </h1>
+      <h4 class="text-xl italic font-bold text-gray-700 max-w-4xl">
+        Du tennis, à l'outdoor avec le e-bike, le golf et bien d'autres sports, le camp vous offre des programmes multiactivités pour le plus grand plaisir des enfants, des grands et des coaches !
+      </h4>
+    </div>
+  </section>
+  
+  <!-- Hero Image -->
+  <section class="pb-12">
+    <div class="container mx-auto px-4">
+      <img 
+        src="/images/2024/10/semaine-3-scaled.jpg" 
+        alt="Tennis Camp" 
+        class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
+      />
+    </div>
+  </section>
+  
+  <!-- Programme école et tennis -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+            Programme école et tennis
+          </h2>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li><strong>En collaboration avec l'Ecole Internationale de Verbier et Verbier Language School profitez d'une superbe semaine de tennis combinée avec du perfectionnement langue 1h15 par jour</strong></li>
+            <li>Du lundi au vendredi</li>
+            <li>Tennis de 9h à 12h</li>
+            <li>Perfectionnement scolaire de 13h à 14h30</li>
+            <li>Repas de midi tous ensemble</li>
+            <li>Tennis de 14h30 à 16h30</li>
+            <li><strong>Tarifs : CHF 1390</strong> (sans l'hébergement) | <strong>CHF 1850</strong> (avec l'hébergement)</li>
+          </ul>
+          
+          <h3 class="text-xl font-bold text-primary mt-8 mb-4">Omnisports</h3>
+          <ul class="space-y-2 text-gray-700 mb-6">
+            <li><strong>La première partie du centre sportif est opérationnelle.</strong> Mur d'escalade, terrain omnisports, terrains de squash et un terrain de tennis…de quoi vous amuser en cas de mauvais temps!</li>
+          </ul>
+          
+          <Button href="/contact/" variant="primary">
+            CONTACT & INSCRIPTIONS
+          </Button>
+        </div>
+        <div>
+          <img 
+            src="/images/2022/11/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg" 
+            alt="Programme école et tennis" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Junior Camp -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="order-2 lg:order-1">
+          <img 
+            src="/images/2024/10/Camps-week-6-AlpimagesVerbier-3381.jpg" 
+            alt="Junior Camp" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+            Junior camp
+          </h2>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li>Camp avec hébergement et pension complète: <strong>CHF 1550 la semaine.</strong></li>
+            <li>Camp sans hébergement en 1/2 pension: <strong>CHF 990 la semaine.</strong></li>
+            <li>Semaine entière sur la base de 1/2 journées uniquement, ouvert aux enfants nés en <strong>2015</strong> et après. <strong>CHF 650 la semaine.</strong><br/>
+            <em>Cette option (1/2 journées) est ouverte également aux enfants plus âgés (uniquement) si vous réservez pour <strong>une période de 3 semaines minimum,</strong> ou pour une ou deux semaines sur réservations tardives uniquement à partir du 1er juillet (en fonction des places restantes).</em></li>
+          </ul>
+          
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mt-8 mb-6">
+            Advanced training program
+          </h2>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li>Réservé aux jeunes ayant l'habitude de s'entrainer au moins 4 fois par semaine en club et qui souhaitent développer leurs qualités de compétiteur.</li>
+            <li>Travail physique (vitesse, force, endurance), 10:00-11:30.</li>
+            <li>Tennis l'après midi, 16:30-18:00</li>
+            <li><strong>CHF 890, 5 jours, 4 pers max/court</strong></li>
+          </ul>
+          
+          <Button href="/contact/" variant="primary">
+            CONTACT & INSCRIPTIONS
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Mini Champions & Senior -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+            Mini champions (-7 ans)
+          </h2>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li>Pour vos Mini champions: <strong>CHF 690 la semaine, en 1/2 pension</strong></li>
+            <li>Tennis le matin.</li>
+            <li>Activités encadrées l'après-midi (initiation mini-golf, poney, escalade, golf…).</li>
+          </ul>
+          
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mt-8 mb-6">
+            Senior camp / 105
+          </h2>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li><strong>610 CHF</strong> (sans l'hébergement)</li>
+            <li>Cours Privés en fonction des disponibilités de l'équipe: <strong>110 CHF l'heure ou 300 CHF pour un pack de 3.</strong></li>
+            <li><strong>Tous les soirs venez jouer avec nous de 17 à 19h en collectif (2 à 4 personnes maximum).</strong></li>
+          </ul>
+          
+          <Button href="/contact/" variant="primary">
+            CONTACT & INSCRIPTIONS
+          </Button>
+        </div>
+        <div>
+          <img 
+            src="/images/2024/10/Camps-Semaine-5-Alpimagesverbier-7600-scaled.jpg" 
+            alt="Mini Champions" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- BIKE + PLAY & GOLF + PLAY -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- BIKE + PLAY -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <img 
+            src="/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg" 
+            alt="BIKE + PLAY" 
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white p-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">BIKE + PLAY</h2>
+            <p class="text-center mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Tout au long de la semaine, les matins ou en début d'après-midi, vos enfants découvriront, progresseront avec différentes formes de vélo: <strong>BMX, VTT enduro, VTT descente, Skate board peuvent être au programme.</strong>
+            </p>
+            <Button href="/bike-play/" variant="secondary">
+              TOUT LE PROGRAMME
+            </Button>
+          </div>
+        </div>
+        
+        <!-- GOLF + PLAY -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <img 
+            src="/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg" 
+            alt="GOLF + PLAY" 
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white p-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">GOLF + PLAY</h2>
+            <p class="text-center mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              C'est <strong>Mike Coppens et son TEAM</strong> qui accompagneront vos enfants tout au long de la semaine. Ceux qui connaissent Mike savent qu'ils sont entre de « bonnes mains » !
+            </p>
+            <Button href="/golf-play/" variant="secondary">
+              TOUT LE PROGRAMME
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Info Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-8">INFOS PRATIQUES</h1>
+      
+      <!-- Map -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary mb-4">Rendez-vous au Parc de Loisirs</h2>
+        <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2766.755852111139!2d7.2236749748450375!3d46.09584379107546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ece34cd5330b3%3A0xd4a079d35d4fec8f!2sParc%20de%20Loisirs%20Verbier!5e0!3m2!1sfr!2sfr!4v1706105781137!5m2!1sfr!2sfr" 
+            class="w-full h-full"
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Télécabine</h3>
+          <p class="text-gray-700 mb-2">
+            Afin de garantir une qualité optimum pour vos enfants, <strong>nous sommes amenés à utiliser l'ensemble des courts de tennis de la station. Pour descendre au Châble, notre partenaire Téléverbier « baladera » vos enfants en toute tranquillité jusqu'aux terrains.</strong>
+          </p>
+          <a href="http://www.televerbier.ch/" target="_blank" rel="noopener" class="text-primary hover:underline font-medium">
+            www.televerbier.ch
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Petit déjeuner/ déjeuner/ diner seront pris au restaurant Time Out</h3>
+          <p class="text-gray-700">
+            <strong>Tous les enfants chaque jour prendront leurs repas près du Centre Sportif au restaurant Time Out. Des menus simples mais équilibrés, dans une ambiance sportive et agréable!</strong> Vous etes les bienvenus pour nous rendre visite.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Chalet d'Adrien</h3>
+          <p class="text-gray-700">
+            <strong>Fin de stage et remise des prix sur la terrasse du Chalet d'Adrien, relais châteaux prestigieux de la station à 11h30 suivi d'un cocktail gourmand.</strong> Sur la terrasse élue 'la plus belle d'Europe' nous récompenserons vos enfants pour tous les efforts consentis de la semaine.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

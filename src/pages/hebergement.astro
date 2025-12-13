@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button } from '@/components/starwind/button';
+
+const title = "Hébergement - Advanced Tennis Camp";
+const description = "Hébergement pour familles et enfants à Verbier. Family pack en partenariat avec le Chalet d'Adrien et chalets pour les enfants.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-primary mb-12">
+        HÉBERGEMENT
+      </h1>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Family Pack -->
+        <div class="prose prose-lg max-w-none">
+          <h2 class="text-2xl font-bold text-primary mb-4">Family pack</h2>
+          <p>
+            <strong>Mis en place pour la première en fois en 2018, nous proposons aux familles de profiter de la montagne en « toute liberté ».</strong> En partenariat avec le Chalet d'Adrien, l'équipe de l'Advanced Tennis Camp s'occupe de votre séjour sportif et de celui de vos enfants.
+          </p>
+          <p>
+            <a href="/hebergement/chalet-dadrien/" class="text-primary font-bold hover:underline">On vous en dit davantage ici !</a>
+          </p>
+          <p>
+            Jouer au tennis, visiter la région en E-Bike, découvrez les sentiers de Verbier, prenez soin de vous; dans un cadre verdoyant, majestueux, nous ferons en sorte que votre séjour soit inoubliable!!
+          </p>
+          <p>
+            Tout sur <em><strong>Le Chalet d'Adrien – Le Charme et l'Authenticité Moments uniques à Verbier</strong></em> <a href="https://chalet-adrien.com/" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">cliquez ici !</a>
+          </p>
+        </div>
+        
+        <!-- Enfants -->
+        <div class="prose prose-lg max-w-none">
+          <h2 class="text-2xl font-bold text-primary mb-4">Enfants</h2>
+          <p>
+            <strong>Deux chalets sont à notre disposition pour accueillir et loger vos enfants durant leur séjour tennistique à Verbier.</strong> Nos coachs seront bien entendu répartis pour être présents dans les deux chalets afin que vos enfants ne soient jamais seuls. <strong>Nous disposons de chambres simples, doubles, ou triples dans un environnement classique de montagne, de pleine nature qui rendra ce camp inoubliable.</strong>
+          </p>
+        </div>
+      </div>
+      
+      <!-- Images Section -->
+      <div class="grid md:grid-cols-2 gap-8 mt-12">
+        <div>
+          <img 
+            src="/images/2019/01/image-11-1024x800.png" 
+            alt="Chalet d'Adrien" 
+            class="w-full rounded-lg shadow-xl"
+          />
+        </div>
+        <div>
+          <img 
+            src="/images/2019/01/image-2.png" 
+            alt="Hébergement enfants" 
+            class="w-full rounded-lg shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

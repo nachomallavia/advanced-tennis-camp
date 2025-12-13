@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button } from '@/components/starwind/button';
+
+const title = "Golf+Play - Advanced Tennis Camp";
+const description = "Deux sports de balle, deux jeux qui font appel à la stratégie et à la gestion de ses émotions. Programme combinant golf et tennis à Verbier.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Main Content -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
+            Golf+Play
+          </h1>
+          
+          <div class="prose prose-lg max-w-none">
+            <p>
+              <strong>Première édition du programme en 2019 !!!</strong><br />
+              Deux sports de balle, deux jeux qui font appel à la stratégie et à la gestion de ses émotions. Quoi de plus naturel de les associer !!
+            </p>
+            
+            <p>
+              C'est <strong>Mike Coppens et son TEAM</strong> qui accompagneront vos enfants tout au long de la semaine. Ceux qui connaissent Mike savent qu'ils sont entre de « bonnes mains » !
+            </p>
+            
+            <p>
+              Groupe de 6 personnes maximum afin de pouvoir différencier les niveaux et les ages.
+            </p>
+            
+            <h2 class="text-2xl font-bold text-primary mt-8 mb-4">PROGRAMME</h2>
+            <ul class="space-y-2">
+              <li>Rendez-vous tous les matins au <strong>Parc des Loisirs à 9h00 pour démarrer la journée avant de rejoindre Mike</strong></li>
+              <li><strong>12h00</strong> retour Time OUT pour le déjeuner</li>
+              <li><strong>13h45</strong> début du programme Golf</li>
+              <li><strong>16h15 retour sur les courts pour terminer la journée.</strong></li>
+            </ul>
+            
+            <p class="mt-4">
+              Remise des prix et des diplomes <strong>le samedi dès 11H30</strong> sur la terrasse du Chalet d'Adrien.
+            </p>
+          </div>
+        </div>
+        
+        <div>
+          <img 
+            src="/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg" 
+            alt="GOLF + PLAY" 
+            class="w-full rounded-lg shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Program Details Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h3 class="text-2xl font-bold text-primary mb-6">ENFANTS NÉS EN 2017-2012</h3>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li><strong>Lundi :</strong> Driving-Range pour évaluer le niveau</li>
+            <li><strong>Mardi :</strong> Petit jeu, approches-puts</li>
+            <li><strong>Mercredi :</strong> Jeu sur le parcours, vidéo</li>
+            <li><strong>Jeudi</strong> : Petit jeu, approches-puts/Compétition aux Moulins</li>
+            <li><strong>Vendredi :</strong> Driving –Range, les « Bois »</li>
+          </ul>
+          <p class="text-xl font-bold text-primary mb-6">Prix: 1190 CHF</p>
+          <Button href="/contact/" variant="primary">
+            CONTACT & INSCRIPTIONS
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Disclaimer -->
+  <section class="py-8 bg-white">
+    <div class="container mx-auto px-4">
+      <p class="text-sm text-gray-600 italic">
+        * Le prix comprend les balles au driving-range, les accès sur le parcours, la demie-pension. Minimum deux personnes pour avoir lieu. Possibilité de louer du matériel, en supplément.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

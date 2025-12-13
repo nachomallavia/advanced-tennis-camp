@@ -1,0 +1,173 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button } from '@/components/starwind/button';
+
+const title = "Advanced Tennis Camp - The Premier Tennis Camp in Valais";
+const description = "Advanced Tennis Camp is a tennis camp for children and adolescents. Since 2007, it takes place over 6 weeks each summer in Verbier!";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative min-h-[70vh] flex items-center bg-gradient-to-br from-white via-gray-50 to-red-50">
+    <div class="container mx-auto px-4 py-12 md:py-20">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Left column - Main title -->
+        <div class="text-left order-1 lg:order-1">
+          <h1 class="text-5xl md:text-6xl lg:text-8xl font-black text-primary leading-none tracking-[-0.05em] optical-sizing-auto ">
+            Advanced<br/>Tennis Camp
+          </h1>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-primary mt-4">
+            6 WEEKS IN 2026
+          </h2>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-primary">
+            July 6 - August 15
+          </h2>
+          
+          <!-- Sponsor logo -->
+          <div class="mt-6">
+            <a href="https://www.brainvest.com/" target="_blank" rel="noopener noreferrer">
+              <img 
+                src="/images/2024/03/BRAINVEST_1024x1024-e1710144827416-300x100.png" 
+                alt="Brainvest - Sponsor" 
+                class="inline-block h-16 w-auto"
+              />
+            </a>
+          </div>
+        </div>
+        
+        <!-- Right column - Welcome text -->
+        <div class="order-2 lg:order-2 lg:pl-8">
+          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4 leading-tight">
+            Everyone at the Advanced Tennis Camp are delighted to welcome you to the 19th edition of the camp in Verbier
+          </h3>
+          
+          <div class="text-base md:text-lg font-light leading-relaxed space-y-4 text-gray-800">
+            <p>
+              <strong>"Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."</strong>
+              <br/>
+              <span class="text-primary">C.Cornu — Founder & Head Coach</span>
+            </p>
+          </div>
+          
+          <!-- Hashtag animation -->
+          <div class="mt-8">
+            <span class="text-xl md:text-2xl font-bold text-primary animate-pulse">
+              #BUILDTHENEXTGENERATION
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Divider with quote -->
+  <section class="py-8 bg-white">
+    <div class="container mx-auto px-4">
+      <hr class="border-gray-200 mb-8" />
+      <div class="flex justify-center">
+        <img 
+          src="/images/2022/01/Five_W.B-quote.png" 
+          alt="Five Sports Management" 
+          class="max-w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+  
+  <!-- Programs Preview -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+        OUR PROGRAMS
+      </h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Junior Camp -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="/images/2022/11/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg" 
+              alt="Junior Camp" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-primary mb-2">Junior Camp</h3>
+            <p class="text-gray-600 mb-4">
+              Full board camp with accommodation for young tennis players.
+            </p>
+            <Button href="/en/the-camp/" variant="primary">
+              Learn more
+            </Button>
+          </div>
+        </div>
+        
+        <!-- BIKE + PLAY -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg" 
+              alt="BIKE + PLAY" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-primary mb-2">BIKE + PLAY</h3>
+            <p class="text-gray-600 mb-4">
+              Combine tennis and cycling: BMX, enduro MTB, downhill MTB.
+            </p>
+            <Button href="/en/bike-play/" variant="primary">
+              Learn more
+            </Button>
+          </div>
+        </div>
+        
+        <!-- GOLF + PLAY -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg" 
+              alt="GOLF + PLAY" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-primary mb-2">GOLF + PLAY</h3>
+            <p class="text-gray-600 mb-4">
+              Discover golf with Mike Coppens and his team.
+            </p>
+            <Button href="/en/golf-play/" variant="primary">
+              Learn more
+            </Button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <Button href="/en/programs-and-prices/" variant="primary" size="lg">
+          View all programs
+        </Button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        REGISTRATIONS OPEN
+      </h2>
+      <p class="text-xl mb-8 opacity-90">
+        Book your place for Summer 2026 now!
+      </p>
+      <Button href="/en/contact/" variant="secondary" size="lg">
+        Contact us
+      </Button>
+    </div>
+  </section>
+</BaseLayout>
+

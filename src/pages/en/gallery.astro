@@ -1,0 +1,60 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const title = "Gallery - Advanced Tennis Camp";
+const description = "Discover photos of the Advanced Tennis Camp in Verbier. Tennis, activities, shared moments with our young athletes.";
+
+// Gallery years
+const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
+
+// Gallery images - curated selection
+const images = [
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg", alt: "Tennis Camp" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg", alt: "BIKE + PLAY" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg", alt: "GOLF + PLAY" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-25-at-15.48.26.jpeg", alt: "Activities" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-08-05-at-10.52.31-1.jpeg", alt: "Tennis Training" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-25-at-15.48.25-2.jpeg", alt: "Camp Life" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-21-at-09.25.26.jpeg", alt: "Tennis Courts" },
+  { src: "/images/2022/11/WhatsApp-Image-2022-07-21-at-17.43.55.jpeg", alt: "Team" },
+  { src: "/images/2022/01/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg", alt: "Senior Camp" },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Year Navigation -->
+      <nav class="flex flex-wrap justify-center gap-4 mb-12">
+        {years.map((year) => (
+          <a 
+            href={`/en/gallery/${year}/`}
+            class="px-6 py-3 text-lg font-bold text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+          >
+            {year}
+          </a>
+        ))}
+      </nav>
+      
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {images.map((image) => (
+          <div class="group relative aspect-square overflow-hidden rounded-lg shadow-lg">
+            <img 
+              src={image.src} 
+              alt={image.alt}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Photo Credits -->
+      <p class="text-center text-gray-600 italic">
+        Photo/Video Credits: Alpimages Verbier, Shibo Films
+      </p>
+    </div>
+  </section>
+</BaseLayout>

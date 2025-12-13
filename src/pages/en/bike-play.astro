@@ -1,0 +1,101 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Button } from '@/components/starwind/button';
+
+const title = "BIKE + PLAY - Advanced Tennis Camp";
+const description = "Camp combining cycling and tennis for children aged 7 and above. BMX, mountain bike enduro, downhill MTB, Skateboard in Verbier.";
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Intro Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+            BIKE + PLAY in collaboration with <a href="https://essverbier.ch/" target="_blank" rel="noopener" class="hover:underline">Verbier Swiss Ski School</a>
+          </h2>
+          
+          <div class="prose prose-lg max-w-none">
+            <p>
+              <strong>For the first time in 2018,</strong> the Advanced Tennis Camp have set up a camp combining cycling and tennis. <strong>For children aged 7 and above,</strong> the 'Bike+Play' camp is designed to allow youngsters to discover the mountain. Throughout the week in the mornings, children will be allowed to practice different forms of cycling including <strong>BMX, mountain bike enduro and mountain bike downhill. Skateboarding will also be available.</strong>
+            </p>
+            <p>
+              <strong>Professionals in each discipline</strong> will accompany the youngsters to ensure their safety before joining the ATC team to 'play' tennis in the beautiful setting of Verbier.
+            </p>
+            <p>
+              <strong>Groups of 4 people maximum per age group.</strong>
+            </p>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">PROGRAMME</h3>
+            <ul class="space-y-2">
+              <li><strong>Every morning at 09:00</strong> chez Martin before joining the Kids Bike League</li>
+              <li><strong>12:00</strong> return to Martin for lunch</li>
+              <li><strong>14:00</strong> start of the tennis program</li>
+              <li><strong>17:00</strong> end of the day</li>
+            </ul>
+            <p class="mt-4">
+              An award ceremony will take place on <strong>Saturday from 11:30</strong> on the terrace of Chalet d'Adrien.
+            </p>
+          </div>
+        </div>
+        
+        <div>
+          <img 
+            src="/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg" 
+            alt="BIKE + PLAY" 
+            class="w-full rounded-lg shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Age Groups Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- 7-10 y.o. -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h4 class="text-2xl font-bold text-primary mb-6">7-10 y.o. (2017-2014)</h4>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li><strong>Monday:</strong> BMX – Mountain Bike – introduction (morning) / Tennis (afternoon)</li>
+            <li><strong>Tuesday:</strong> BMX – Mountain Bike – introduction (morning) / Tennis (afternoon)</li>
+            <li><strong>Wednesday:</strong> Mountain bike – trails (morning) / Tennis (afternoon)</li>
+            <li><strong>Thursday:</strong> Mountain Bike (morning) / Tennis (afternoon)</li>
+            <li><strong>Friday:</strong> Mountain Bike (morning) / Tennis (afternoon)</li>
+          </ul>
+          <p class="text-xl font-bold text-primary mb-6">Price: 1290 CHF per person</p>
+          <Button href="/en/contact/" variant="primary">
+            CONTACT & BOOKINGS
+          </Button>
+        </div>
+        
+        <!-- 11-15 y.o. -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h4 class="text-2xl font-bold text-primary mb-6">11-15 y.o. (2013-2009)</h4>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li><strong>Monday:</strong> BMX – Mountain Bike – introduction (morning) / Tennis (afternoon)</li>
+            <li><strong>Tuesday:</strong> BMX – Mountain Bike – Track (morning) / Tennis (afternoon)</li>
+            <li><strong>Wednesday:</strong> Mountain bike – trails (morning) / Tennis (afternoon)</li>
+            <li><strong>Thursday:</strong> Mountain Bike Enduro (morning) / Tennis (afternoon)</li>
+            <li><strong>Friday:</strong> Mountain Bike downhill (morning) / Tennis (afternoon)</li>
+          </ul>
+          <p class="text-xl font-bold text-primary mb-6">Price: 1390 CHF per person</p>
+          <Button href="/en/contact/" variant="primary">
+            CONTACT & BOOKINGS
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Disclaimer -->
+  <section class="py-8 bg-white">
+    <div class="container mx-auto px-4">
+      <p class="text-sm text-gray-600 italic">
+        *Prices are inclusive of bike hire, protection, lifts pass and half-board accomodation. In order to take place, a minimum of 2 children are required to sign onto the course. All classes are supervised by professionals from Kids Bike League. Classes take place at FunPark du Chable, La Gouille in Vaudan for BMX, BikePark Verbier, Savoleyres or at Chez Martin with obstacles set.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
