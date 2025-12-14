@@ -3,28 +3,36 @@ import { getLangFromUrl, getNavItems, getAlternateUrl, getRouteFromUrl } from '@
 import { Button } from '@/components/starwind/button';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from '@/components/starwind/sheet';
 
+interface Props {
+  transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
+
 const lang = getLangFromUrl(Astro.url);
-const navItems = getNavItems(lang);
+const allNavItems = getNavItems(lang);
+// Filter out HOME - logo will serve as home link
+const navItems = allNavItems.filter(item => item.key !== 'home');
 const alternateUrl = getAlternateUrl(Astro.url);
 const currentPath = Astro.url.pathname;
 const routeKey = getRouteFromUrl(Astro.url);
-
-// Tagline based on language
-const tagline = lang === 'fr' 
-  ? 'Faites progresser votre jeu avec du coaching professionnel dans le décor grandiose de Verbier'
-  : 'Develop and advance your game with professional tuition in the stunning alpine surroundings of Verbier';
 ---
 
-<header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent lg:bg-gradient-to-b from-gray-800/50 to-transparent">
+<header id="main-header" class:list={[
+  "fixed top-0 left-0 right-0 z-50",
+  transparent 
+    ? "bg-transparent lg:bg-gradient-to-b from-gray-800/50 to-transparent border-b-1 border-gray-200"
+    : "bg-white border-b-1 border-gray-200"
+]} data-transparent={transparent}>
   <!-- Top bar with language switcher -->
-  <div id="header-top-bar" class="border-b border-gray-100">
+  <div id="header-top-bar" class="border-y-1 border-gray-100">
     <div class="container mx-auto px-4 py-1 flex justify-end">
       <div class="flex items-center gap-1 text-sm font-bold">
         <a 
           href={lang === 'fr' ? currentPath : alternateUrl}
           class:list={[
             "px-2 py-1 rounded transition-colors",
-            lang === 'fr' ? "text-primary" : "text-gray-50 hover:text-primary"
+            lang === 'fr' ? "text-primary" : transparent ? "text-gray-50 hover:text-primary" : "text-gray-900 hover:text-primary"
           ]}
         >
           FR
@@ -34,7 +42,7 @@ const tagline = lang === 'fr'
           href={lang === 'en' ? currentPath : alternateUrl}
           class:list={[
             "px-2 py-1 rounded transition-colors",
-            lang === 'en' ? "text-primary" : "text-gray-50 hover:text-primary"
+            lang === 'en' ? "text-primary" : transparent ? "text-gray-50 hover:text-primary" : "text-gray-900 hover:text-primary"
           ]}
         >
           EN
@@ -43,31 +51,74 @@ const tagline = lang === 'fr'
     </div>
   </div>
   
-  <!-- Main header -->
-  <div id="header-logo-section" class="container mx-auto px-4">
-    <div class="flex items-center justify-between py-4">
+  <!-- Main header with logo and nav combined -->
+  <div id="header-main" class="container mx-auto px-4 transition-colors duration-300">
+    <div class="flex items-center justify-between py-2">
       <!-- Logo -->
-      <a href={lang === 'fr' ? '/' : '/en/'} class="flex-shrink-0">
+      <a href={lang === 'fr' ? '/' : '/en/'} class="shrink-0">
         <img 
-          src="/images/logo-bw.png" 
+          id="header-logo"
+          src={transparent ? "/images/logo-bw.png" : "/images/logo.png"}
           alt="Advanced Tennis Camp" 
-          class="h-16 md:h-20 w-auto"
+          class="h-12 md:h-14 w-auto transition-opacity duration-300"
         />
       </a>
       
-      <!-- Tagline (desktop only) -->
-      <div class="hidden lg:block max-w-md text-right">
-        <p class="text-sm md:text-base italic text-gray-50 leading-tight">
-          {tagline}
-        </p>
-      </div>
+      <!-- Desktop Navigation - inline with logo -->
+      <nav id="header-nav" class="hidden lg:flex items-center gap-1">
+        {navItems.map((item) => (
+          <a 
+            href={item.href}
+            class:list={[
+              "nav-link px-3 xl:px-4 py-2 text-sm font-semibold uppercase tracking-wide transition-colors",
+              routeKey === item.key 
+                ? transparent ? "nav-link-active text-black" : "nav-link-active text-primary"
+                : transparent ? "nav-link-inactive text-white hover:text-black" : "nav-link-inactive text-gray-900 hover:text-primary"
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+        
+        <!-- Social icons -->
+        <div class="flex items-center gap-2 ml-2 pl-2 border-l border-gray-100">
+          <a 
+            href="https://www.facebook.com/atcverbier" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class:list={[
+              "social-icon text-primary transition-colors p-1",
+              transparent ? "hover:text-black" : "hover:text-primary"
+            ]}
+            aria-label="Facebook"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://www.instagram.com/advancedtenniscamp/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class:list={[
+              "social-icon text-primary transition-colors p-1",
+              transparent ? "hover:text-black" : "hover:text-primary"
+            ]}
+            aria-label="Instagram"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
+      </nav>
       
-      <!-- Mobile menu button - only visible on mobile -->
-      <div class="lg:hidden">
+      <!-- Mobile menu button -->
+      <div id="mobile-menu-button" class="lg:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" aria-label="Open menu">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <Button variant="ghost" size="icon" aria-label="Open menu" class={transparent ? "text-white" : "text-gray-900"}>
+              <svg class="w-6 h-6" fill="none"  stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </Button>
@@ -124,55 +175,6 @@ const tagline = lang === 'fr'
       </div>
     </div>
   </div>
-  
-  <!-- Desktop Navigation -->
-  <nav id="header-nav" class="hidden lg:block border-y-1 border-gray-100 transition-colors duration-300">
-    <div class="container mx-auto px-4">
-      <ul class="flex items-center justify-center gap-1">
-        {navItems.map((item) => (
-          <li>
-            <a 
-              href={item.href}
-              class:list={[
-                "nav-link block px-3 xl:px-4 py-3 text-sm font-semibold uppercase tracking-wide transition-colors",
-                routeKey === item.key 
-                  ? "nav-link-active text-black" 
-                  : "nav-link-inactive text-white hover:text-black"
-              ]}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-        
-        <!-- Social icons -->
-        <li class="flex items-center gap-2 ml-2 pl-2 border-l border-gray-100">
-          <a 
-            href="https://www.facebook.com/atcverbier" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="text-primary hover:text-black transition-colors p-2"
-            aria-label="Facebook"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-          </a>
-          <a 
-            href="https://www.instagram.com/advancedtenniscamp/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="text-primary hover:text-black transition-colors p-2"
-            aria-label="Instagram"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 </header>
 
 <script>
@@ -184,16 +186,26 @@ const tagline = lang === 'fr'
   // Wait for DOM to be ready
   document.addEventListener("DOMContentLoaded", () => {
     const header = document.getElementById("main-header");
+    const isTransparent = header?.getAttribute("data-transparent") === "true";
+    
+    // Only run scroll animations if transparent mode is enabled
+    if (!isTransparent) return;
+    
     const topBar = document.getElementById("header-top-bar");
-    const logoSection = document.getElementById("header-logo-section");
-    const nav = document.getElementById("header-nav");
+    const headerMain = document.getElementById("header-main");
+    const logo = document.getElementById("header-logo") as HTMLImageElement;
     const navLinksActive = document.querySelectorAll(".nav-link-active");
     const navLinksInactive = document.querySelectorAll(".nav-link-inactive");
+    const socialIcons = document.querySelectorAll(".social-icon");
+    const mobileMenuButton = document.getElementById("mobile-menu-button")?.querySelector("button");
     
-    if (!header || !topBar || !logoSection || !nav) return;
+    if (!header || !topBar || !headerMain || !logo) return;
     
-    // Calculate the height to hide (top bar + logo section)
-    const hideHeight = topBar.offsetHeight + logoSection.offsetHeight;
+    // Calculate the height to hide (just top bar now)
+    const hideHeight = topBar.offsetHeight;
+    
+    // Track animation state to prevent repeated executions
+    let isScrolled = false;
     
     // Create the scroll trigger animation
     ScrollTrigger.create({
@@ -203,19 +215,26 @@ const tagline = lang === 'fr'
       onUpdate: (self) => {
         const scrolled = self.progress > 0 && window.scrollY > 50;
         
-        if (scrolled) {
-          // Hide top sections, show only nav
-          gsap.to(header, {
+        // Only animate if state has changed
+        if (scrolled && !isScrolled) {
+          isScrolled = true;
+          
+          // Remove gradient classes first to avoid conflicts
+          header.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent", "bg-transparent");
+          
+          // Create timeline for smooth animations
+          const tl = gsap.timeline();
+          
+          // Hide top bar and animate background color
+          tl.to(header, {
             y: -hideHeight,
+            backgroundColor: "#f3f4f6", // gray-100
             duration: 0.3,
             ease: "power2.out"
           });
           
-          // Change nav background to gray-100
-          nav.classList.add("bg-gray-100");
-          nav.classList.remove("border-gray-100");
-          nav.classList.add("border-gray-200");
-          header.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+          // Switch logo to color version
+          logo.src = "/images/logo.png";
           
           // Change text colors
           navLinksActive.forEach(link => {
@@ -228,19 +247,38 @@ const tagline = lang === 'fr'
             link.classList.remove("hover:text-black");
             link.classList.add("hover:text-primary");
           });
-        } else {
-          // Reset to original state
-          gsap.to(header, {
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out"
+          socialIcons.forEach(icon => {
+            icon.classList.remove("hover:text-black");
+            icon.classList.add("hover:text-primary");
           });
           
-          // Reset nav background
-          nav.classList.remove("bg-gray-100");
-          nav.classList.add("border-gray-100");
-          nav.classList.remove("border-gray-200");
-          header.classList.add("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+          // Change hamburger menu to gray-900
+          if (mobileMenuButton) {
+            mobileMenuButton.classList.remove("text-white");
+            mobileMenuButton.classList.add("text-gray-900");
+          }
+        } else if (!scrolled && isScrolled) {
+          isScrolled = false;
+          
+          // Create timeline for smooth reset animations
+          const tl = gsap.timeline();
+          
+          // Show top bar and reset background
+          tl.to(header, {
+            y: 0,
+            backgroundColor: "transparent",
+            duration: 0.3,
+            ease: "power2.out",
+            onComplete: () => {
+              // Clear inline style to allow CSS classes to work
+              gsap.set(header, { clearProps: "backgroundColor" });
+              // Restore gradient classes
+              header.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+            }
+          });
+          
+          // Switch logo back to black and white version
+          logo.src = "/images/logo-bw.png";
           
           // Reset text colors
           navLinksActive.forEach(link => {
@@ -253,6 +291,16 @@ const tagline = lang === 'fr'
             link.classList.add("hover:text-black");
             link.classList.remove("hover:text-primary");
           });
+          socialIcons.forEach(icon => {
+            icon.classList.add("hover:text-black");
+            icon.classList.remove("hover:text-primary");
+          });
+          
+          // Reset hamburger menu to white
+          if (mobileMenuButton) {
+            mobileMenuButton.classList.add("text-white");
+            mobileMenuButton.classList.remove("text-gray-900");
+          }
         }
       }
     });

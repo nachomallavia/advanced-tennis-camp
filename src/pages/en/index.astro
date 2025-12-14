@@ -6,27 +6,33 @@ const title = "Advanced Tennis Camp - The Premier Tennis Camp in Valais";
 const description = "Advanced Tennis Camp is a tennis camp for children and adolescents. Since 2007, it takes place over 6 weeks each summer in Verbier!";
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} transparentHeader={true}>
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center ">
-    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/50 via-gray-800/20 to-transparent z-1 "></div>
+  <section class="relative h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
     <video src="/videos/videobg2.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
-    <div class="container mx-auto px-4 py-12 md:py-20 z-2">
-      <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-8 lg:gap-12 items-center">
+
+      <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 h-full px-4 lg:px-24  z-2">
         <!-- Left column - Main title -->
-        <div class="text-left order-1 lg:order-1 row-start-2">
-          <h1 class="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto ">
+        <div class="text-left flex flex-col items-start justify-end h-full pb-12">
+
+          <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2">
             Advanced<br/>Tennis Camp
           </h1>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white mt-4">
-            6 WEEKS IN 2026
+          <!-- Tagline -->
+          <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 ">
+            Develop and advance your game with professional tuition in the stunning alpine surroundings of Verbier
+          </p>
+          
+          <h2 class="text-lg max-w-[200px] md:max-w-full md:text-xl lg:text-2xl font-bold text-white mt-4">
+            6 WEEKS IN 2026 July 6 - August 15
           </h2>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white">
-            July 6 - August 15
-          </h2>
+          <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white">
+           
+          </h2> -->
           
           <!-- Sponsor logo -->
-          <div class="mt-6">
+          <div class="mt-12">
             <a href="https://www.brainvest.com/" target="_blank" rel="noopener noreferrer">
               <img 
                 src="/images/2024/03/BRAINVEST_1024x1024-e1710144827416-300x100.png" 
@@ -40,7 +46,6 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
         <!-- Right column - Welcome text -->
         
       </div>
-    </div>
   </section>
   
   <!-- Divider with quote -->
