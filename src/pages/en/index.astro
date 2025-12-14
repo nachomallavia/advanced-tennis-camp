@@ -8,18 +8,20 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
 
 <BaseLayout title={title} description={description}>
   <!-- Hero Section -->
-  <section class="relative min-h-[70vh] flex items-center bg-gradient-to-br from-white via-gray-50 to-red-50">
-    <div class="container mx-auto px-4 py-12 md:py-20">
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+  <section class="relative min-h-screen flex items-center ">
+    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/50 via-gray-800/20 to-transparent z-1 "></div>
+    <video src="/videos/videobg2.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
+    <div class="container mx-auto px-4 py-12 md:py-20 z-2">
+      <div class="grid lg:grid-cols-2 lg:grid-rows-3 gap-8 lg:gap-12 items-center">
         <!-- Left column - Main title -->
-        <div class="text-left order-1 lg:order-1">
-          <h1 class="text-5xl md:text-6xl lg:text-8xl font-black text-primary leading-none tracking-[-0.05em] optical-sizing-auto ">
+        <div class="text-left order-1 lg:order-1 row-start-2">
+          <h1 class="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto ">
             Advanced<br/>Tennis Camp
           </h1>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-primary mt-4">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white mt-4">
             6 WEEKS IN 2026
           </h2>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-primary">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white">
             July 6 - August 15
           </h2>
           
@@ -36,32 +38,33 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
         </div>
         
         <!-- Right column - Welcome text -->
-        <div class="order-2 lg:order-2 lg:pl-8">
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4 leading-tight">
-            Everyone at the Advanced Tennis Camp are delighted to welcome you to the 19th edition of the camp in Verbier
-          </h3>
-          
-          <div class="text-base md:text-lg font-light leading-relaxed space-y-4 text-gray-800">
-            <p>
-              <strong>"Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."</strong>
-              <br/>
-              <span class="text-primary">C.Cornu — Founder & Head Coach</span>
-            </p>
-          </div>
-          
-          <!-- Hashtag animation -->
-          <div class="mt-8">
-            <span class="text-xl md:text-2xl font-bold text-primary animate-pulse">
-              #BUILDTHENEXTGENERATION
-            </span>
-          </div>
-        </div>
+        
       </div>
     </div>
   </section>
   
   <!-- Divider with quote -->
-  <section class="py-8 bg-white">
+  <section class="py-8 bg-primary">
+    <div class="container mx-auto px-4">
+      <h3 class="text-lg md:text-2xl font-bold text-gray-100 mb-4 leading-tight">
+        Everyone at the Advanced Tennis Camp are delighted to welcome you to the 19th edition of the camp in Verbier
+      </h3>
+      
+      <div class="text-base md:text-lg font-light leading-relaxed space-y-4 text-gray-100 ">
+        <p>
+          <strong>"Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."</strong>
+          <br/>
+          <span class="text-gray-800">C.Cornu — Founder & Head Coach</span>
+        </p>
+      </div>
+      
+      <!-- Hashtag animation -->
+      <div class="mt-8">
+        <span class="text-xl md:text-2xl font-bold text-primary animate-pulse">
+          #BUILDTHENEXTGENERATION
+        </span>
+      </div>
+    </div>
     <div class="container mx-auto px-4">
       <hr class="border-gray-200 mb-8" />
       <div class="flex justify-center">

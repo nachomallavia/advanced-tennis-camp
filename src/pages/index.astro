@@ -8,18 +8,19 @@ const description = "L'Advanced Tennis Camp est un camp de tennis pour enfants e
 
 <BaseLayout title={title} description={description}>
   <!-- Hero Section -->
-  <section class="relative min-h-[70vh] flex items-center bg-gradient-to-br from-white via-gray-50 to-red-50">
+  <section class="relative min-h-screen flex items-center bg-gradient-to-br from-white via-gray-50 to-red-50">
+    <video src="/videos/videobg2.webm" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover"></video>
     <div class="container mx-auto px-4 py-12 md:py-20">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <!-- Left column - Main title -->
-        <div class="text-right order-1 lg:order-1">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-primary leading-tight tracking-wide">
+        <div class="text-left order-1 lg:order-1">
+          <h1 class="text-5xl md:text-6xl lg:text-8xl font-black text-primary leading-none tracking-[-0.05em] optical-sizing-auto ">
             Advanced<br/>Tennis Camp
           </h1>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mt-4">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-primary mt-4">
             6 SEMAINES EN 2026
           </h2>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-primary">
             06 Juillet - 15 Août
           </h2>
           
@@ -37,21 +38,15 @@ const description = "L'Advanced Tennis Camp est un camp de tennis pour enfants e
         
         <!-- Right column - Welcome text -->
         <div class="order-2 lg:order-2 lg:pl-8">
-          <h3 class="text-xl md:text-2xl font-bold text-primary mb-4 leading-tight">
+          <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-4 leading-tight">
             L'équipe de Advanced Tennis Camp vous souhaite la bienvenue pour sa 19 ème édition à Verbier
           </h3>
           
-          <div class="text-base md:text-lg font-medium leading-relaxed space-y-4 text-gray-800">
+          <div class="text-base md:text-lg font-light leading-relaxed space-y-4 text-gray-800">
             <p>
-              <strong>« Notre équipe de coach est aguerrie à tous les niveaux. Forts d'une expérience de 20 ans sur le circuit Pro, que ce soit sur le plan physique ou tennis, nous proposons un programme adapté à nos élèves.</strong>
-            </p>
-            <p>
-              <strong>En combinant la méthodologie Swiss Tennis, les drills spécifiques au tennis et les vertus de l'entrainement en montagne, votre enfant évoluera en un minimum de temps!</strong>
-            </p>
-            <p>
-              <strong>C'est l'implication et l'expérience du team qui fait de l'Advanced Tennis Camp un camp unique. »</strong>
+              <strong>« Notre équipe de coach est aguerrie à tous les niveaux. Forts d'une expérience de 20 ans sur le circuit Pro, que ce soit sur le plan physique ou tennis, nous proposons un programme adapté à nos élèves. En combinant la méthodologie Swiss Tennis, les drills spécifiques au tennis et les vertus de l'entrainement en montagne, votre enfant évoluera en un minimum de temps! C'est l'implication et l'expérience du team qui fait de l'Advanced Tennis Camp un camp unique. »</strong>
               <br/>
-              <span class="text-gray-600">C.Cornu — Fondateur</span>
+              <span class="text-primary">C.Cornu — Fondateur</span>
             </p>
           </div>
           

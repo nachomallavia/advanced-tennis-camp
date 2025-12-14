@@ -92,6 +92,18 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://advanced
       <slot />
     </main>
     <Footer />
+    
+    <!-- GSAP Animation Library -->
+    <script>
+      import gsap from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+      
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Make gsap available globally
+      (window as any).gsap = gsap;
+      (window as any).ScrollTrigger = ScrollTrigger;
+    </script>
   </body>
 </html>
 

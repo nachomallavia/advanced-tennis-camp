@@ -15,16 +15,16 @@ const tagline = lang === 'fr'
   : 'Develop and advance your game with professional tuition in the stunning alpine surroundings of Verbier';
 ---
 
-<header class="bg-primary border-b-2 border-primary sticky top-0 z-50">
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-transparent lg:bg-gradient-to-b from-gray-800/50 to-transparent">
   <!-- Top bar with language switcher -->
-  <div class="border-b border-gray-100">
+  <div id="header-top-bar" class="border-b border-gray-100">
     <div class="container mx-auto px-4 py-1 flex justify-end">
       <div class="flex items-center gap-1 text-sm font-bold">
         <a 
           href={lang === 'fr' ? currentPath : alternateUrl}
           class:list={[
             "px-2 py-1 rounded transition-colors",
-            lang === 'fr' ? "text-primary" : "text-gray-500 hover:text-primary"
+            lang === 'fr' ? "text-primary" : "text-gray-50 hover:text-primary"
           ]}
         >
           FR
@@ -34,7 +34,7 @@ const tagline = lang === 'fr'
           href={lang === 'en' ? currentPath : alternateUrl}
           class:list={[
             "px-2 py-1 rounded transition-colors",
-            lang === 'en' ? "text-primary" : "text-gray-500 hover:text-primary"
+            lang === 'en' ? "text-primary" : "text-gray-50 hover:text-primary"
           ]}
         >
           EN
@@ -44,12 +44,12 @@ const tagline = lang === 'fr'
   </div>
   
   <!-- Main header -->
-  <div class="container mx-auto px-4">
+  <div id="header-logo-section" class="container mx-auto px-4">
     <div class="flex items-center justify-between py-4">
       <!-- Logo -->
       <a href={lang === 'fr' ? '/' : '/en/'} class="flex-shrink-0">
         <img 
-          src="/images/logo.png" 
+          src="/images/logo-bw.png" 
           alt="Advanced Tennis Camp" 
           class="h-16 md:h-20 w-auto"
         />
@@ -57,7 +57,7 @@ const tagline = lang === 'fr'
       
       <!-- Tagline (desktop only) -->
       <div class="hidden lg:block max-w-md text-right">
-        <p class="text-sm md:text-base italic text-gray-600 leading-tight">
+        <p class="text-sm md:text-base italic text-gray-50 leading-tight">
           {tagline}
         </p>
       </div>
@@ -126,7 +126,7 @@ const tagline = lang === 'fr'
   </div>
   
   <!-- Desktop Navigation -->
-  <nav class="hidden lg:block border-t-2 border-primary bg-white">
+  <nav id="header-nav" class="hidden lg:block border-y-1 border-gray-100 transition-colors duration-300">
     <div class="container mx-auto px-4">
       <ul class="flex items-center justify-center gap-1">
         {navItems.map((item) => (
@@ -134,10 +134,10 @@ const tagline = lang === 'fr'
             <a 
               href={item.href}
               class:list={[
-                "block px-3 xl:px-4 py-3 text-sm font-semibold uppercase tracking-wide transition-colors",
+                "nav-link block px-3 xl:px-4 py-3 text-sm font-semibold uppercase tracking-wide transition-colors",
                 routeKey === item.key 
-                  ? "text-black" 
-                  : "text-primary hover:text-black"
+                  ? "nav-link-active text-black" 
+                  : "nav-link-inactive text-white hover:text-black"
               ]}
             >
               {item.label}
@@ -146,7 +146,7 @@ const tagline = lang === 'fr'
         ))}
         
         <!-- Social icons -->
-        <li class="flex items-center gap-2 ml-2 pl-2 border-l border-gray-200">
+        <li class="flex items-center gap-2 ml-2 pl-2 border-l border-gray-100">
           <a 
             href="https://www.facebook.com/atcverbier" 
             target="_blank" 
@@ -174,4 +174,88 @@ const tagline = lang === 'fr'
     </div>
   </nav>
 </header>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Wait for DOM to be ready
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("main-header");
+    const topBar = document.getElementById("header-top-bar");
+    const logoSection = document.getElementById("header-logo-section");
+    const nav = document.getElementById("header-nav");
+    const navLinksActive = document.querySelectorAll(".nav-link-active");
+    const navLinksInactive = document.querySelectorAll(".nav-link-inactive");
+    
+    if (!header || !topBar || !logoSection || !nav) return;
+    
+    // Calculate the height to hide (top bar + logo section)
+    const hideHeight = topBar.offsetHeight + logoSection.offsetHeight;
+    
+    // Create the scroll trigger animation
+    ScrollTrigger.create({
+      trigger: "main",
+      start: "top top",
+      end: "max",
+      onUpdate: (self) => {
+        const scrolled = self.progress > 0 && window.scrollY > 50;
+        
+        if (scrolled) {
+          // Hide top sections, show only nav
+          gsap.to(header, {
+            y: -hideHeight,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+          
+          // Change nav background to gray-100
+          nav.classList.add("bg-gray-100");
+          nav.classList.remove("border-gray-100");
+          nav.classList.add("border-gray-200");
+          header.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+          
+          // Change text colors
+          navLinksActive.forEach(link => {
+            link.classList.remove("text-black");
+            link.classList.add("text-primary");
+          });
+          navLinksInactive.forEach(link => {
+            link.classList.remove("text-white");
+            link.classList.add("text-gray-900");
+            link.classList.remove("hover:text-black");
+            link.classList.add("hover:text-primary");
+          });
+        } else {
+          // Reset to original state
+          gsap.to(header, {
+            y: 0,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+          
+          // Reset nav background
+          nav.classList.remove("bg-gray-100");
+          nav.classList.add("border-gray-100");
+          nav.classList.remove("border-gray-200");
+          header.classList.add("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+          
+          // Reset text colors
+          navLinksActive.forEach(link => {
+            link.classList.add("text-black");
+            link.classList.remove("text-primary");
+          });
+          navLinksInactive.forEach(link => {
+            link.classList.add("text-white");
+            link.classList.remove("text-gray-900");
+            link.classList.add("hover:text-black");
+            link.classList.remove("hover:text-primary");
+          });
+        }
+      }
+    });
+  });
+</script>
 
