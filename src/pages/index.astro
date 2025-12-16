@@ -11,22 +11,25 @@ const description = "L'Advanced Tennis Camp est un camp de tennis pour enfants e
   <section class="relative h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
     <video src="/videos/videobg2.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
-    <div class="container mx-auto px-4 py-8 md:py-12 z-2">
-      <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 items-center">
-        <!-- Left column - Main title -->
-        <div class="text-left">
 
-          <h1 class="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2">
+      <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 h-full px-4 lg:px-24  z-2">
+        <!-- Left column - Main title -->
+        <div class="text-left flex flex-col items-start justify-end h-full pb-12">
+
+          <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2">
             Advanced<br/>Tennis Camp
           </h1>
           <!-- Tagline -->
-          <p class="text-lg md:text-xl italic text-gray-100 mb-6 ">
-            Faites progresser votre jeu avec du coaching professionnel<br/> dans le décor grandiose de Verbier
+          <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 leading-relaxed">
+            Faites progresser votre jeu avec du coaching professionnel dans le décor grandiose de Verbier
           </p>
           
-          <h2 class="text-lg md:text-xl lg:text-2xl font-bold text-white mt-4">
+          <h2 class="text-lg max-w-[200px] md:max-w-full md:text-xl lg:text-2xl font-bold text-white mt-4">
             6 SEMAINES EN 2026 06 Juillet - 15 Août
           </h2>
+          <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white">
+           
+          </h2> -->
           
           <!-- Sponsor logo -->
           <div class="mt-12">
@@ -43,42 +46,37 @@ const description = "L'Advanced Tennis Camp est un camp de tennis pour enfants e
         <!-- Right column - Welcome text -->
         
       </div>
-    </div>
   </section>
   
   <!-- Divider with quote -->
-  <section class="py-8 bg-primary">
-    <div class="container mx-auto px-4">
-      <h3 class="text-lg md:text-2xl font-bold text-gray-100 mb-4 leading-tight">
+  <section class="py-8 bg-white min-h-screen flex flex-col items-center ">
+    <div class=" flex  md:flex-row items-center justify-center px-4 py-12 gap-4 mx-auto md:mx-0">
+      <div class="flex flex-row items-center justify-center">
+          <div class="flex flex-col items-center md:items-end text-primary justify-center">
+            <div class="flex flex-row">
+              <span class="font-extrabold text-6xl md:text-8xl">19</span> 
+              <span class="font-normal text-3xl md:text-4xl align-top">ème</span>
+            </div>
+            <span class="text-2xl md:text-4xl font-normal text-primary uppercase">édition</span>
+          </div>
+        <div class=" min-w-[2px]  min-h-[120px] md:min-h-[150px] bg-primary mx-4"></div>
+      </div>
+      <h3 class="text-lg md:text-4xl font-extrabold text-primary mb-4 leading-[1.05] col-span-2 max-w-[90%] md:max-w-[60%]">
         L'équipe de Advanced Tennis Camp vous souhaite la bienvenue pour sa 19 ème édition à Verbier
       </h3>
-      
-      <div class="text-base md:text-lg font-light leading-relaxed space-y-4 text-gray-100 ">
-        <p>
-          <strong>« Notre équipe de coach est aguerrie à tous les niveaux. Forts d'une expérience de 20 ans sur le circuit Pro, que ce soit sur le plan physique ou tennis, nous proposons un programme adapté à nos élèves. En combinant la méthodologie Swiss Tennis, les drills spécifiques au tennis et les vertus de l'entrainement en montagne, votre enfant évoluera en un minimum de temps! C'est l'implication et l'expérience du team qui fait de l'Advanced Tennis Camp un camp unique. »</strong>
+    </div>
+    
+    <div class=" flex flex-col items-center md:items-end px-6 gap-4 md:max-w-[75%] mx-auto md:mx-0">
+        <p class="italic text-center md:text-left mx-auto md:mx-0">
+          "Notre équipe de coach est aguerrie à tous les niveaux. Forts d'une expérience de 20 ans sur le circuit Pro, que ce soit sur le plan physique ou tennis, nous proposons un programme adapté à nos élèves. En combinant la méthodologie Swiss Tennis, les drills spécifiques au tennis et les vertus de l'entrainement en montagne, votre enfant évoluera en un minimum de temps! C'est l'implication et l'expérience du team qui fait de l'Advanced Tennis Camp un camp unique."
           <br/>
-          <span class="text-gray-800">C.Cornu — Fondateur</span>
         </p>
-      </div>
-      
-      <!-- Hashtag animation -->
-      <div class="mt-8">
-        <span class="text-xl md:text-2xl font-bold text-primary animate-pulse">
-          #BUILDTHENEXTGENERATION
-        </span>
-      </div>
+        <div class="flex gap-4 items-center">
+          <img src="/cyril.jpeg" alt="Cyril Cornu" class="w-24 h-24 rounded-full object-cover">
+          <span class="text-gray-800 font-bold">C.Cornu — <br/>Fondateur et Entraîneur Principal</span>
+        </div>
     </div>
-    <div class="container mx-auto px-4">
-      <hr class="border-gray-200 mb-8" />
-      <div class="flex justify-center">
-        <img 
-          src="/images/2022/01/Five_W.B-quote.png" 
-          alt="Five Sports Management" 
-          class="max-w-full h-auto"
-          loading="lazy"
-        />
-      </div>
-    </div>
+    
   </section>
   
   <!-- Programs Preview -->

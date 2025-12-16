@@ -21,7 +21,7 @@ const routeKey = getRouteFromUrl(Astro.url);
 <header id="main-header" class:list={[
   "fixed top-0 left-0 right-0 z-50",
   transparent 
-    ? "bg-transparent lg:bg-gradient-to-b from-gray-800/50 to-transparent border-b-1 border-gray-200"
+    ? "bg-transparent lg:bg-gradient-to-b from-gray-800/50 to-transparent border-b-1 border-gray-200 backdrop-blur-[2px]"
     : "bg-white border-b-1 border-gray-200"
 ]} data-transparent={transparent}>
   <!-- Top bar with language switcher -->

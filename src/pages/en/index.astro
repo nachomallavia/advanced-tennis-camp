@@ -10,17 +10,18 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
   <!-- Hero Section -->
   <section class="relative h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
+    <!-- <div class="absolute inset-0 w-full h-full bg-gradient-to-t from-white/100 via-white/20 via-20% to-transparent to-25% mix-blend-normal z-1"></div> -->
     <video src="/videos/videobg2.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
 
       <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 h-full px-4 lg:px-24  z-2">
         <!-- Left column - Main title -->
         <div class="text-left flex flex-col items-start justify-end h-full pb-12">
 
-          <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2">
+          <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2 ">
             Advanced<br/>Tennis Camp
           </h1>
           <!-- Tagline -->
-          <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 ">
+          <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 leading-relaxed">
             Develop and advance your game with professional tuition in the stunning alpine surroundings of Verbier
           </p>
           
@@ -49,38 +50,34 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
   </section>
   
   <!-- Divider with quote -->
-  <section class="py-8 bg-primary">
-    <div class="container mx-auto px-4">
-      <h3 class="text-lg md:text-2xl font-bold text-gray-100 mb-4 leading-tight">
-        Everyone at the Advanced Tennis Camp are delighted to welcome you to the 19th edition of the camp in Verbier
+  <section class="py-8 bg-white min-h-screen flex flex-col items-center ">
+    <div class=" flex  md:flex-row items-center justify-center px-4 py-12 gap-4 mx-auto md:mx-0">
+      <div class="flex flex-row items-center justify-center">
+          <div class="flex flex-col items-center md:items-end text-primary justify-center">
+            <div class="flex flex-row">
+              <span class="font-extrabold text-6xl md:text-8xl">19</span> 
+              <span class="font-normal text-3xl md:text-4xl align-top">th</span>
+            </div>
+            <span class="text-2xl md:text-4xl font-normal text-primary uppercase">edition</span>
+          </div>
+        <div class=" min-w-[2px]  min-h-[120px] md:min-h-[150px] bg-primary mx-4"></div>
+      </div>
+      <h3 class="text-lg md:text-4xl font-extrabold text-primary mb-4 leading-[1.05] col-span-2 max-w-[90%] md:max-w-[60%]">
+        Everyone at the Advanced Tennis Camp is delighted to welcome you to the 19th edition of the camp in Verbier.
       </h3>
-      
-      <div class="text-base md:text-lg font-light leading-relaxed space-y-4 text-gray-100 ">
-        <p>
-          <strong>"Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."</strong>
+    </div>
+    
+    <div class=" flex flex-col items-center md:items-end px-6 gap-4 md:max-w-[75%] mx-auto md:mx-0">
+        <p class="italic text-center md:text-left mx-auto md:mx-0">
+          "Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."
           <br/>
-          <span class="text-gray-800">C.Cornu — Founder & Head Coach</span>
         </p>
-      </div>
-      
-      <!-- Hashtag animation -->
-      <div class="mt-8">
-        <span class="text-xl md:text-2xl font-bold text-primary animate-pulse">
-          #BUILDTHENEXTGENERATION
-        </span>
-      </div>
+        <div class="flex gap-4 items-center">
+          <img src="/cyril.jpeg" alt="Cyril Cornu" class="w-24 h-24 rounded-full object-cover">
+          <span class="text-gray-800 font-bold">C.Cornu — <br/>Founder & Head Coach</span>
+        </div>
     </div>
-    <div class="container mx-auto px-4">
-      <hr class="border-gray-200 mb-8" />
-      <div class="flex justify-center">
-        <img 
-          src="/images/2022/01/Five_W.B-quote.png" 
-          alt="Five Sports Management" 
-          class="max-w-full h-auto"
-          loading="lazy"
-        />
-      </div>
-    </div>
+    
   </section>
   
   <!-- Programs Preview -->
