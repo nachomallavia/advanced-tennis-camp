@@ -145,7 +145,7 @@ const routeKey = getRouteFromUrl(Astro.url);
               ))}
               
               <!-- Social links in mobile menu -->
-              <div class="flex gap-4 mt-6 px-4 pt-6 border-t">
+              <div class="flex gap-4 mt-6 p-4 pt-6 border-t">
                 <a 
                   href="https://www.facebook.com/atcverbier" 
                   target="_blank" 
@@ -179,145 +179,129 @@ const routeKey = getRouteFromUrl(Astro.url);
 
 <script>
   import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
   
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Wait for DOM to be ready
-  document.addEventListener("DOMContentLoaded", () => {
+  function initHeader() {
     const header = document.getElementById("main-header");
     const isTransparent = header?.getAttribute("data-transparent") === "true";
     const topBar = document.getElementById("header-top-bar");
-    const headerMain = document.getElementById("header-main");
     const logo = document.getElementById("header-logo") as HTMLImageElement;
     const navLinksActive = document.querySelectorAll(".nav-link-active");
     const navLinksInactive = document.querySelectorAll(".nav-link-inactive");
     const socialIcons = document.querySelectorAll(".social-icon");
     const mobileMenuButton = document.getElementById("mobile-menu-button")?.querySelector("button");
     
-    if (!header || !topBar || !headerMain) return;
+    if (!header || !topBar) return;
     
-    // Calculate the height to hide (just top bar now)
     const hideHeight = topBar.offsetHeight;
-    
-    // Track animation state to prevent repeated executions
     let isScrolled = false;
     
-    // Create the scroll trigger animation
-    ScrollTrigger.create({
-      trigger: "main",
-      start: "top top",
-      end: "max",
-      onUpdate: (self) => {
-        const scrolled = self.progress > 0 && window.scrollY > 50;
-        
-        // Only animate if state has changed
-        if (scrolled && !isScrolled) {
-          isScrolled = true;
+    // Initial check on load
+    if (window.scrollY > 50) {
+      isScrolled = true;
+      applyScrolledStyles(true);
+    }
+
+    function applyScrolledStyles(scrolled: boolean) {
+      const tl = gsap.timeline();
+      
+      if (scrolled) {
+        if (isTransparent) {
+          header!.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent", "bg-transparent");
+          tl.to(header, {
+            y: -hideHeight,
+            backgroundColor: "#f3f4f6", // gray-100
+            duration: 0.3,
+            ease: "power2.out"
+          });
           
-          // Create timeline for smooth animations
-          const tl = gsap.timeline();
+          if (logo) logo.src = "/images/logo.png";
           
-          if (isTransparent) {
-            // Transparent header: Remove gradient classes first to avoid conflicts
-            header.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent", "bg-transparent");
-            
-            // Hide top bar and animate background color
-            tl.to(header, {
-              y: -hideHeight,
-              backgroundColor: "#f3f4f6", // gray-100
-              duration: 0.3,
-              ease: "power2.out"
-            });
-            
-            // Switch logo to color version
-            if (logo) logo.src = "/images/logo.png";
-            
-            // Change text colors
-            navLinksActive.forEach(link => {
-              link.classList.remove("text-black");
-              link.classList.add("text-primary");
-            });
-            navLinksInactive.forEach(link => {
-              link.classList.remove("text-white");
-              link.classList.add("text-gray-900");
-              link.classList.remove("hover:text-black");
-              link.classList.add("hover:text-primary");
-            });
-            socialIcons.forEach(icon => {
-              icon.classList.remove("hover:text-black");
-              icon.classList.add("hover:text-primary");
-            });
-            
-            // Change hamburger menu to gray-900
-            if (mobileMenuButton) {
-              mobileMenuButton.classList.remove("text-white");
-              mobileMenuButton.classList.add("text-gray-900");
-            }
-          } else {
-            // Solid header: Just hide the top bar
-            tl.to(header, {
-              y: -hideHeight,
-              duration: 0.3,
-              ease: "power2.out"
-            });
+          navLinksActive.forEach(link => {
+            link.classList.remove("text-black");
+            link.classList.add("text-primary");
+          });
+          navLinksInactive.forEach(link => {
+            link.classList.remove("text-white");
+            link.classList.add("text-gray-900");
+            link.classList.remove("hover:text-black");
+            link.classList.add("hover:text-primary");
+          });
+          socialIcons.forEach(icon => {
+            icon.classList.remove("hover:text-black");
+            icon.classList.add("hover:text-primary");
+          });
+          
+          if (mobileMenuButton) {
+            mobileMenuButton.classList.remove("text-white");
+            mobileMenuButton.classList.add("text-gray-900");
           }
-        } else if (!scrolled && isScrolled) {
-          isScrolled = false;
-          
-          // Create timeline for smooth reset animations
-          const tl = gsap.timeline();
-          
-          if (isTransparent) {
-            // Show top bar and reset background
-            tl.to(header, {
-              y: 0,
-              backgroundColor: "transparent",
-              duration: 0.3,
-              ease: "power2.out",
-              onComplete: () => {
-                // Clear inline style to allow CSS classes to work
-                gsap.set(header, { clearProps: "backgroundColor" });
-                // Restore gradient classes
-                header.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
-              }
-            });
-            
-            // Switch logo back to black and white version
-            if (logo) logo.src = "/images/logo-bw.png";
-            
-            // Reset text colors
-            navLinksActive.forEach(link => {
-              link.classList.add("text-black");
-              link.classList.remove("text-primary");
-            });
-            navLinksInactive.forEach(link => {
-              link.classList.add("text-white");
-              link.classList.remove("text-gray-900");
-              link.classList.add("hover:text-black");
-              link.classList.remove("hover:text-primary");
-            });
-            socialIcons.forEach(icon => {
-              icon.classList.add("hover:text-black");
-              icon.classList.remove("hover:text-primary");
-            });
-            
-            // Reset hamburger menu to white
-            if (mobileMenuButton) {
-              mobileMenuButton.classList.add("text-white");
-              mobileMenuButton.classList.remove("text-gray-900");
+        } else {
+          tl.to(header, {
+            y: -hideHeight,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
+      } else {
+        if (isTransparent) {
+          tl.to(header, {
+            y: 0,
+            backgroundColor: "transparent",
+            duration: 0.3,
+            ease: "power2.out",
+            onComplete: () => {
+              gsap.set(header, { clearProps: "backgroundColor" });
+              header!.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
             }
-          } else {
-            // Solid header: Just show the top bar
-            tl.to(header, {
-              y: 0,
-              duration: 0.3,
-              ease: "power2.out"
-            });
+          });
+          
+          if (logo) logo.src = "/images/logo-bw.png";
+          
+          navLinksActive.forEach(link => {
+            link.classList.add("text-black");
+            link.classList.remove("text-primary");
+          });
+          navLinksInactive.forEach(link => {
+            link.classList.add("text-white");
+            link.classList.remove("text-gray-900");
+            link.classList.add("hover:text-black");
+            link.classList.remove("hover:text-primary");
+          });
+          socialIcons.forEach(icon => {
+            icon.classList.add("hover:text-black");
+            icon.classList.remove("hover:text-primary");
+          });
+          
+          if (mobileMenuButton) {
+            mobileMenuButton.classList.add("text-white");
+            mobileMenuButton.classList.remove("text-gray-900");
           }
+        } else {
+          tl.to(header, {
+            y: 0,
+            duration: 0.3,
+            ease: "power2.out"
+          });
         }
       }
-    });
-  });
+    }
+    
+    // Use a direct scroll listener for better reliability for the header toggle
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY > 50;
+      
+      if (scrolled !== isScrolled) {
+        isScrolled = scrolled;
+        applyScrolledStyles(isScrolled);
+      }
+    }, { passive: true });
+  }
+
+  // Run on page load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeader);
+  } else {
+    initHeader();
+  }
 </script>
 

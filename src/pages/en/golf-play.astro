@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
+import { Image } from 'astro:assets';
+
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
 
 const title = "GOLF + PLAY - Advanced Tennis Camp";
 const description = "Two ball sports, two games that use strategy and emotional management. A unique program combining golf and tennis in Verbier.";
@@ -41,8 +44,8 @@ const description = "Two ball sports, two games that use strategy and emotional 
         </div>
         
         <div>
-          <img 
-            src="/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg" 
+          <Image 
+            src={golfPlayImg}
             alt="GOLF + PLAY" 
             class="w-full rounded-lg shadow-xl"
           />

@@ -1,9 +1,49 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
+import Feature71 from '@/components/sections/Feature71.astro';
+import { Image, getImage } from 'astro:assets';
+
+// Import images
+import brainvestLogo from '@/assets/images/sponsors/BRAINVEST_1024x1024-e1710144827416-300x100.png';
+import cyrilImg from '@/assets/images/misc/cyril.jpeg';
+import juniorCampImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
+import ctaBackgroundImg from '@/assets/images/camp/semaine-3-scaled.jpg';
+import featureCardImg1 from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
+import featureCardImg2 from '@/assets/images/camp/camptennis-9564.jpg';
+
+// Optimize CTA background image
+const ctaBackground = await getImage({ src: ctaBackgroundImg, format: 'webp' });
 
 const title = "Advanced Tennis Camp - The Premier Tennis Camp in Valais";
 const description = "Advanced Tennis Camp is a tennis camp for children and adolescents. Since 2007, it takes place over 6 weeks each summer in Verbier!";
+
+// Feature71 content
+const featureMetrics = [
+  { value: "19", label: "Years of Experience" },
+  { value: "500+", label: "Players Trained" },
+  { value: "6", label: "Weeks per Summer" },
+  { value: "8", label: "Tennis Courts" },
+];
+
+const featureCards = [
+  {
+    href: "/en/the-camp/",
+    backgroundImage: featureCardImg1,
+    logo: "/images/logo-bw.png",
+    logoAlt: "Advanced Tennis Camp",
+    linkText: "Discover the camp",
+  },
+  {
+    href: "/en/programs-and-prices/",
+    backgroundImage: featureCardImg2,
+    logo: "/images/logo-bw.png",
+    logoAlt: "Our programs",
+    linkText: "View pricing",
+  },
+];
 ---
 
 <BaseLayout title={title} description={description} transparentHeader={true}>
@@ -11,7 +51,7 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
   <section class="relative h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
     <!-- <div class="absolute inset-0 w-full h-full bg-gradient-to-t from-white/100 via-white/20 via-20% to-transparent to-25% mix-blend-normal z-1"></div> -->
-    <video src="/videos/videobg2.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
+    <video src="https://res.cloudinary.com/duykgwmak/video/upload/br_800k,q_auto:good/v1766412197/videobg2_h3f53c.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
 
       <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 h-full px-4 lg:px-24  z-2">
         <!-- Left column - Main title -->
@@ -35,8 +75,8 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
           <!-- Sponsor logo -->
           <div class="mt-12">
             <a href="https://www.brainvest.com/" target="_blank" rel="noopener noreferrer">
-              <img 
-                src="/images/2024/03/BRAINVEST_1024x1024-e1710144827416-300x100-b.png" 
+              <Image 
+                src={brainvestLogo}
                 alt="Brainvest - Sponsor" 
                 class="inline-block h-16 w-auto"
               />
@@ -73,12 +113,26 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
           <br/>
         </p>
         <div class="flex gap-4 items-center">
-          <img src="/cyril.jpeg" alt="Cyril Cornu" class="w-24 h-24 rounded-full object-cover">
+          <Image src={cyrilImg} alt="Cyril Cornu" class="w-24 h-24 rounded-full object-cover" />
           <span class="text-gray-800 font-bold">C.Cornu — <br/>Founder & Head Coach</span>
         </div>
     </div>
     
   </section>
+  
+  <!-- Feature Section -->
+  <Feature71 
+    tagline="Why Choose Us"
+    headline="The Complete Tennis Experience"
+    description="Since 2007, Advanced Tennis Camp has offered a unique training environment in Verbier. Our team of experienced coaches combines Swiss Tennis methodology with the benefits of altitude training to maximize every player's progress."
+    primaryButtonText="Discover the Camp"
+    primaryButtonHref="/en/the-camp/"
+    secondaryButtonText="Contact Us"
+    secondaryButtonHref="/en/contact/"
+    metrics={featureMetrics}
+    featuredCards={featureCards}
+    class="bg-white"
+  />
   
   <!-- Programs Preview -->
   <section class="py-16 bg-gray-50">
@@ -91,11 +145,10 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
         <!-- Junior Camp -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
-            <img 
-              src="/images/2022/11/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg" 
+            <Image 
+              src={juniorCampImg}
               alt="Junior Camp" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
             />
           </div>
           <div class="p-6">
@@ -112,11 +165,10 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
         <!-- BIKE + PLAY -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
-            <img 
-              src="/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg" 
+            <Image 
+              src={bikePlayImg}
               alt="BIKE + PLAY" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
             />
           </div>
           <div class="p-6">
@@ -133,11 +185,10 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
         <!-- GOLF + PLAY -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
-            <img 
-              src="/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg" 
+            <Image 
+              src={golfPlayImg}
               alt="GOLF + PLAY" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
             />
           </div>
           <div class="p-6">
@@ -161,17 +212,22 @@ const description = "Advanced Tennis Camp is a tennis camp for children and adol
   </section>
   
   <!-- CTA Section -->
-  <section class="py-16 bg-primary text-white">
+  <section class="py-24 bg-cover bg-center" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${ctaBackground.src}');`}>
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        REGISTRATIONS OPEN
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Registrations Open for Summer 2026
       </h2>
-      <p class="text-xl mb-8 opacity-90">
-        Book your place for Summer 2026 now!
+      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
+        Book your spot now for an unforgettable tennis experience in Verbier. Limited places available!
       </p>
-      <Button href="/en/contact/" variant="secondary" size="lg">
-        Contact us
-      </Button>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/en/contact/" variant="primary" size="lg">
+          Register Now
+        </Button>
+        <Button href="/en/programs-and-prices/" variant="secondary" size="lg">
+          View Pricing
+        </Button>
+      </div>
     </div>
   </section>
 </BaseLayout>

@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
+import { Image } from 'astro:assets';
+
+// Import images
+import heroImg from '@/assets/images/camp/semaine-3-scaled.jpg';
+import programEcoleImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
+import juniorCampImg from '@/assets/images/camp/camptennis-9511.jpg';
+import miniChampionsImg from '@/assets/images/camp/camptennis-9564.jpg';
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
 
 const title = "Programmes et Tarifs - Advanced Tennis Camp";
 const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'autres sports, le camp vous offre des programmes multiactivités pour le plus grand plaisir des enfants.";
@@ -22,8 +31,8 @@ const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'a
   <!-- Hero Image -->
   <section class="pb-12">
     <div class="container mx-auto px-4">
-      <img 
-        src="/images/2024/10/semaine-3-scaled.jpg" 
+      <Image 
+        src={heroImg}
         alt="Tennis Camp" 
         class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
       />
@@ -58,8 +67,8 @@ const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'a
           </Button>
         </div>
         <div>
-          <img 
-            src="/images/2022/11/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg" 
+          <Image 
+            src={programEcoleImg}
             alt="Programme école et tennis" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -73,8 +82,8 @@ const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'a
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-start">
         <div class="order-2 lg:order-1">
-          <img 
-            src="/images/2024/10/Camps-week-6-AlpimagesVerbier-3381.jpg" 
+          <Image 
+            src={juniorCampImg}
             alt="Junior Camp" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -136,8 +145,8 @@ const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'a
           </Button>
         </div>
         <div>
-          <img 
-            src="/images/2024/10/Camps-Semaine-5-Alpimagesverbier-7600-scaled.jpg" 
+          <Image 
+            src={miniChampionsImg}
             alt="Mini Champions" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -152,8 +161,8 @@ const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'a
       <div class="grid md:grid-cols-2 gap-8">
         <!-- BIKE + PLAY -->
         <div class="relative group overflow-hidden rounded-lg shadow-lg">
-          <img 
-            src="/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg" 
+          <Image 
+            src={bikePlayImg}
             alt="BIKE + PLAY" 
             class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
           />
@@ -170,8 +179,8 @@ const description = "Du tennis, à l'outdoor avec le e-bike, le golf et bien d'a
         
         <!-- GOLF + PLAY -->
         <div class="relative group overflow-hidden rounded-lg shadow-lg">
-          <img 
-            src="/images/2022/11/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg" 
+          <Image 
+            src={golfPlayImg}
             alt="GOLF + PLAY" 
             class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
           />

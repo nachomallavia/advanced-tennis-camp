@@ -1,6 +1,29 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
+import { Image } from 'astro:assets';
+
+// Import images
+import essVerbierLogo from '@/assets/images/logos/ESS_verbier-300x300.png';
+import tomImg from '@/assets/images/camp/TOM_4878.jpg';
+import advancedTrainingImg from '@/assets/images/camp/camptennis-9511.jpg';
+import lemaniaImg from '@/assets/images/camp/LEMANIA_ALPIMAGES-21-1024x684.jpg';
+import seniorCampImg from '@/assets/images/camp/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg';
+// Partner logos
+import logoIntersport from '@/assets/images/logos/ATC_-logo-intersport.png';
+import logoCentreSportif from '@/assets/images/logos/ATC_-logo-centre-sportif.png';
+import logoTcvb from '@/assets/images/logos/tcvb-01-300x212.png';
+import logoGolf from '@/assets/images/logos/ATC_-logo-golf.png';
+import logoFourteen from '@/assets/images/logos/ATC_-logo-Fourteen.png';
+import logoBackside from '@/assets/images/logos/ATC_-logo-Backside.png';
+import logoEssV from '@/assets/images/logos/ATC_-logo-ess-v.png';
+import logoLemania from '@/assets/images/logos/ATC_-logo-lemania.png';
+import logoCopperfield from '@/assets/images/logos/Copie-de-ATC_-logo-copperfield.png';
+import logoChaletAdrien from '@/assets/images/logos/ATC_-logo-Chalet-adrien.png';
+import logoTo from '@/assets/images/logos/TO_200x172.png';
+import logoVerbierLoc from '@/assets/images/logos/ATC_-logo-Verbier-loc.png';
+import logoGuinnard from '@/assets/images/logos/ATC_-logo-Guinnard.png';
+import logoFive from '@/assets/images/logos/ATC_-logo-five.png';
 
 const title = "The Camp in Verbier - Advanced Tennis Camp";
 const description = "The Camp in Verbier from July 6 to August 15, 2026. For this 19th edition, we will again be present for 6 weeks!";
@@ -36,8 +59,8 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
         </div>
         
         <div class="flex justify-center">
-          <img 
-            src="/images/2019/02/ESS_verbier-300x300.png" 
+          <Image 
+            src={essVerbierLogo}
             alt="ESS Verbier" 
             class="w-64 h-64 object-contain"
           />
@@ -69,8 +92,8 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
-          <img 
-            src="/images/2024/10/TOM_4878.jpg" 
+          <Image 
+            src={tomImg}
             alt="Junior Camp" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -130,8 +153,8 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
           </div>
         </div>
         <div>
-          <img 
-            src="/images/2024/10/Camps-week-6-AlpimagesVerbier-3381.jpg" 
+          <Image 
+            src={advancedTrainingImg}
             alt="Advanced Training" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -145,8 +168,8 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
-          <img 
-            src="/images/2019/01/LEMANIA_ALPIMAGES-21-1024x684.jpg" 
+          <Image 
+            src={lemaniaImg}
             alt="Tennis school program" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -196,8 +219,8 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
           </div>
         </div>
         <div>
-          <img 
-            src="/images/2022/01/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg" 
+          <Image 
+            src={seniorCampImg}
             alt="Senior Camp" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -211,46 +234,46 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         <a href="https://www.philippe-roux.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-intersport.png" alt="Intersport" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoIntersport} alt="Intersport" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://www.verbier.ch/ete/inside/a-faire/activites-sportives/centre-sportif/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-centre-sportif.png" alt="Centre Sportif" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoCentreSportif} alt="Centre Sportif" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://tcvb.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2024/04/tcvb-01-300x212.png" alt="TCVB" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoTcvb} alt="TCVB" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://www.verbiergolfclub.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-golf.png" alt="Verbier Golf Club" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoGolf} alt="Verbier Golf Club" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://14fourteen.com" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-Fourteen.png" alt="Fourteen" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoFourteen} alt="Fourteen" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://backsideverbier.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-Backside.png" alt="Backside Verbier" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoBackside} alt="Backside Verbier" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://www.essverbier.ch/fr/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-ess-v.png" alt="ESS Verbier" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoEssV} alt="ESS Verbier" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://verbierinternationalschool.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-lemania.png" alt="Verbier International School" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoLemania} alt="Verbier International School" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="http://www.copperfield.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/Copie-de-ATC_-logo-copperfield.png" alt="Copperfield" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoCopperfield} alt="Copperfield" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://chalet-adrien.com/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-Chalet-adrien.png" alt="Chalet d'Adrien" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoChaletAdrien} alt="Chalet d'Adrien" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="#" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2024/01/TO_200x172.png" alt="TO" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoTo} alt="TO" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://www.verbierlocation.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-Verbier-loc.png" alt="Verbier Location" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoVerbierLoc} alt="Verbier Location" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="#" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-Guinnard.png" alt="Guinnard" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoGuinnard} alt="Guinnard" class="h-12 md:h-16 w-auto object-contain" />
         </a>
         <a href="https://fivesportsmanagement.com" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
-          <img src="/images/2023/01/ATC_-logo-five.png" alt="Five Sports Management" class="h-12 md:h-16 w-auto object-contain" />
+          <Image src={logoFive} alt="Five Sports Management" class="h-12 md:h-16 w-auto object-contain" />
         </a>
       </div>
     </div>

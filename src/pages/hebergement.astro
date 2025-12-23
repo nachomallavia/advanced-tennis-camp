@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
+import { Image } from 'astro:assets';
+
+import chaletImg from '@/assets/images/accommodation/image-11-1024x800.png';
+import enfantsImg from '@/assets/images/accommodation/image-2.png';
 
 const title = "Hébergement - Advanced Tennis Camp";
 const description = "Hébergement pour familles et enfants à Verbier. Family pack en partenariat avec le Chalet d'Adrien et chalets pour les enfants.";
@@ -43,15 +47,15 @@ const description = "Hébergement pour familles et enfants à Verbier. Family pa
       <!-- Images Section -->
       <div class="grid md:grid-cols-2 gap-8 mt-12">
         <div>
-          <img 
-            src="/images/2019/01/image-11-1024x800.png" 
+          <Image 
+            src={chaletImg}
             alt="Chalet d'Adrien" 
             class="w-full rounded-lg shadow-xl"
           />
         </div>
         <div>
-          <img 
-            src="/images/2019/01/image-2.png" 
+          <Image 
+            src={enfantsImg}
             alt="Hébergement enfants" 
             class="w-full rounded-lg shadow-xl"
           />

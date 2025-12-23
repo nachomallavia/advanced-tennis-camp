@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
+import { Image } from 'astro:assets';
+
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
 
 const title = "BIKE + PLAY - Advanced Tennis Camp";
 const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT enduro, VTT descente, Skate board au programme à Verbier.";
@@ -45,8 +48,8 @@ const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT e
         </div>
         
         <div>
-          <img 
-            src="/images/2022/11/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg" 
+          <Image 
+            src={bikePlayImg}
             alt="BIKE + PLAY" 
             class="w-full rounded-lg shadow-xl"
           />

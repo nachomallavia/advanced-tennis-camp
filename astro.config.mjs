@@ -4,22 +4,22 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://advancedtenniscamp.ch',
   output: 'static',
   adapter: vercel(),
-  integrations: [
-    sitemap({
-      i18n: {
-        defaultLocale: 'fr',
-        locales: {
-          fr: 'fr-CH',
-          en: 'en-US',
-        },
+  integrations: [sitemap({
+    i18n: {
+      defaultLocale: 'fr',
+      locales: {
+        fr: 'fr-CH',
+        en: 'en-US',
       },
-    }),
-  ],
+    },
+  }), react()],
   vite: {
     plugins: [tailwindcss()],
   },

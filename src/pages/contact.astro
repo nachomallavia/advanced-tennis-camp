@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import ataLogo from '@/assets/images/sponsors/ATC_-logo-ATA-e1683296381302.png';
+import contactImg from '@/assets/images/camp/camptennis-9511.jpg';
 
 const title = "Contact - Advanced Tennis Camp";
 const description = "Contactez l'équipe Advanced Tennis Camp pour toute information ou réservation. Cyrille Cornu: +33 (0) 61 630 35 85 / +41 76 727 91 45";
@@ -12,8 +16,8 @@ const description = "Contactez l'équipe Advanced Tennis Camp pour toute informa
         <!-- Contact Info Column -->
         <div>
           <div class="flex items-center gap-4 mb-6">
-            <img 
-              src="/images/2023/01/ATC_-logo-ATA-e1683296381302.png" 
+            <Image 
+              src={ataLogo}
               alt="ATA Logo" 
               class="w-16 h-auto"
             />
@@ -138,8 +142,8 @@ const description = "Contactez l'équipe Advanced Tennis Camp pour toute informa
           </div>
           
           <!-- Image after newsletter -->
-          <img 
-            src="/images/2024/10/Camptennis-copyrightalpimages-9511-2048x1365.jpg" 
+          <Image 
+            src={contactImg}
             alt="Advanced Tennis Camp" 
             class="w-full rounded-lg shadow-lg mt-8"
           />

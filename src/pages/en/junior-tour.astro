@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+import itfLogo from '@/assets/images/sponsors/1200px-Logo_IFT.svg_.png';
+import tournoiImg from '@/assets/images/camp/WhatsApp-Image-2023-09-25-at-07.25.51-1024x1024.jpeg';
 
 const title = "Junior Tournament Grad 3 - Advanced Tennis Camp";
 const description = "We want to encourage young Swiss Tennis players to compete. 128 U18 players for 7 days.";
@@ -37,8 +41,8 @@ const description = "We want to encourage young Swiss Tennis players to compete.
           </div>
           
           <div class="mt-8">
-            <img 
-              src="/images/2023/01/1200px-Logo_IFT.svg_.png" 
+            <Image 
+              src={itfLogo}
               alt="ITF Logo" 
               class="h-24 w-auto mb-6"
             />
@@ -52,8 +56,8 @@ const description = "We want to encourage young Swiss Tennis players to compete.
         </div>
         
         <div>
-          <img 
-            src="/images/2024/01/WhatsApp-Image-2023-09-25-at-07.25.51-1024x1024.jpeg" 
+          <Image 
+            src={tournoiImg}
             alt="Junior Tournament" 
             class="w-full rounded-lg shadow-xl"
           />

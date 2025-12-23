@@ -1,0 +1,175 @@
+---
+import { ArrowDown, ArrowRight } from "lucide-astro";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/starwind/button";
+import { Image, getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  class?: string;
+  tagline?: string;
+  headline?: string;
+  description?: string;
+  primaryButtonText?: string;
+  secondaryButtonText?: string;
+  primaryButtonHref?: string;
+  secondaryButtonHref?: string;
+  metrics?: Array<{
+    value: string;
+    label: string;
+  }>;
+  featuredCards?: Array<{
+    href: string;
+    backgroundImage: ImageMetadata | string;
+    logo: string;
+    logoAlt: string;
+    linkText: string;
+  }>;
+}
+
+const {
+  class: className,
+  tagline = "Tag Line",
+  headline = "Feature group",
+  description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
+  primaryButtonText = "See all below",
+  secondaryButtonText = "Call to Action",
+  primaryButtonHref = "#",
+  secondaryButtonHref = "#",
+  metrics = [
+    { value: "100+", label: "Metric 1" },
+    { value: "5", label: "Metric 2" },
+    { value: "150+", label: "Metric 3" },
+    { value: "10", label: "Metric 4" },
+  ],
+  featuredCards = [
+    {
+      href: "#",
+      backgroundImage: "https://images.unsplash.com/photo-1548324215-9133768e4094?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHwxMzF8fHx8fHwyfHwxNzIzNDM1MzA1fA&ixlib=rb-4.0.3&q=80&w=1080",
+      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-wordmark.svg",
+      logoAlt: "Astro logo",
+      linkText: "Read more",
+    },
+    {
+      href: "#",
+      backgroundImage: "https://images.unsplash.com/photo-1550070881-a5d71eda5800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHwxMjV8fHx8fHwyfHwxNzIzNDM1Mjk4fA&ixlib=rb-4.0.3&q=80&w=1080",
+      logo: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-wordmark.svg",
+      logoAlt: "shadcn/ui logo",
+      linkText: "Read more",
+    },
+  ],
+} = Astro.props;
+---
+
+<section class={cn("py-16", className)}>
+  <div class="container mx-auto px-4 flex flex-col items-center gap-12">
+    <!-- Header Section -->
+    <div class="text-center">
+      <p class="mb-6 text-xs font-medium tracking-wider uppercase text-primary">
+        {tagline}
+      </p>
+      <h2 class="mb-3 text-3xl md:text-4xl font-bold text-primary text-pretty md:mb-4 lg:mb-6 lg:max-w-3xl">
+        {headline}
+      </h2>
+      <p class="mb-8 text-gray-600 lg:max-w-2xl lg:text-lg mx-auto">
+        {description}
+      </p>
+      <div class="flex w-full flex-col justify-center gap-2 sm:flex-row">
+        <Button variant="primary" href={primaryButtonHref} class="w-full sm:w-auto">
+          <ArrowDown class="size-4" />
+          {primaryButtonText}
+        </Button>
+        <Button variant="outline" href={secondaryButtonHref} class="w-full sm:w-auto">
+          {secondaryButtonText}
+        </Button>
+      </div>
+    </div>
+
+    <!-- Grid Section -->
+    <div class="grid w-full grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-6">
+      <!-- First Featured Card -->
+      {featuredCards[0] && (
+        <a
+          href={featuredCards[0].href}
+          class="group relative col-span-2 overflow-clip rounded-lg sm:max-lg:col-span-1"
+        >
+          {typeof featuredCards[0].backgroundImage === 'string' ? (
+            <img
+              src={featuredCards[0].backgroundImage}
+              alt="Featured background"
+              class="absolute h-full w-full object-cover object-center"
+            />
+          ) : (
+            <Image
+              src={featuredCards[0].backgroundImage}
+              alt="Featured background"
+              class="absolute h-full w-full object-cover object-center"
+            />
+          )}
+          <div class="relative flex h-full w-full flex-col items-start justify-between bg-black/60 p-4 transition-colors hover:bg-black/70 sm:aspect-3/2 md:p-6 lg:p-10">
+            <img
+              src={featuredCards[0].logo}
+              alt={featuredCards[0].logoAlt}
+              class="mb-12 h-8 invert md:h-12 dark:invert"
+            />
+            <div class="flex items-center text-xs font-medium text-white md:text-base lg:text-lg">
+              {featuredCards[0].linkText}
+              <ArrowRight class="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </div>
+        </a>
+      )}
+
+      <!-- Metrics Grid -->
+      {metrics.slice(0, 2).map((metric) => (
+        <div class="flex flex-col justify-between rounded-lg bg-gray-100 p-4 sm:justify-end md:p-6 lg:p-8">
+          <div class="mb-4 text-3xl font-bold text-primary sm:mb-2 lg:text-5xl">{metric.value}</div>
+          <div class="text-xs text-gray-600 md:text-base lg:text-lg">{metric.label}</div>
+        </div>
+      ))}
+
+      {metrics.slice(2, 4).map((metric) => (
+        <div class="flex flex-col justify-between rounded-lg bg-gray-100 p-4 md:p-6 lg:p-8">
+          <div class="mb-4 text-3xl font-bold text-primary lg:text-5xl">{metric.value}</div>
+          <div class="text-xs text-gray-600 md:text-base lg:text-lg">{metric.label}</div>
+        </div>
+      ))}
+
+      <!-- Second Featured Card -->
+      {featuredCards[1] && (
+        <a
+          href={featuredCards[1].href}
+          class="group relative col-span-2 overflow-clip rounded-lg sm:max-lg:col-span-1"
+        >
+          {typeof featuredCards[1].backgroundImage === 'string' ? (
+            <img
+              src={featuredCards[1].backgroundImage}
+              alt="Featured background"
+              class="absolute h-full w-full object-cover object-center"
+            />
+          ) : (
+            <Image
+              src={featuredCards[1].backgroundImage}
+              alt="Featured background"
+              class="absolute h-full w-full object-cover object-center"
+            />
+          )}
+          <div class="relative flex h-full w-full flex-col items-start justify-between gap-4 bg-black/50 p-4 transition-colors hover:bg-black/70 sm:aspect-2/1 md:flex-row md:items-end md:p-6 lg:p-10">
+            <div>
+              <img
+                src={featuredCards[1].logo}
+                alt={featuredCards[1].logoAlt}
+                class="mb-8 h-7 invert md:mb-0 dark:invert"
+              />
+            </div>
+            <div class="flex shrink-0 items-center text-xs font-medium text-white md:text-base lg:text-lg">
+              {featuredCards[1].linkText}
+              <ArrowRight class="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </div>
+        </a>
+      )}
+    </div>
+  </div>
+</section>
+
