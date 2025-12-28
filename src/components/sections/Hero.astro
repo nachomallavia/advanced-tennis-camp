@@ -64,54 +64,58 @@ const {
 
 <script>
   import { animate, onScroll, createScope } from 'animejs';
+
   const heroSection = document.querySelector('[data-hero-section]') as HTMLElement;
   const heroVideo = document.querySelector('[data-hero-video]') as HTMLElement;
   const heroContent = document.querySelector('[data-hero-content]') as HTMLElement;
   const heroOverlay = document.querySelector('[data-hero-overlay]') as HTMLElement;
-  const scope = createScope({
-  mediaQueries: {
-    isSmall: '(max-width: 768px)',
-    isMedium: '(min-width: 769px) and (max-width: 1024px)',
-    isLarge: '(min-width: 1025px)',
-    reduceMotion: '(prefers-reduced-motion)',
-  }
-})
 
-  
+  createScope({
+    mediaQueries: {
+      isSmall: '(max-width: 768px)',
+      isMedium: '(min-width: 769px) and (max-width: 1024px)',
+      isLarge: '(min-width: 1025px)',
+      reduceMotion: '(prefers-reduced-motion)',
+    }
+  }).add((self) => {
+    if (!self) return;
+    
+    const { isSmall, isMedium, isLarge, reduceMotion } = self.matches;
 
-  if (heroSection && heroVideo) {
-    // Parallax: Video scales up and moves slower than the scroll
-    // scale [1, 1.1] = 10% zoom
-    // translateY [0, 150] = video moves down relative to its container as we scroll, 
-    // making it appear to move slower than the content
-    animate([heroVideo, heroOverlay, heroContent], {
-      scale: scope.matches.isSmall ? [1, 0.8] : [1, 0.7],
-      borderRadius: scope.matches.isSmall ?[0, "0rem"]:[0, "8rem"],
-      translateY: scope.matches.isSmall ? [0, 50] : [0, 100],
-      autoplay: onScroll({
-        target: heroSection,
-        sync: true,
-        enter: "top top",
-        leave: "top 20%",
-        // debug: true,
-      })
-    });
-  }
+    if (heroSection && heroVideo) {
+      // Parallax: Video scales up and moves slower than the scroll
+      // scale [1, 1.1] = 10% zoom
+      // translateY [0, 150] = video moves down relative to its container as we scroll, 
+      // making it appear to move slower than the content
+      animate([heroVideo, heroOverlay, heroContent], {
+        scale: isSmall ? [1, 0.8] : [1, 0.7],
+        borderRadius: isSmall ? [0, "2rem"] : [0, "8rem"],
+        translateY: isSmall ? [0, 50] : [0, 100],
+        autoplay: onScroll({
+          target: heroSection,
+          sync: true,
+          enter: "top top",
+          leave: "top 25%",
+          // debug: true,
+        })
+      });
+    }
 
-  if (heroSection && heroContent) {
-    // Content parallax: moves slightly up to enhance the effect
-    animate(heroContent, {
-      translateY: [0, -100],
-      opacity: [1, 0], // Optional: fade out slightly as it leaves
-      autoplay: onScroll({
-        target: heroSection,
-        sync: true,
-        enter: "top top",
-        leave: "top 20%",
-        // debug: true,
-      })
-    });
-  }
+    if (heroSection && heroContent) {
+      // Content parallax: moves slightly up to enhance the effect
+      animate(heroContent, {
+        translateY: [0, -100],
+        opacity: [1, 0], // Optional: fade out slightly as it leaves
+        autoplay: onScroll({
+          target: heroSection,
+          sync: true,
+          enter: "top top",
+          leave: "top 20%",
+          // debug: true,
+        })
+      });
+    }
+  });
 </script>
 
 

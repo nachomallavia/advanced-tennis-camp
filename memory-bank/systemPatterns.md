@@ -12,8 +12,9 @@
 ## Key Technical Decisions
 - Using `@tailwindcss/vite` for styling.
 - Using `@astrojs/react` for React component support.
-- Using `animejs` for some animations.
-- Implementing direction-aware hover effects using Framer Motion (Aceternity UI pattern).
+- Using `animejs` v4 for animations (with `createScope()` for responsive animations).
+- Implementing direction-aware hover effects using Anime.js v4.
+- Using Anime.js v4 `onScroll` with `sync: true` for scroll-synced parallax effects.
 
 ## Component Relationships
 - `BaseLayout.astro` provides the common page structure.

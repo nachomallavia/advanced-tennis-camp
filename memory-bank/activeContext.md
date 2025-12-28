@@ -4,8 +4,10 @@
 - Completed the direction-aware hover effect implementation using Anime.js v4.
 
 ## Recent Changes
+- Refactored Hero parallax animations to use Anime.js v4 `createScope()` for responsive behavior.
+- Implemented media query-aware animations with `isSmall` (max-width: 768px) and `reduceMotion` queries.
+- Hero animations now adapt automatically: smaller scale/translateY values on mobile, respect user motion preferences.
 - Implemented a parallax scroll effect in `src/components/sections/Hero.astro` using Anime.js v4 `onScroll` (sync mode).
-- The hero video background now scales (1.1x) and moves at a different rate than the text content during scroll.
 - Created `src/components/sections/Hero.astro` to modularize the landing page hero section.
 
 ## Next Steps

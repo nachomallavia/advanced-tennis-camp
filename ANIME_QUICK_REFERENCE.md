@@ -109,6 +109,40 @@ animate(".parallax-bg", {
 
 ---
 
+## 📱 Responsive Animations with Scope
+
+Anime.js v4 introduces Scopes for media-query aware animations.
+
+### Creating a Scope
+```javascript
+import { animate, onScroll, createScope } from "animejs";
+
+createScope({
+  mediaQueries: {
+    isSmall: '(max-width: 768px)',
+    reduceMotion: '(prefers-reduced-motion)',
+  }
+}).add((self) => {
+  if (!self) return;
+  
+  const { isSmall, reduceMotion } = self.matches;
+  
+  // Animations automatically react to media query changes
+  animate('.element', {
+    translateY: [0, isSmall ? 50 : 100],
+    duration: reduceMotion ? 0 : 800,
+  });
+});
+```
+
+**Benefits:**
+- Animations automatically re-initialize on media query changes
+- Centralized responsive animation logic
+- Built-in support for motion preferences
+- Batch revert/refresh capabilities
+
+---
+
 ## 💡 Best Practices
 
 1.  **Use Milliseconds**: Unlike Framer Motion/CSS, Anime.js uses milliseconds for durations and delays.
