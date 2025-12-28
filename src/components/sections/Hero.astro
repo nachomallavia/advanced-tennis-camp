@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  videoSrc?: string;
+  title: string;
+  tagline: string;
+  dates: string;
+  sponsorLogo: ImageMetadata;
+  sponsorUrl?: string;
+  sponsorAlt?: string;
+}
+
+const { 
+  videoSrc = "https://res.cloudinary.com/duykgwmak/video/upload/br_800k,q_auto:good/v1766412197/videobg2_h3f53c.webm", 
+  title, 
+  tagline, 
+  dates, 
+  sponsorLogo,
+  sponsorUrl = "https://www.brainvest.com/",
+  sponsorAlt = "Brainvest - Sponsor"
+} = Astro.props;
+---
+
+<section data-hero-section class="relative h-screen flex items-center overflow-hidden">
+  <div data-hero-overlay class="absolute inset-0 w-full h-full bg-linear-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
+  <video 
+    data-hero-video
+    src={videoSrc} 
+    autoplay 
+    loop 
+    muted 
+    playsinline 
+    class="absolute inset-0 w-full h-full object-cover z-0"
+  ></video>
+
+  <div data-hero-content class="grid lg:grid-cols-1 gap-8 lg:gap-12 h-full px-4 lg:px-24 z-2">
+    <!-- Left column - Main title -->
+    <div class="text-left flex flex-col items-start justify-end h-full pb-12">
+      <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2" set:html={title} />
+      
+      <!-- Tagline -->
+      <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 leading-relaxed">
+        {tagline}
+      </p>
+      
+      <h2 class="text-lg max-w-[200px] md:max-w-full md:text-xl lg:text-2xl font-bold text-white mt-4">
+        {dates}
+      </h2>
+      
+      <!-- Sponsor logo -->
+      <div class="mt-12">
+        <a href={sponsorUrl} target="_blank" rel="noopener noreferrer">
+          <Image 
+            src={sponsorLogo}
+            alt={sponsorAlt} 
+            class="inline-block h-16 w-auto"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, onScroll, createScope } from 'animejs';
+  const heroSection = document.querySelector('[data-hero-section]') as HTMLElement;
+  const heroVideo = document.querySelector('[data-hero-video]') as HTMLElement;
+  const heroContent = document.querySelector('[data-hero-content]') as HTMLElement;
+  const heroOverlay = document.querySelector('[data-hero-overlay]') as HTMLElement;
+  const scope = createScope({
+  mediaQueries: {
+    isSmall: '(max-width: 768px)',
+    isMedium: '(min-width: 769px) and (max-width: 1024px)',
+    isLarge: '(min-width: 1025px)',
+    reduceMotion: '(prefers-reduced-motion)',
+  }
+})
+
+  
+
+  if (heroSection && heroVideo) {
+    // Parallax: Video scales up and moves slower than the scroll
+    // scale [1, 1.1] = 10% zoom
+    // translateY [0, 150] = video moves down relative to its container as we scroll, 
+    // making it appear to move slower than the content
+    animate([heroVideo, heroOverlay, heroContent], {
+      scale: scope.matches.isSmall ? [1, 0.8] : [1, 0.7],
+      borderRadius: scope.matches.isSmall ?[0, "0rem"]:[0, "8rem"],
+      translateY: scope.matches.isSmall ? [0, 50] : [0, 100],
+      autoplay: onScroll({
+        target: heroSection,
+        sync: true,
+        enter: "top top",
+        leave: "top 20%",
+        // debug: true,
+      })
+    });
+  }
+
+  if (heroSection && heroContent) {
+    // Content parallax: moves slightly up to enhance the effect
+    animate(heroContent, {
+      translateY: [0, -100],
+      opacity: [1, 0], // Optional: fade out slightly as it leaves
+      autoplay: onScroll({
+        target: heroSection,
+        sync: true,
+        enter: "top top",
+        leave: "top 20%",
+        // debug: true,
+      })
+    });
+  }
+</script>
+
+

@@ -21,11 +21,11 @@ const routeKey = getRouteFromUrl(Astro.url);
 <header id="main-header" class:list={[
   "fixed top-0 left-0 right-0 z-50",
   transparent 
-    ? "bg-transparent lg:bg-gradient-to-b from-gray-800/50 to-transparent border-b-1 border-gray-200 backdrop-blur-[2px]"
-    : "bg-white border-b-1 border-gray-200"
+    ? "bg-transparent lg:bg-linear-to-b from-gray-800/50 to-transparent border-b border-gray-200 backdrop-blur-[2px]"
+    : "bg-white border-b border-gray-200"
 ]} data-transparent={transparent}>
   <!-- Top bar with language switcher -->
-  <div id="header-top-bar" class="border-y-1 border-gray-100">
+  <div id="header-top-bar" class="border-y border-gray-100">
     <div class="container mx-auto px-4 py-1 flex justify-end">
       <div class="flex items-center gap-1 text-sm font-bold">
         <a 
@@ -58,7 +58,7 @@ const routeKey = getRouteFromUrl(Astro.url);
       <a href={lang === 'fr' ? '/' : '/en/'} class="shrink-0">
         <img 
           id="header-logo"
-          src={transparent ? "/images/logo-bw.png" : "/images/logo.png"}
+          src={transparent ? "/images/logo-bw2.png" : "/images/logo.png"}
           alt="Advanced Tennis Camp" 
           class="h-12 md:h-14 w-auto transition-opacity duration-300"
         />
@@ -178,7 +178,7 @@ const routeKey = getRouteFromUrl(Astro.url);
 </header>
 
 <script>
-  import gsap from "gsap";
+  import { animate } from "animejs";
   
   function initHeader() {
     const header = document.getElementById("main-header");
@@ -202,20 +202,26 @@ const routeKey = getRouteFromUrl(Astro.url);
     }
 
     function applyScrolledStyles(scrolled: boolean) {
-      const tl = gsap.timeline();
-      
       if (scrolled) {
         if (isTransparent) {
+          // Remove gradient classes for transparent header
           header!.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent", "bg-transparent");
-          tl.to(header, {
-            y: -hideHeight,
-            backgroundColor: "#f3f4f6", // gray-100
-            duration: 0.3,
-            ease: "power2.out"
-          });
           
+          // Animate header slide up and background color change
+          // Using rgba to animate from transparent to gray-100 (#f3f4f6)
+          if (header) {
+            animate(header, {
+              translateY: -hideHeight,
+              backgroundColor: ["rgba(243, 244, 246, 0)", "rgba(243, 244, 246, 1)"],
+              duration: 300,
+              ease: "outQuad"
+            });
+          }
+          
+          // Swap logo
           if (logo) logo.src = "/images/logo.png";
           
+          // Update nav link colors
           navLinksActive.forEach(link => {
             link.classList.remove("text-black");
             link.classList.add("text-primary");
@@ -236,27 +242,35 @@ const routeKey = getRouteFromUrl(Astro.url);
             mobileMenuButton.classList.add("text-gray-900");
           }
         } else {
-          tl.to(header, {
-            y: -hideHeight,
-            duration: 0.3,
-            ease: "power2.out"
-          });
+          // Solid header - just slide up
+          if (header) {
+            animate(header, {
+              translateY: -hideHeight,
+              duration: 300,
+              ease: "outQuad"
+            });
+          }
         }
       } else {
         if (isTransparent) {
-          tl.to(header, {
-            y: 0,
-            backgroundColor: "transparent",
-            duration: 0.3,
-            ease: "power2.out",
-            onComplete: () => {
-              gsap.set(header, { clearProps: "backgroundColor" });
-              header!.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
-            }
-          });
+          // Animate header slide down and fade out background
+          if (header) {
+            animate(header, {
+              translateY: 0,
+              backgroundColor: ["rgba(243, 244, 246, 1)", "rgba(243, 244, 246, 0)"],
+              duration: 300,
+              ease: "outQuad"
+            }).then(() => {
+              // Reset background and restore gradient classes after animation
+              header.style.backgroundColor = "";
+              header.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+            });
+          }
           
-          if (logo) logo.src = "/images/logo-bw.png";
+          // Swap logo back
+          if (logo) logo.src = "/images/logo-bw2.png";
           
+          // Restore nav link colors
           navLinksActive.forEach(link => {
             link.classList.add("text-black");
             link.classList.remove("text-primary");
@@ -277,16 +291,19 @@ const routeKey = getRouteFromUrl(Astro.url);
             mobileMenuButton.classList.remove("text-gray-900");
           }
         } else {
-          tl.to(header, {
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out"
-          });
+          // Solid header - just slide down
+          if (header) {
+            animate(header, {
+              translateY: 0,
+              duration: 300,
+              ease: "outQuad"
+            });
+          }
         }
       }
     }
     
-    // Use a direct scroll listener for better reliability for the header toggle
+    // Use a direct scroll listener for the header toggle
     window.addEventListener("scroll", () => {
       const scrolled = window.scrollY > 50;
       

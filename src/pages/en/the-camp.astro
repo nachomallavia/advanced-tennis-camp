@@ -5,8 +5,12 @@ import { Image } from 'astro:assets';
 
 // Import images
 import essVerbierLogo from '@/assets/images/logos/ESS_verbier-300x300.png';
+import camp3172 from '@/assets/images/select/camp-3172.avif';
+import campBg from '@/assets/images/select/camp-bg.avif';
 import tomImg from '@/assets/images/camp/TOM_4878.jpg';
-import advancedTrainingImg from '@/assets/images/camp/camptennis-9511.jpg';
+import tom4720 from '@/assets/images/select/TOM_4720.avif';
+import tom4908 from '@/assets/images/select/TOM_4908.avif';
+import advancedTrainingImg from '@/assets/images/select/11-3.avif';
 import lemaniaImg from '@/assets/images/camp/LEMANIA_ALPIMAGES-21-1024x684.jpg';
 import seniorCampImg from '@/assets/images/camp/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg';
 // Partner logos
@@ -31,10 +35,12 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
 
 <BaseLayout title={title} description={description}>
   <!-- Hero Section -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
+  <section class=" bg-white">
+    <div class=" mx-auto ">
+      <div class=" mx-autogrid lg:grid-cols-2 gap-12 items-center">
+        <img src={camp3172.src} alt="Advanced Tennis Camp" class="w-full col-span-2  z-0" />
+        <div class="z-10">
+          
           <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
             THE CAMP
           </h1>
@@ -93,7 +99,7 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
           <Image 
-            src={tomImg}
+            src={tom4908}
             alt="Junior Camp" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -154,7 +160,7 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
         </div>
         <div>
           <Image 
-            src={advancedTrainingImg}
+            src={tomImg}
             alt="Advanced Training" 
             class="w-full rounded-lg shadow-lg"
           />

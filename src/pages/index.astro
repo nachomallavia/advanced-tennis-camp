@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import Feature71 from '@/components/sections/Feature71.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Cta5 from '@/components/sections/Cta5.astro';
 import { Image, getImage } from 'astro:assets';
 
 // Import images
@@ -12,20 +14,20 @@ import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37
 import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
 import ctaBackgroundImg from '@/assets/images/camp/semaine-3-scaled.jpg';
 import featureCardImg1 from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
-import featureCardImg2 from '@/assets/images/camp/camptennis-9564.jpg';
-
-// Optimize CTA background image
-const ctaBackground = await getImage({ src: ctaBackgroundImg, format: 'webp' });
-
+import featureCardImg2 from '@/assets/images/select/11-3.avif';
+import experienceImg from '@/assets/images/select/experience.avif';
+import playersTrainedImg from '@/assets/images/select/players-trained.avif';
+import weeksPerSummerImg from '@/assets/images/select/weeks.avif';
+import tennisCourtsImg from '@/assets/images/select/courts.avif';
 const title = "Advanced Tennis Camp, l'incontournable camp de tennis en Valais";
 const description = "L'Advanced Tennis Camp est un camp de tennis pour enfants et adolescents. Depuis 2007, il se déroule sur 6 semaines chaque été à Verbier !";
 
 // Feature71 content
 const featureMetrics = [
-  { value: "19", label: "Années d'expérience" },
-  { value: "500+", label: "Joueurs formés" },
-  { value: "6", label: "Semaines par été" },
-  { value: "8", label: "Courts de tennis" },
+  { value: "19", label: "Années d'expérience", imageUrl: experienceImg.src },
+  { value: "500+", label: "Joueurs formés", imageUrl: playersTrainedImg?.src },
+  { value: "6", label: "Semaines par été", imageUrl: weeksPerSummerImg?.src },
+  { value: "4", label: "Courts de tennis", imageUrl: tennisCourtsImg?.src },
 ];
 
 const featureCards = [
@@ -47,46 +49,12 @@ const featureCards = [
 ---
 
 <BaseLayout title={title} description={description} transparentHeader={true}>
-  <!-- Hero Section -->
-  <section class="relative h-screen flex items-center overflow-hidden">
-    <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
-    <video src="https://res.cloudinary.com/duykgwmak/video/upload/br_800k,q_auto:good/v1766412197/videobg2_h3f53c.webm" autoplay loop muted playsinline  class="absolute inset-0 w-full h-full object-cover z-0"></video>
-
-      <div class="grid lg:grid-cols-1 gap-8 lg:gap-12 h-full px-4 lg:px-24  z-2">
-        <!-- Left column - Main title -->
-        <div class="text-left flex flex-col items-start justify-end h-full pb-12">
-
-          <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2">
-            Advanced<br/>Tennis Camp
-          </h1>
-          <!-- Tagline -->
-          <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 leading-relaxed">
-            Faites progresser votre jeu avec du coaching professionnel dans le décor grandiose de Verbier
-          </p>
-          
-          <h2 class="text-lg max-w-[200px] md:max-w-full md:text-xl lg:text-2xl font-bold text-white mt-4">
-            6 SEMAINES EN 2026 06 Juillet - 15 Août
-          </h2>
-          <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-light text-white">
-           
-          </h2> -->
-          
-          <!-- Sponsor logo -->
-          <div class="mt-12">
-            <a href="https://www.brainvest.com/" target="_blank" rel="noopener noreferrer">
-              <Image 
-                src={brainvestLogo}
-                alt="Brainvest - Sponsor" 
-                class="inline-block h-16 w-auto"
-              />
-            </a>
-          </div>
-        </div>
-        
-        <!-- Right column - Welcome text -->
-        
-      </div>
-  </section>
+  <Hero 
+    title="Advanced<br/>Tennis Camp"
+    tagline="Faites progresser votre jeu avec du coaching professionnel dans le décor grandiose de Verbier"
+    dates="6 SEMAINES EN 2026 06 Juillet - 15 Août"
+    sponsorLogo={brainvestLogo}
+  />
   
   <!-- Divider with quote -->
   <section class="py-8 bg-white min-h-screen flex flex-col items-center ">
@@ -211,22 +179,16 @@ const featureCards = [
   </section>
 
   <!-- CTA Section -->
-  <section class="py-24 bg-cover bg-center" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${ctaBackground.src}');`}>
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-        Inscriptions Ouvertes pour l'Été 2026
-      </h2>
-      <p class="text-xl text-white mb-8 max-w-2xl mx-auto">
-        Réservez votre place dès maintenant pour vivre une expérience tennis inoubliable à Verbier. Places limitées !
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button href="/contact/" variant="primary" size="lg">
-          S'inscrire
-        </Button>
-        <Button href="/programmes-et-tarifs/" variant="secondary" size="lg">
-          Voir les tarifs
-        </Button>
-      </div>
-    </div>
-  </section>
+  <Cta5
+    headline="Inscriptions Ouvertes pour l'Été 2026"
+    description="Réservez votre place dès maintenant pour vivre une expérience tennis inoubliable à Verbier. Places limitées !"
+    buttonText="S'inscrire"
+    buttonHref="/contact/"
+    secondaryButtonText="Voir les tarifs"
+    secondaryButtonHref="/programmes-et-tarifs/"
+    image={{
+      src: ctaBackgroundImg,
+      alt: "Tennis camp Verbier"
+    }}
+  />
 </BaseLayout>

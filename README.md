@@ -1,10 +1,6 @@
-# Astro Starter Kit: Minimal
+# Advanced Tennis Camp Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Official website for Advanced Tennis Camp in Verbier, Switzerland - the premier tennis camp for children and teenagers in Valais.
 
 ## 🚀 Project Structure
 
@@ -38,6 +34,20 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 🎨 Animations
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project uses [Motion.js](https://motion.dev) for animations. See [ANIMATIONS.md](./ANIMATIONS.md) for:
+- Animation utilities and patterns
+- Usage examples
+- React component integration
+- Best practices
+
+## 📚 Documentation
+
+- [Astro Documentation](https://docs.astro.build)
+- [Motion.js Documentation](https://motion.dev/docs/quick-start)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+
+## 🌐 Deployment
+
+The site is deployed on Vercel with automatic deployments from the main branch.

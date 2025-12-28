@@ -88,23 +88,23 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://advanced
     })} />
   </head>
   <body class="min-h-screen flex flex-col font-sans antialiased">
+     <!-- Anime.js v4 Animation Library -->
+     <script>
+      import { animate, stagger, onScroll, utils } from "animejs";
+      
+      // Make Anime.js functions available globally for use in other components
+      (window as any).animate = animate;
+      (window as any).stagger = stagger;
+      (window as any).onScroll = onScroll;
+      (window as any).utils = utils;
+    </script>
     <Header transparent={transparentHeader} />
-    <main class:list={["flex-1", !transparentHeader && "pt-24 md:pt-28"]}>
+    <main class:list={["flex-1", !transparentHeader && "pt-24 md:pt-28"]} data-hero-container>
       <slot />
     </main>
     <Footer />
     
-    <!-- GSAP Animation Library -->
-    <script>
-      import gsap from "gsap";
-      import { ScrollTrigger } from "gsap/ScrollTrigger";
-      
-      gsap.registerPlugin(ScrollTrigger);
-      
-      // Make gsap available globally
-      (window as any).gsap = gsap;
-      (window as any).ScrollTrigger = ScrollTrigger;
-    </script>
+   
   </body>
 </html>
 
