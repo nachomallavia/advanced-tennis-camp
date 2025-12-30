@@ -19,7 +19,7 @@ const {
 <section id="welcome-section" class="py-8 bg-white flex flex-col items-center justify-center mb-8 " lang={lang}>
   <div class=" flex md:flex-row items-center justify-center  gap-4 mx-auto max-w-[90%] md:mx-0 md:max-w-[75%]">    
     <div id="vertical-line" class="hidden lg:block min-w-[3px] min-h-[120px] md:min-h-[150px] h-full bg-primary mx-4"></div>
-    <h3 id="welcome-heading" class="welcome-heading text-4xl md:text-5xl font-extrabold text-primary mb-4 leading-[1.05] col-span-2 min-w-[90%] md:min-w-[60%] ">
+    <h3 id="welcome-heading" class="welcome-heading text-3xl md:text-5xl font-extrabold text-primary mb-4 leading-[1.05] col-span-2 min-w-[90%] md:min-w-[60%] ">
       {heading}
     </h3>
   </div>
@@ -47,14 +47,14 @@ const {
       autoplay: onScroll({
         target: '#welcome-section',
         enter: 'bottom top',
-        leave: '40% bottom',
+        leave: '50% bottom',
 
         sync: true,
       }),
 
     });
   })
-  .addEffect(({lines})=>{
+  .addEffect(()=>{
     return animate(verticalLine as any,{
       scaleY: [0, 1],
       duration: 5000,
@@ -67,6 +67,20 @@ const {
         sync: true,
       }),
     })
-  });
+  })
+  .addEffect(()=>{
+    return animate('#welcome-section' as any,{
+      translateY: [150, 0],
+      duration: 5000,
+      ease: 'out(3)',
+      autoplay: onScroll({
+        target: '#welcome-section',
+        enter: 'bottom top',
+        leave: '40% bottom',
+
+        sync: true,
+      }),
+    })
+  })
 </script>
 

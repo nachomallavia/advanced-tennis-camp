@@ -7,14 +7,12 @@ import Hero from '@/components/sections/Hero.astro';
 import Cta5 from '@/components/sections/Cta5.astro';
 import WelcomeSection from '@/components/sections/WelcomeSection.astro';
 import QuoteSection from '@/components/sections/QuoteSection.astro';
+import Programs from '@/components/sections/Programs.astro';
 import { Image, getImage } from 'astro:assets';
 
 // Import images
 import brainvestLogo from '@/assets/images/sponsors/BRAINVEST_1024x1024-e1710144827416-300x100.png';
 import cyrilImg from '@/assets/images/misc/cyril.jpeg';
-import juniorCampImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
-import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
-import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
 import singleFeatureImg from '@/assets/images/select/TOM_4878-scaled.avif';
 import ctaBackgroundImg from '@/assets/images/camp/semaine-3-scaled.jpg';
 import camp3172 from '@/assets/images/select/camp-3172.avif';
@@ -92,94 +90,13 @@ const featureCards = [
   </SingleFeature>
   <!-- Feature Section -->
   <Feature71 
-    tagline="Why Choose Us"
-    headline="The Complete Tennis Experience"
-    description="Since 2007, Advanced Tennis Camp has offered a unique training environment in Verbier. Our team of experienced coaches combines Swiss Tennis methodology with the benefits of altitude training to maximize every player's progress."
-    primaryButtonText="Discover the Camp"
-    primaryButtonHref="/en/the-camp/"
-    secondaryButtonText="Contact Us"
-    secondaryButtonHref="/en/contact/"
     metrics={featureMetrics}
     featuredCards={featureCards}
     class="bg-white"
   />
   
   <!-- Programs Preview -->
-  <section class="py-16 bg-neutral-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-        OUR PROGRAMS
-      </h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Junior Camp -->
-        <div class="bg-white rounded-md shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
-          <div class="aspect-video overflow-hidden">
-            <Image 
-              src={juniorCampImg}
-              alt="Junior Camp" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-primary mb-2">Junior Camp</h3>
-            <p class="text-neutral-600 mb-4">
-              Full board camp with accommodation for young tennis players.
-            </p>
-            <Button href="/en/the-camp/" variant="primary">
-              Learn more
-            </Button>
-          </div>
-        </div>
-        
-        <!-- BIKE + PLAY -->
-        <div class="bg-white rounded-md shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
-          <div class="aspect-video overflow-hidden">
-            <Image 
-              src={bikePlayImg}
-              alt="BIKE + PLAY" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-primary mb-2">BIKE + PLAY</h3>
-            <p class="text-neutral-600 mb-4">
-              Combine tennis and cycling: BMX, enduro MTB, downhill MTB.
-            </p>
-            <Button href="/en/bike-play/" variant="primary">
-              Learn more
-            </Button>
-          </div>
-        </div>
-        
-        <!-- GOLF + PLAY -->
-        <div class="bg-white rounded-md shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
-          <div class="aspect-video overflow-hidden">
-            <Image 
-              src={golfPlayImg}
-              alt="GOLF + PLAY" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-primary mb-2">GOLF + PLAY</h3>
-            <p class="text-neutral-600 mb-4">
-              Discover golf with Mike Coppens and his team.
-            </p>
-            <Button href="/en/golf-play/" variant="primary">
-              Learn more
-            </Button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <Button href="/en/programs-and-prices/" variant="primary" size="lg">
-          View all programs
-        </Button>
-      </div>
-    </div>
-  </section>
+  <Programs lang="en" />
   
   <!-- CTA Section -->
   <Cta5

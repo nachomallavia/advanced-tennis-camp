@@ -1,0 +1,211 @@
+---
+import { Image } from 'astro:assets';
+
+// Import actual images
+import tennisSchoolImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
+import juniorCampImg from '@/assets/images/camp/camptennis-9511.jpg';
+import advancedTrainingImg from '@/assets/images/camp/TOM_4878.jpg';
+import miniChampionsImg from '@/assets/images/camp/camptennis-9564.jpg';
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
+
+interface Props {
+  lang: 'en' | 'fr';
+}
+
+const { lang } = Astro.props;
+
+// i18n content
+const content = {
+  en: {
+    programs: [
+      {
+        id: 'tennis-school',
+        title: 'Tennis School Program',
+        type: 'All Levels',
+        image: tennisSchoolImg,
+        description: 'In collaboration with Verbier International School, enjoy a great tennis week and improve your academics with daily classes.'
+      },
+      {
+        id: 'junior-camp',
+        title: 'Junior Camp',
+        type: 'Ages 8-15',
+        image: juniorCampImg,
+        description: 'The complete camp experience in the heart of Verbier. Options with accommodation or half-board available for children born from 2015 onwards.'
+      },
+      {
+        id: 'advanced-training',
+        title: 'Advanced Training',
+        type: 'Competitive',
+        image: advancedTrainingImg,
+        description: 'Reserved for competitive players wishing to develop their skills. Intensive physical training and tennis sessions.'
+      },
+      {
+        id: 'mini-champions',
+        title: 'Mini Champions',
+        type: 'Ages 5-7',
+        image: miniChampionsImg,
+        description: 'Perfect for young beginners. Tennis in the morning followed by supervised activities like mini-golf, pony riding, and climbing.'
+      },
+      {
+        id: 'bike-golf',
+        title: 'Bike & Golf + Play',
+        type: 'Multi-Activity',
+        image: bikePlayImg,
+        description: 'Discover the Swiss Alps on wheels or the green. BMX, downhill biking, and golf coaching from our professional team.'
+      }
+    ]
+  },
+  fr: {
+    programs: [
+      {
+        id: 'tennis-school',
+        title: 'Programme école et tennis',
+        type: 'Tous Niveaux',
+        image: tennisSchoolImg,
+        description: 'En collaboration avec l\'Ecole Internationale de Verbier, profitez d\'une superbe semaine de tennis combinée avec du perfectionnement scolaire.'
+      },
+      {
+        id: 'junior-camp',
+        title: 'Junior Camp',
+        type: '8-15 ans',
+        image: juniorCampImg,
+        description: 'L\'expérience de camp complète au cœur de Verbier. Options avec hébergement ou demi-pension pour les enfants nés en 2015 et après.'
+      },
+      {
+        id: 'advanced-training',
+        title: 'Advanced Training',
+        type: 'Compétition',
+        image: advancedTrainingImg,
+        description: 'Réservé aux joueurs de compétition souhaitant se perfectionner. Travail physique intensif et sessions de tennis.'
+      },
+      {
+        id: 'mini-champions',
+        title: 'Mini Champions',
+        type: '5-7 ans',
+        image: miniChampionsImg,
+        description: 'Idéal pour les jeunes débutants. Tennis le matin suivi d\'activités encadrées : mini-golf, poney, et escalade.'
+      },
+      {
+        id: 'bike-golf',
+        title: 'Bike & Golf + Play',
+        type: 'Multi-Activités',
+        image: bikePlayImg,
+        description: 'Découvrez les Alpes suisses sur roues ou sur le green. BMX, descente en VTT et coaching de golf par notre équipe pro.'
+      }
+    ]
+  }
+};
+
+const programs = content[lang] || content.en;
+---
+
+<section class="relative w-full" data-programs-section>
+  <div class="flex flex-col">
+    {programs.programs.map((program, index) => (
+      <article 
+        class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 px-6 py-20 md:px-12 snap-start even:md:flex-row-reverse" 
+        data-program-card
+        data-index={index}
+        id={`program-${program.id}`}
+      >
+        <div class="program-visual flex-1 max-w-[600px] opacity-0">
+          <div class="relative w-full aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
+            <Image 
+              src={program.image} 
+              alt={program.title}
+              class="w-full h-full object-cover"
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+        </div>
+        <div class="program-info flex-1 max-w-[500px] opacity-0">
+          <div class="inline-block px-3 py-1 mb-6 text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 rounded-full">
+            {program.type}
+          </div>
+          <h2 class="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-8 text-foreground">
+            {program.title}
+          </h2>
+          <p class="text-lg md:text-xl leading-relaxed text-muted-foreground mb-8">
+            {program.description}
+          </p>
+          <a 
+            href={lang === 'fr' ? '/contact/' : '/en/contact/'} 
+            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-primary rounded-lg transition-transform hover:scale-105 active:scale-95"
+          >
+            {lang === 'fr' ? 'S\'inscrire' : 'Book Now'}
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  :global(html) {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  import { animate, onScroll } from 'animejs';
+
+  function initProgramAnimations() {
+    const cards = document.querySelectorAll('[data-program-card]');
+    
+    cards.forEach((card) => {
+      const visual = card.querySelector('.program-visual');
+      const info = card.querySelector('.program-info');
+      const image = card.querySelector('img');
+      const index = parseInt((card as HTMLElement).dataset.index || '0');
+      
+      if (visual) {
+        animate(visual, {
+          opacity: [0, 1],
+          translateX: index % 2 === 0 ? [-100, 0] : [100, 0],
+          translateY: [40, 0],
+          duration: 1200,
+          ease: 'outExpo',
+          autoplay: onScroll({
+            target: card as HTMLElement,
+            enter: "top 80%"
+          })
+        });
+      }
+
+      if (info) {
+        animate(info, {
+          opacity: [0, 1],
+          translateY: [60, 0],
+          duration: 1200,
+          ease: 'outExpo',
+          autoplay: onScroll({
+            target: card as HTMLElement,
+            enter: "top 70%"
+          })
+        });
+      }
+
+      if (image) {
+        animate(image, {
+          scale: [1.2, 1],
+          duration: 2000,
+          ease: 'outExpo',
+          autoplay: onScroll({
+            target: card as HTMLElement,
+            enter: "top 80%"
+          })
+        });
+      }
+    });
+  }
+
+  // Lifecycle listeners
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProgramAnimations);
+  } else {
+    initProgramAnimations();
+  }
+  document.addEventListener('astro:page-load', initProgramAnimations);
+</script>

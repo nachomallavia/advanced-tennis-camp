@@ -30,8 +30,8 @@ const {
 } = Astro.props;
 ---
 
-<section class={cn("py-16", className)}>
-  <div class="container mx-auto px-4">
+<section  class={cn("py-16 single-feature-section", className)}>
+  <div  class="container mx-auto px-4">
     <div class={cn(
       "flex flex-col gap-8 lg:gap-12 items-center",
       isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
@@ -77,4 +77,23 @@ const {
     </div>
   </div>
 </section>
+<script>
+  import { animate, onScroll } from 'animejs';
+  const singleFeatureSection = document.querySelector('.single-feature-section');
+  if (singleFeatureSection) {
+    animate(singleFeatureSection, {
+      translateY: [150, 0],
+      anchorPoint: 'center bottom',
+      scale: [0.9, 1],
+      duration: 5000,
+      ease: 'out(3)',
+      autoplay: onScroll({
+        target: singleFeatureSection,
+        enter: 'bottom top',
+        leave: '40% bottom',
+        sync: true,
+      }),
+    });
+  }
+</script>
 

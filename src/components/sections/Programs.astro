@@ -1,0 +1,208 @@
+---
+import { Image } from 'astro:assets';
+import { Button } from '@/components/starwind/button';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/starwind/carousel";
+
+// Import images
+import juniorCampImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
+
+interface Props {
+  lang: 'en' | 'fr';
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  fr: {
+    title: "NOS PROGRAMMES",
+    buttonAll: "Voir tous les programmes",
+    allProgramsHref: "/programmes-et-tarifs/",
+    programs: [
+      {
+        id: "junior-camp",
+        title: "Junior Camp",
+        description: "Camp avec hébergement et pension complète pour les jeunes tennismen. Une expérience immersive au cœur des Alpes.",
+        image: juniorCampImg,
+        href: "/le-camp/",
+        buttonText: "En savoir plus"
+      },
+      {
+        id: "bike-play",
+        title: "BIKE + PLAY",
+        description: "Combinez tennis et vélo: BMX, VTT enduro, VTT descente. Le parfait mélange d'adrénaline et de technique.",
+        image: bikePlayImg,
+        href: "/bike-play/",
+        buttonText: "En savoir plus"
+      },
+      {
+        id: "golf-play",
+        title: "GOLF + PLAY",
+        description: "Découvrez le golf avec Mike Coppens et son équipe. Perfectionnez votre swing dans un cadre exceptionnel.",
+        image: golfPlayImg,
+        href: "/golf-play/",
+        buttonText: "En savoir plus"
+      }
+    ]
+  },
+  en: {
+    title: "OUR PROGRAMS",
+    buttonAll: "View all programs",
+    allProgramsHref: "/en/programs-and-prices/",
+    programs: [
+      {
+        id: "junior-camp",
+        title: "Junior Camp",
+        description: "Full board camp with accommodation for young tennis players. An immersive experience in the heart of the Alps.",
+        image: juniorCampImg,
+        href: "/en/the-camp/",
+        buttonText: "Learn more"
+      },
+      {
+        id: "bike-play",
+        title: "BIKE + PLAY",
+        description: "Combine tennis and cycling: BMX, enduro MTB, downhill MTB. The perfect blend of adrenaline and technique.",
+        image: bikePlayImg,
+        href: "/en/bike-play/",
+        buttonText: "Learn more"
+      },
+      {
+        id: "golf-play",
+        title: "GOLF + PLAY",
+        description: "Discover golf with Mike Coppens and his team. Perfect your swing in an exceptional setting.",
+        image: golfPlayImg,
+        href: "/en/golf-play/",
+        buttonText: "Learn more"
+      }
+    ]
+  }
+};
+
+const t = content[lang];
+---
+
+<section class="py-24 bg-neutral-50 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-5xl font-bold text-primary text-center mb-16">
+      {t.title}
+    </h2>
+    
+    <Carousel 
+      id="programs-carousel"
+      autoInit={false}
+      opts={{ align: "center", loop: true }} 
+      class="w-full mx-auto"
+    >
+      <CarouselContent class="-ml-4">
+        {t.programs.map((program) => (
+          <CarouselItem class="pl-4 basis-[85%] md:basis-[70%]">
+            <div class="program-slide bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row min-h-[400px] transition-transform duration-500 ease-out">
+              <div class="md:w-1/2 relative aspect-video md:aspect-auto">
+                <Image 
+                  src={program.image}
+                  alt={program.title} 
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center items-start text-left">
+                <h3 class="text-2xl md:text-4xl font-bold text-primary mb-4">{program.title}</h3>
+                <p class="text-neutral-600 text-lg mb-8 leading-relaxed">
+                  {program.description}
+                </p>
+                <Button href={program.href} variant="primary" size="lg">
+                  {program.buttonText}
+                </Button>
+              </div>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <div class="flex justify-center items-center gap-6 mt-12">
+        <CarouselPrevious class="static translate-y-0" />
+        <div id="carousel-dots" class="flex gap-2"></div>
+        <CarouselNext class="static translate-y-0" />
+      </div>
+    </Carousel>
+    
+    <div class="text-center mt-16">
+      <Button href={t.allProgramsHref} variant="outline" size="lg">
+        {t.buttonAll}
+      </Button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate } from "animejs";
+  import { initCarousel } from "@/components/starwind/carousel";
+
+  function setupProgramsCarousel() {
+    const carouselElement = document.getElementById("programs-carousel");
+    if (!carouselElement) return;
+
+    const manager = initCarousel(carouselElement);
+    if (!manager) return;
+
+    const api = manager.api;
+    const slides = carouselElement.querySelectorAll('.program-slide');
+    const dotsContainer = carouselElement.querySelector('#carousel-dots');
+
+    // Create dots
+    const dots: HTMLElement[] = [];
+    if (dotsContainer) {
+      api.scrollSnapList().forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-neutral-300 transition-all duration-300 hover:bg-primary/50';
+        dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        dot.addEventListener('click', () => api.scrollTo(index));
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      });
+    }
+
+    const updateUI = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      
+      // Update Scaling
+      slides.forEach((slide, index) => {
+        const isSelected = index === selectedIndex;
+        
+        animate(slide, {
+          scale: isSelected ? 1 : 0.85,
+          opacity: isSelected ? 1 : 0.4,
+          duration: 600,
+          ease: 'outQuart'
+        });
+      });
+
+      // Update Dots
+      dots.forEach((dot, index) => {
+        if (index === selectedIndex) {
+          dot.classList.add('bg-primary', 'w-6');
+          dot.classList.remove('bg-neutral-300', 'w-2.5');
+        } else {
+          dot.classList.remove('bg-primary', 'w-6');
+          dot.classList.add('bg-neutral-300', 'w-2.5');
+        }
+      });
+    };
+
+    api.on("select", updateUI);
+    api.on("init", updateUI);
+    api.on("reInit", updateUI);
+    
+    // Initial call
+    updateUI();
+  }
+
+  // Lifecycle listeners
+  document.addEventListener('DOMContentLoaded', setupProgramsCarousel);
+  document.addEventListener('astro:after-swap', setupProgramsCarousel);
+</script>
