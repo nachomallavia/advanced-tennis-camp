@@ -2,8 +2,11 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import Feature71 from '@/components/sections/Feature71.astro';
+import SingleFeature from '@/components/sections/SingleFeature.astro';
 import Hero from '@/components/sections/Hero.astro';
 import Cta5 from '@/components/sections/Cta5.astro';
+import WelcomeSection from '@/components/sections/WelcomeSection.astro';
+import QuoteSection from '@/components/sections/QuoteSection.astro';
 import { Image, getImage } from 'astro:assets';
 
 // Import images
@@ -12,8 +15,10 @@ import cyrilImg from '@/assets/images/misc/cyril.jpeg';
 import juniorCampImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
 import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
 import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
+import singleFeatureImg from '@/assets/images/select/TOM_4878-scaled.avif';
 import ctaBackgroundImg from '@/assets/images/camp/semaine-3-scaled.jpg';
-import featureCardImg1 from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
+import camp3172 from '@/assets/images/select/camp-3172.avif';
+import featureCardImg1 from '@/assets/images/select/camp-3172.avif';
 import featureCardImg2 from '@/assets/images/select/11-3.avif';
 import experienceImg from '@/assets/images/select/experience.avif';
 import playersTrainedImg from '@/assets/images/select/players-trained.avif';
@@ -56,37 +61,35 @@ const featureCards = [
     sponsorLogo={brainvestLogo}
   />
   
-  <!-- Divider with quote -->
-  <section class="py-8 bg-white min-h-screen flex flex-col items-center ">
-    <div class=" flex  md:flex-row items-center justify-center px-4 py-12 gap-4 mx-auto md:mx-0">
-      <div class="flex flex-row items-center justify-center">
-          <div class="flex flex-col items-center md:items-end text-primary justify-center">
-            <div class="flex flex-row">
-              <span class="font-extrabold text-6xl md:text-8xl">19</span> 
-              <span class="font-normal text-3xl md:text-4xl align-top">th</span>
-            </div>
-            <span class="text-2xl md:text-4xl font-normal text-primary uppercase">edition</span>
-          </div>
-        <div class=" min-w-[2px]  min-h-[120px] md:min-h-[150px] bg-primary mx-4"></div>
-      </div>
-      <h3 class="text-lg md:text-4xl font-extrabold text-primary mb-4 leading-[1.05] col-span-2 max-w-[90%] md:max-w-[60%]">
-        Everyone at the Advanced Tennis Camp is delighted to welcome you to the 19th edition of the camp in Verbier.
-      </h3>
-    </div>
-    
-    <div class=" flex flex-col items-center md:items-end px-6 gap-4 md:max-w-[75%] mx-auto md:mx-0">
-        <p class="italic text-center md:text-left mx-auto md:mx-0">
-          "Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."
-          <br/>
-        </p>
-        <div class="flex gap-4 items-center">
-          <Image src={cyrilImg} alt="Cyril Cornu" class="w-24 h-24 rounded-full object-cover" />
-          <span class="text-neutral-800 font-bold">C.Cornu — <br/>Founder & Head Coach</span>
-        </div>
-    </div>
-    
-  </section>
+  <!-- Welcome Section -->
+  <WelcomeSection 
+    editionNumber="19"
+    editionSuffix="th"
+    editionLabel="edition"
+    heading="Everyone at the Advanced Tennis Camp is delighted to welcome you to the 19th edition of the camp in Verbier."
+    lang="en"
+  />
   
+  <!-- Quote Section -->
+  <QuoteSection
+    quote="Our team of trainers are highly experienced at all levels. Whether your child is just starting out or already a top level player, we can offer a tennis and physical training programme to suit everyone with the aim to maximise their potential in an ideal training environment. It is the experience and professionalism of the team that makes the ADVANCED TENNIS CAMP unique with each child receiving individual tuition."
+    authorName="C.Cornu"
+    authorTitle="Founder & Head Coach"
+    authorImage={cyrilImg}
+    authorImageAlt="Cyril Cornu"
+    lang="en"
+  />
+  <SingleFeature
+    tagline="Why Choose Us"
+    headline="The Complete Tennis Experience"
+    description="Since 2007, Advanced Tennis Camp has offered a unique training environment in Verbier. Our team of experienced coaches combines Swiss Tennis methodology with the benefits of altitude training to maximize every player's progress."
+    primaryButtonText="Discover the Camp"
+    primaryButtonHref="/en/the-camp/"
+    secondaryButtonText="Contact Us"
+    secondaryButtonHref="/en/contact/"
+  >
+    <Image slot="image" src={singleFeatureImg} alt="Single Feature" class=" rounded-md" />
+  </SingleFeature>
   <!-- Feature Section -->
   <Feature71 
     tagline="Why Choose Us"
@@ -110,7 +113,7 @@ const featureCards = [
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Junior Camp -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+        <div class="bg-white rounded-md shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
             <Image 
               src={juniorCampImg}
@@ -130,7 +133,7 @@ const featureCards = [
         </div>
         
         <!-- BIKE + PLAY -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+        <div class="bg-white rounded-md shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
             <Image 
               src={bikePlayImg}
@@ -150,7 +153,7 @@ const featureCards = [
         </div>
         
         <!-- GOLF + PLAY -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
+        <div class="bg-white rounded-md shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
           <div class="aspect-video overflow-hidden">
             <Image 
               src={golfPlayImg}

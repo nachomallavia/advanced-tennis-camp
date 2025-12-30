@@ -1,0 +1,80 @@
+---
+import ArrowDown from '@lucide/astro/icons/arrow-down';
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/starwind/button";
+
+interface Props {
+  class?: string;
+  tagline?: string;
+  headline?: string;
+  description?: string;
+  primaryButtonText?: string;
+  secondaryButtonText?: string;
+  primaryButtonHref?: string;
+  secondaryButtonHref?: string;
+  isReversed?: boolean;
+  showPrimaryIcon?: boolean;
+}
+
+const {
+  class: className,
+  tagline = "Tag Line",
+  headline = "Feature Heading",
+  description,
+  primaryButtonText = "Primary Action",
+  secondaryButtonText,
+  primaryButtonHref = "#",
+  secondaryButtonHref = "#",
+  isReversed = false,
+  showPrimaryIcon = false,
+} = Astro.props;
+---
+
+<section class={cn("py-16", className)}>
+  <div class="container mx-auto px-4">
+    <div class={cn(
+      "flex flex-col gap-8 lg:gap-12 items-center",
+      isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
+    )}>
+      <!-- Image Section -->
+      <div class="w-full lg:w-1/2">
+        <slot name="image" >
+          <!-- Default placeholder if no image provided -->
+          <div class="aspect-video bg-neutral-200 rounded-none flex items-center justify-center">
+            <p class="text-neutral-400">Image slot</p>
+          </div>
+        </slot>
+      </div>
+
+      <!-- Content Section -->
+      <div class="w-full lg:w-1/2">
+        <p class="mb-6 text-xs font-medium tracking-wider uppercase text-primary">
+          {tagline}
+        </p>
+        <h2 class="mb-3 text-3xl md:text-4xl font-bold text-primary text-pretty md:mb-4 lg:mb-6">
+          {headline}
+        </h2>
+        {description && (
+          <p class="mb-8 text-neutral-800 lg:text-xl">
+            {description}
+          </p>
+        )}
+        <div class="prose prose-lg max-w-none mb-8">
+          <slot />
+        </div>
+        <div class="flex w-full flex-col justify-start gap-2 sm:flex-row">
+          <Button variant="primary" href={primaryButtonHref} class="w-full sm:w-auto">
+            {showPrimaryIcon && <ArrowDown class="size-4" />}
+            {primaryButtonText}
+          </Button>
+          {secondaryButtonText && (
+            <Button variant="outline" href={secondaryButtonHref} class="w-full sm:w-auto">
+              {secondaryButtonText}
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

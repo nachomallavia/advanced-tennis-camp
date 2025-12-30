@@ -1,21 +1,13 @@
 ---
-import ArrowDown from '@lucide/astro/icons/arrow-down';
 import ArrowRight from '@lucide/astro/icons/arrow-right';
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/starwind/button";
 import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import { DirectionAwareHover } from "@/components/ui/DirectionAwareHover";
 import MetricCard from '@/components/ui/MetricCard.astro';
+
 interface Props {
   class?: string;
-  tagline?: string;
-  headline?: string;
-  description?: string;
-  primaryButtonText?: string;
-  secondaryButtonText?: string;
-  primaryButtonHref?: string;
-  secondaryButtonHref?: string;
   metrics?: Array<{
     value: string;
     label: string;
@@ -32,13 +24,6 @@ interface Props {
 
 const {
   class: className,
-  tagline = "Tag Line",
-  headline = "Feature group",
-  description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
-  primaryButtonText = "See all below",
-  secondaryButtonText = "Call to Action",
-  primaryButtonHref = "#",
-  secondaryButtonHref = "#",
   metrics = [
     { value: "100+", label: "Metric 1" },
     { value: "5", label: "Metric 2" },
@@ -74,33 +59,11 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
 
 <section class={cn("py-16", className)}>
   <div class="container mx-auto px-4 flex flex-col items-center gap-12">
-    <!-- Header Section -->
-    <div class="text-center">
-      <p class="mb-6 text-xs font-medium tracking-wider uppercase text-primary">
-        {tagline}
-      </p>
-      <h2 class="mb-3 text-3xl md:text-4xl font-bold text-primary text-pretty md:mb-4 lg:mb-6 lg:max-w-3xl">
-        {headline}
-      </h2>
-      <p class="mb-8 text-neutral-800 lg:max-w-2xl lg:text-lg mx-auto">
-        {description}
-      </p>
-      <div class="flex w-full flex-col justify-center gap-2 sm:flex-row">
-        <Button variant="primary" href={primaryButtonHref} class="w-full sm:w-auto">
-          <ArrowDown class="size-4" />
-          {primaryButtonText}
-        </Button>
-        <Button variant="outline" href={secondaryButtonHref} class="w-full sm:w-auto">
-          {secondaryButtonText}
-        </Button>
-      </div>
-    </div>
-
     <!-- Grid Section -->
     <div class="grid w-full grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-4">
       <!-- First Featured Card -->
       {processedCards[0] && (
-        <div class="col-span-2 sm:max-lg:col-span-2 overflow-clip rounded-lg">
+        <div class="col-span-2 sm:max-lg:col-span-2 overflow-clip rounded-md">
           <DirectionAwareHover 
             client:load
             imageUrl={processedCards[0].imageUrl}
@@ -125,16 +88,16 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
       <!-- Metrics Grid -->
       {metrics.slice(0, 2).map((metric) => (
 
-          <MetricCard className="rounded-lg" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
+          <MetricCard className="rounded-md" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
       ))}
 
       {metrics.slice(2, 4).map((metric) => (
-        <MetricCard className="rounded-lg" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
+        <MetricCard className="rounded-md" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
       ))}
 
       <!-- Second Featured Card -->
       {processedCards[1] && (
-        <div class="col-span-2 sm:max-lg:col-span-1 overflow-clip rounded-lg">
+        <div class="col-span-2 sm:max-lg:col-span-1 overflow-clip rounded-md">
           <DirectionAwareHover 
             client:load
             imageUrl={processedCards[1].imageUrl}

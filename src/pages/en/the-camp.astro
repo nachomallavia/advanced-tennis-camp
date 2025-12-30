@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import { Image } from 'astro:assets';
+import CampHero from '@/components/sections/CampHero.astro';
 
 // Import images
 import essVerbierLogo from '@/assets/images/logos/ESS_verbier-300x300.png';
@@ -33,47 +34,24 @@ const title = "The Camp in Verbier - Advanced Tennis Camp";
 const description = "The Camp in Verbier from July 6 to August 15, 2026. For this 19th edition, we will again be present for 6 weeks!";
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} transparentHeader={true}>
   <!-- Hero Section -->
-  <section class=" bg-white">
-    <div class=" mx-auto ">
-      <div class=" mx-autogrid lg:grid-cols-2 gap-12 items-center">
-        <img src={camp3172.src} alt="Advanced Tennis Camp" class="w-full col-span-2  z-0" />
-        <div class="z-10">
-          
-          <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
-            THE CAMP
-          </h1>
-          <h3 class="text-xl md:text-2xl font-bold text-primary mb-6">
-            from 06 July to 15 August 2026
-          </h3>
-          
-          <div class="prose prose-lg max-w-none">
-            <p>For this 19th edition we will be present 6 weeks again, <strong>the camp will start on July 06th with a meeting point at 8.45 am at the Amusement Park – Route de Verbier –</strong> <strong>(boarders will check in the day before at 16h00)</strong> and run through until August 15th.</p>
-            <p><strong>A team of 12 coaches and two physical trainers will be present to share their passion and experience.</strong></p>
-            <p>Our love for the game and desire to communicate our enthusiasm to others lead us to organise the Advanced Junior Tour, a 'masters' style tournament for the young players which for the first time will be played in Verbier.</p>
-            <p><strong>This tournament will feature an under 14's and under 18's category with both singles and doubles being played <em>(if weather conditions permit)</em>.</strong></p>
-            <p>Professional trainers will be present during the weekend in order to help best the young competitors in their training. This includes assistance with warming up, training and nutrition – all essential factors that could influence the result of a competition.</p>
-            <p>For competitors and also enthusiastic adults, our team will offer a training programme adapted to push your expectations.</p>
-          </div>
-          
-          <div class="mt-8">
-            <Button href="/en/programs-and-prices/" variant="primary" size="lg">
-              MORE INFO
-            </Button>
-          </div>
-        </div>
-        
-        <div class="flex justify-center">
-          <Image 
-            src={essVerbierLogo}
-            alt="ESS Verbier" 
-            class="w-64 h-64 object-contain"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <CampHero
+    title="THE CAMP"
+    subtitle="from 06 July to 15 August 2026"
+    buttonText="MORE INFO"
+    buttonLink="/en/programs-and-prices/"
+    heroImage={camp3172}
+    secondaryImage={essVerbierLogo}
+    secondaryImageAlt="ESS Verbier"
+  >
+    <p>For this 19th edition we will be present 6 weeks again, <strong>the camp will start on July 06th with a meeting point at 8.45 am at the Amusement Park – Route de Verbier –</strong> <strong>(boarders will check in the day before at 16h00)</strong> and run through until August 15th.</p>
+    <p><strong>A team of 12 coaches and two physical trainers will be present to share their passion and experience.</strong></p>
+    <p>Our love for the game and desire to communicate our enthusiasm to others lead us to organise the Advanced Junior Tour, a 'masters' style tournament for the young players which for the first time will be played in Verbier.</p>
+    <p><strong>This tournament will feature an under 14's and under 18's category with both singles and doubles being played <em>(if weather conditions permit)</em>.</strong></p>
+    <p>Professional trainers will be present during the weekend in order to help best the young competitors in their training. This includes assistance with warming up, training and nutrition – all essential factors that could influence the result of a competition.</p>
+    <p>For competitors and also enthusiastic adults, our team will offer a training programme adapted to push your expectations.</p>
+  </CampHero>
   
   <!-- Video Section -->
   <section class="py-12 bg-gray-50">

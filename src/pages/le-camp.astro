@@ -2,9 +2,11 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import { Image } from 'astro:assets';
+import CampHero from '@/components/sections/CampHero.astro';
 
 // Import images
 import essVerbierLogo from '@/assets/images/logos/ESS_verbier-300x300.png';
+import camp3172 from '@/assets/images/select/camp-3172.avif';
 import tomImg from '@/assets/images/camp/TOM_4878.jpg';
 import advancedTrainingImg from '@/assets/images/camp/camptennis-9511.jpg';
 import lemaniaImg from '@/assets/images/camp/LEMANIA_ALPIMAGES-21-1024x684.jpg';
@@ -29,45 +31,24 @@ const title = "Le Camp à Verbier - Advanced Tennis Camp";
 const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cette 19ème édition, nous serons à nouveau présents 6 semaines !";
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} transparentHeader={true}>
   <!-- Hero Section -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
-            LE CAMP À VERBIER
-          </h1>
-          <h3 class="text-xl md:text-2xl font-bold text-primary mb-6">
-            du 06 Juillet au 15 Août 2026
-          </h3>
-          
-          <div class="prose prose-lg max-w-none">
-            <p>Pour cette 19ème édition, nous serons à nouveau présents <strong>6 semaines</strong> !</p>
-            <p>Le camp débutera le Lundi 06 Juillet avec l'accueil des participants <strong>dès 8h45 au Parc de Loisirs – Route de Verbier</strong> <strong>(les internes seront accueillis la veille dès 16h)</strong> et se terminera le Samedi 15 Août.</p>
-            <p><strong>Une équipe de 12 coachs dont 2 préparateurs physiques, sera présente pour vous communiquer sa passion et son expérience.</strong> Notre volonté de communiquer notre enthousiasme, nous a conduits à organiser et ce pour la première année, l'Advanced Junior Tour.</p>
-            <p><strong>Ces tournois accueilleront les compétiteurs en U14 et U16, en simples et bien entendu, en doubles <em>(si les conditions de jeu et météorologiques le permettent).</em></strong></p>
-            <p><strong>Les coachs du team seront présents durant le week-end afin d'aider au mieux les jeunes dans la préparation d'une compétition (échauffement, entraînement, alimentation, etc. ; tous les paramètres pouvant influencer le résultat d'une compétition).</strong></p>
-            <p>Que vous soyez jeunes compétiteurs ou adultes passionnés, notre équipe vous propose une formule adaptée à vos attentes.</p>
-          </div>
-          
-          <div class="mt-8">
-            <Button href="/programmes-et-tarifs/" variant="primary" size="lg">
-              PLUS D'INFOS
-            </Button>
-          </div>
-        </div>
-        
-        <div class="flex justify-center">
-          <Image 
-            src={essVerbierLogo}
-            alt="ESS Verbier" 
-            class="w-64 h-64 object-contain"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <CampHero
+    title="LE CAMP À VERBIER"
+    subtitle="du 06 Juillet au 15 Août 2026"
+    buttonText="PLUS D'INFOS"
+    buttonLink="/programmes-et-tarifs/"
+    heroImage={camp3172}
+    secondaryImage={essVerbierLogo}
+    secondaryImageAlt="ESS Verbier"
+  >
+    <p>Pour cette 19ème édition, nous serons à nouveau présents <strong>6 semaines</strong> !</p>
+    <p>Le camp débutera le Lundi 06 Juillet avec l'accueil des participants <strong>dès 8h45 au Parc de Loisirs – Route de Verbier</strong> <strong>(les internes seront accueillis la veille dès 16h)</strong> et se terminera le Samedi 15 Août.</p>
+    <p><strong>Une équipe de 12 coachs dont 2 préparateurs physiques, sera présente pour vous communiquer sa passion et son expérience.</strong> Notre volonté de communiquer notre enthousiasme, nous a conduits à organiser et ce pour la première année, l'Advanced Junior Tour.</p>
+    <p><strong>Ces tournois accueilleront les compétiteurs en U14 et U16, en simples et bien entendu, en doubles <em>(si les conditions de jeu et météorologiques le permettent).</em></strong></p>
+    <p><strong>Les coachs du team seront présents durant le week-end afin d'aider au mieux les jeunes dans la préparation d'une compétition (échauffement, entraînement, alimentation, etc. ; tous les paramètres pouvant influencer le résultat d'une compétition).</strong></p>
+    <p>Que vous soyez jeunes compétiteurs ou adultes passionnés, notre équipe vous propose une formule adaptée à vos attentes.</p>
+  </CampHero>
   
   <!-- Video Section -->
   <section class="py-12 bg-gray-50">

@@ -1,0 +1,72 @@
+---
+interface Props {
+  editionNumber: string;        // e.g., "19"
+  editionSuffix: string;         // e.g., "ème" (FR) or "th" (EN)
+  editionLabel: string;          // e.g., "édition" (FR) or "edition" (EN)
+  heading: string;               // Welcome message text
+  lang?: string;                 // Language code (e.g., "en", "fr")
+}
+
+const {
+  editionNumber,
+  editionSuffix,
+  editionLabel,
+  heading,
+  lang = "fr",
+} = Astro.props;
+---
+
+<section id="welcome-section" class="py-8 bg-white flex flex-col items-center justify-center mb-8 " lang={lang}>
+  <div class=" flex md:flex-row items-center justify-center  gap-4 mx-auto max-w-[90%] md:mx-0 md:max-w-[75%]">    
+    <div id="vertical-line" class="hidden lg:block min-w-[3px] min-h-[120px] md:min-h-[150px] h-full bg-primary mx-4"></div>
+    <h3 id="welcome-heading" class="welcome-heading text-4xl md:text-5xl font-extrabold text-primary mb-4 leading-[1.05] col-span-2 min-w-[90%] md:min-w-[60%] ">
+      {heading}
+    </h3>
+  </div>
+</section>
+<script>
+  import { animate, onScroll, stagger, splitText } from "animejs";
+  const verticalLine = document.querySelector('#vertical-line');
+  // Use addEffect() for proper timing with font loading and responsive splits
+  splitText('#welcome-heading', {
+    lines: {
+      wrap: 'clip',
+      clone: 'bottom'
+    }
+  })
+  .addEffect(({ lines }) => {
+    console.log('Effect initialized with lines:', lines);
+    
+    // Animate the primary colored lines appearing from top
+    return animate(lines, {
+      translateY: [{ to: ['150%', '0%'],  }],
+      opacity: [0, 1],
+      delay: stagger(1000),
+      duration: 5000,
+      ease: 'out(3)',
+      autoplay: onScroll({
+        target: '#welcome-section',
+        enter: 'bottom top',
+        leave: '40% bottom',
+
+        sync: true,
+      }),
+
+    });
+  })
+  .addEffect(({lines})=>{
+    return animate(verticalLine as any,{
+      scaleY: [0, 1],
+      duration: 5000,
+      ease: 'out(3)',
+      autoplay: onScroll({
+        target: '#welcome-section',
+        enter: 'bottom top',
+        leave: '40% bottom',
+
+        sync: true,
+      }),
+    })
+  });
+</script>
+

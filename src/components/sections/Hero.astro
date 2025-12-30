@@ -104,13 +104,13 @@ const {
     if (heroSection && heroContent) {
       // Content parallax: moves slightly up to enhance the effect
       animate(heroContent, {
-        translateY: [0, -100],
+        translateY: isSmall ? [0, -50] : [0, -100],
         opacity: [1, 0], // Optional: fade out slightly as it leaves
         autoplay: onScroll({
           target: heroSection,
           sync: true,
           enter: "top top",
-          leave: "top 20%",
+          leave: "top 25%",
           // debug: true,
         })
       });

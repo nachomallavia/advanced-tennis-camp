@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  quote: string;                 // Founder's quote
+  authorName: string;            // e.g., "C.Cornu"
+  authorTitle: string;           // e.g., "Fondateur et Entraîneur Principal"
+  authorImage: ImageMetadata;    // Image import for flexibility
+  authorImageAlt?: string;       // Alt text for the image
+  lang?: string;                 // Language code (e.g., "en", "fr")
+}
+
+const {
+  quote,
+  authorName,
+  authorTitle,
+  authorImage,
+  authorImageAlt = authorName,
+  lang = "fr",
+} = Astro.props;
+---
+
+<section class="  flex flex-col items-center justify-center min-h-[50vh] " lang={lang}>
+  <div class="bg-neutral-100 p-8 md:p-12 md:rounded-lg flex flex-col items-center md:items-end gap-4 max-w-[90%] md:max-w-[65%] mx-auto md:mx-0">
+    <p class="italic text-center md:text-left mx-auto md:mx-0">
+      "{quote}"
+      <br/>
+    </p>
+    <div class="flex gap-4 items-center">
+      <Image src={authorImage} alt={authorImageAlt} class="w-24 h-24 rounded-full object-cover" />
+      <span class="text-gray-800 text-xs md:text-base font-bold" set:html={authorName + " — <br/>" + authorTitle}></span>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import SingleFeature from './SingleFeature.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  buttonLink: string;
+  heroImage: ImageMetadata;
+  secondaryImage: ImageMetadata;
+  secondaryImageAlt?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  buttonText, 
+  buttonLink, 
+  heroImage, 
+  secondaryImage,
+  secondaryImageAlt = "Partner Logo"
+} = Astro.props;
+---
+
+<section class="bg-white overflow-hidden" data-camp-hero>
+  <div class="mx-auto">
+    <div class="relative" data-hero-image-container>
+      <Image 
+        src={heroImage} 
+        alt={title} 
+        class="w-full h-auto z-0" 
+        data-hero-image
+      />
+    </div>
+    
+    <SingleFeature
+      headline={title}
+      tagline={subtitle}
+      primaryButtonText={buttonText}
+      primaryButtonHref={buttonLink}
+      isReversed={true}
+      class="py-12"
+    >
+      <Image 
+        slot="image"
+        src={secondaryImage}
+        alt={secondaryImageAlt} 
+        class="w-64 h-64 object-contain mx-auto"
+      />
+      <slot />
+    </SingleFeature>
+  </div>
+</section>
+
