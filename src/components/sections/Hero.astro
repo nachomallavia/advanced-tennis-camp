@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { 
-  videoSrc = "https://res.cloudinary.com/duykgwmak/video/upload/br_800k,q_auto:good/v1766412197/videobg2_h3f53c.webm", 
+  videoSrc = "https://res.cloudinary.com/duykgwmak/video/upload/ac_none,q_auto:good,vc_auto/v1767636182/Tennis_Home_Page_2026_flgtvj.webm", 
   title, 
   tagline, 
   dates, 
@@ -93,7 +93,7 @@ const {
         translateY: isSmall ? [0, 50] : [0, 100],
         autoplay: onScroll({
           target: heroSection,
-          sync: true,
+          sync: 0.95,
           enter: "top top",
           leave: "top 25%",
           // debug: true,
@@ -108,7 +108,7 @@ const {
         opacity: [1, 0], // Optional: fade out slightly as it leaves
         autoplay: onScroll({
           target: heroSection,
-          sync: true,
+          sync: 0.95,
           enter: "top top",
           leave: "top 25%",
           // debug: true,

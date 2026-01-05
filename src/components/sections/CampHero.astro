@@ -29,7 +29,7 @@ const {
       <Image 
         src={heroImage} 
         alt={title} 
-        class="w-full h-auto z-0" 
+        class="w-full h-auto min-h-[65vh] object-cover z-0" 
         data-hero-image
       />
     </div>
@@ -40,7 +40,7 @@ const {
       primaryButtonText={buttonText}
       primaryButtonHref={buttonLink}
       isReversed={true}
-      class="py-12"
+      class="md:py-12"
     >
       <Image 
         slot="image"

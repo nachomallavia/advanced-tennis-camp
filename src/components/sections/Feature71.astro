@@ -57,13 +57,13 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
 }));
 ---
 
-<section class={cn("py-16", className)}>
+<section class={cn("", className)}>
   <div class="container mx-auto px-4 flex flex-col items-center gap-12">
     <!-- Grid Section -->
     <div class="grid w-full grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-4">
       <!-- First Featured Card -->
       {processedCards[0] && (
-        <div class="col-span-2 sm:max-lg:col-span-2 overflow-clip rounded-md">
+        <div class="col-span-2 sm:max-lg:col-span-2 overflow-clip rounded-none">
           <DirectionAwareHover 
             client:load
             imageUrl={processedCards[0].imageUrl}
@@ -88,16 +88,16 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
       <!-- Metrics Grid -->
       {metrics.slice(0, 2).map((metric) => (
 
-          <MetricCard className="rounded-md" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
+          <MetricCard className="rounded-none" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
       ))}
 
       {metrics.slice(2, 4).map((metric) => (
-        <MetricCard className="rounded-md" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
+        <MetricCard className="rounded-none" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
       ))}
 
       <!-- Second Featured Card -->
       {processedCards[1] && (
-        <div class="col-span-2 sm:max-lg:col-span-1 overflow-clip rounded-md">
+        <div class="col-span-2 sm:max-lg:col-span-1 overflow-clip rounded-none">
           <DirectionAwareHover 
             client:load
             imageUrl={processedCards[1].imageUrl}

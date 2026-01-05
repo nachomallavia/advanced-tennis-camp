@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/starwind/carousel";
-
+import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
 // Import images
 import juniorCampImg from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
 import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
@@ -22,7 +22,7 @@ const { lang } = Astro.props;
 
 const content = {
   fr: {
-    title: "NOS PROGRAMMES",
+    title: "Nos programmes",
     buttonAll: "Voir tous les programmes",
     allProgramsHref: "/programmes-et-tarifs/",
     programs: [
@@ -53,7 +53,7 @@ const content = {
     ]
   },
   en: {
-    title: "OUR PROGRAMS",
+    title: "Our programs",
     buttonAll: "View all programs",
     allProgramsHref: "/en/programs-and-prices/",
     programs: [
@@ -88,35 +88,36 @@ const content = {
 const t = content[lang];
 ---
 
-<section class="py-24 bg-neutral-50 overflow-hidden">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl md:text-5xl font-bold text-primary text-center mb-16">
-      {t.title}
-    </h2>
+<section class="py-12 bg-white overflow-hidden">
+  <h4 class="text-2xl md:text-2xl font-bold text-neutral-600 text-center mb-16 ">
+    {t.title}
+  </h4>
+  <div class=" mx-auto">
+    
     
     <Carousel 
       id="programs-carousel"
       autoInit={false}
       opts={{ align: "center", loop: true }} 
-      class="w-full mx-auto"
+      class="w-full mx-auto relative min-h-[65vh] bg-neutral-100 py-8"
     >
-      <CarouselContent class="-ml-4">
+      <CarouselContent class="-ml-4  w-full min-h-full">
         {t.programs.map((program) => (
-          <CarouselItem class="pl-4 basis-[85%] md:basis-[70%]">
-            <div class="program-slide bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row min-h-[400px] transition-transform duration-500 ease-out">
-              <div class="md:w-1/2 relative aspect-video md:aspect-auto">
+          <CarouselItem class=" container pl-4 basis-[85%] md:basis-[70%]  min-h-full">
+            <div class="program-slide overflow-hidden flex flex-col md:flex-row items-center mx-auto min-h-[400px] transition-transform duration-500 ease-out">
+              <div class="w-full md:w-1/2 relative rounded-md overflow-hidden aspect-video">
                 <Image 
                   src={program.image}
                   alt={program.title} 
                   class="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
-              <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center items-start text-left">
+              <div class="program-content md:w-1/2 p-4 md:p-12 flex flex-col justify-center items-center md:items-start text-left">
                 <h3 class="text-2xl md:text-4xl font-bold text-primary mb-4">{program.title}</h3>
                 <p class="text-neutral-600 text-lg mb-8 leading-relaxed">
                   {program.description}
                 </p>
-                <Button href={program.href} variant="primary" size="lg">
+                <Button href={program.href} variant="primary" size="lg" class="w-full md:w-auto">
                   {program.buttonText}
                 </Button>
               </div>
@@ -124,18 +125,21 @@ const t = content[lang];
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div class="flex justify-center items-center gap-6 mt-12">
-        <CarouselPrevious class="static translate-y-0" />
-        <div id="carousel-dots" class="flex gap-2"></div>
-        <CarouselNext class="static translate-y-0" />
+      <div class="flex flex-col justify-end items-center mt-12 md:mt-24 w-full">
+        <div class="flex justify-end items-center gap-6">
+          <CarouselPrevious class="static w-10 h-10" />
+          <div id="carousel-dots" class="flex translate-y-[-0.4rem] gap-2 h-10">
+
+        </div>
+        <CarouselNext class="static w-10 h-10" />
+        </div>
+        <Button href={t.allProgramsHref} variant="ghost" size="lg" class="w-auto hover:bg-neutral-200 mb-8">
+          {t.buttonAll}
+        </Button>
       </div>
     </Carousel>
     
-    <div class="text-center mt-16">
-      <Button href={t.allProgramsHref} variant="outline" size="lg">
-        {t.buttonAll}
-      </Button>
-    </div>
+   
   </div>
 </section>
 
@@ -152,6 +156,7 @@ const t = content[lang];
 
     const api = manager.api;
     const slides = carouselElement.querySelectorAll('.program-slide');
+    const contents = carouselElement.querySelectorAll('.program-content');
     const dotsContainer = carouselElement.querySelector('#carousel-dots');
 
     // Create dots
@@ -170,16 +175,25 @@ const t = content[lang];
     const updateUI = () => {
       const selectedIndex = api.selectedScrollSnap();
       
-      // Update Scaling
+      // Update Scaling and Content Visibility
       slides.forEach((slide, index) => {
         const isSelected = index === selectedIndex;
+        const content = contents[index];
         
         animate(slide, {
-          scale: isSelected ? 1 : 0.85,
-          opacity: isSelected ? 1 : 0.4,
+          scale: isSelected ? 1 : 0.90,
+          opacity: isSelected ? 1 : 0.9,
           duration: 600,
           ease: 'outQuart'
         });
+
+        if (content) {
+          animate(content, {
+            opacity: isSelected ? 1 : 0,
+            duration: 400,
+            ease: 'outQuart'
+          });
+        }
       });
 
       // Update Dots
