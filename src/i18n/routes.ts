@@ -2,7 +2,6 @@ export const routes = {
   fr: {
     'home': '/',
     'camp': '/le-camp/',
-    'programs': '/programmes-et-tarifs/',
     'tournament': '/tournoi-itf-junior/',
     'bike': '/bike-play/',
     'golf': '/golf-play/',
@@ -13,7 +12,6 @@ export const routes = {
   en: {
     'home': '/en/',
     'camp': '/en/the-camp/',
-    'programs': '/en/programs-and-prices/',
     'tournament': '/en/junior-tour/',
     'bike': '/en/bike-play/',
     'golf': '/en/golf-play/',
@@ -27,7 +25,6 @@ export const routes = {
 export const routeToKey: Record<string, string> = {
   '/': 'home',
   '/le-camp/': 'camp',
-  '/programmes-et-tarifs/': 'programs',
   '/tournoi-itf-junior/': 'tournament',
   '/bike-play/': 'bike',
   '/golf-play/': 'golf',
@@ -36,7 +33,6 @@ export const routeToKey: Record<string, string> = {
   '/contact/': 'contact',
   '/en/': 'home',
   '/en/the-camp/': 'camp',
-  '/en/programs-and-prices/': 'programs',
   '/en/junior-tour/': 'tournament',
   '/en/bike-play/': 'bike',
   '/en/golf-play/': 'golf',

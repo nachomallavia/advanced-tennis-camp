@@ -11,6 +11,10 @@ import tomImg from '@/assets/images/camp/TOM_4878.jpg';
 import advancedTrainingImg from '@/assets/images/camp/camptennis-9511.jpg';
 import lemaniaImg from '@/assets/images/camp/LEMANIA_ALPIMAGES-21-1024x684.jpg';
 import seniorCampImg from '@/assets/images/camp/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg';
+import miniChampionsImg from '@/assets/images/camp/camptennis-9564.jpg';
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
+import tom4908 from '@/assets/images/select/TOM_4908.avif';
 // Partner logos
 import logoIntersport from '@/assets/images/logos/ATC_-logo-intersport.png';
 import logoCentreSportif from '@/assets/images/logos/ATC_-logo-centre-sportif.png';
@@ -36,18 +40,16 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   <CampHero
     title="LE CAMP À VERBIER"
     subtitle="du 06 Juillet au 15 Août 2026"
-    buttonText="PLUS D'INFOS"
-    buttonLink="/programmes-et-tarifs/"
+    buttonText="CONTACT ET RÉSERVATION"
+    buttonLink="/contact/"
     heroImage={camp3172}
     secondaryImage={essVerbierLogo}
     secondaryImageAlt="ESS Verbier"
   >
-    <p>Pour cette 19ème édition, nous serons à nouveau présents <strong>6 semaines</strong> !</p>
-    <p>Le camp débutera le Lundi 06 Juillet avec l'accueil des participants <strong>dès 8h45 au Parc de Loisirs – Route de Verbier</strong> <strong>(les internes seront accueillis la veille dès 16h)</strong> et se terminera le Samedi 15 Août.</p>
-    <p><strong>Une équipe de 12 coachs dont 2 préparateurs physiques, sera présente pour vous communiquer sa passion et son expérience.</strong> Notre volonté de communiquer notre enthousiasme, nous a conduits à organiser et ce pour la première année, l'Advanced Junior Tour.</p>
-    <p><strong>Ces tournois accueilleront les compétiteurs en U14 et U16, en simples et bien entendu, en doubles <em>(si les conditions de jeu et météorologiques le permettent).</em></strong></p>
-    <p><strong>Les coachs du team seront présents durant le week-end afin d'aider au mieux les jeunes dans la préparation d'une compétition (échauffement, entraînement, alimentation, etc. ; tous les paramètres pouvant influencer le résultat d'une compétition).</strong></p>
-    <p>Que vous soyez jeunes compétiteurs ou adultes passionnés, notre équipe vous propose une formule adaptée à vos attentes.</p>
+    <p><strong>Prêts pour la 19e édition ?!</strong></p>
+    <p>Le camp débutera le Lundi 06 Juillet avec l'accueil des participants <strong>dès 8h45 au Parc de Loisirs – Route de Verbier (les internes seront accueillis la veille dès 16h)</strong>. Il prendra fin le Samedi 15 Août.</p>
+    <p><strong>Une équipe de 12 coachs dont 2 préparateurs physiques, sera présente pour transmettre sa passion et son expérience.</strong> Du mini tennis au Junior Tour pour les plus compétiteurs, nous avons l'accompagnement qu'il faut.</p>
+    <p>Enfin, que vous soyez jeunes pratiquants, compétiteurs ou adultes passionnés, avec <a href="https://advancedtennisacademy.ch" target="_blank" rel="noopener" class="text-white hover:underline">l'Advanced Tennis Academy</a> notre équipe est également disponible pour des cours privés ou collectifs. L'Academy s'est agrandie en 2025, en accueillant également le Padel et le Pickleball dans ses disciplines ! A vous de jouer !</p>
   </CampHero>
   
   <!-- Video Section -->
@@ -68,13 +70,52 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
     </div>
   </section>
   
-  <!-- Junior Camp Section -->
+  <!-- Minis Champions Section -->
   <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
           <Image 
-            src={tomImg}
+            src={miniChampionsImg}
+            alt="Minis Champions" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+            Minis champions (5 à 7 ans)
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p><strong>Le rendez-vous pour vos Mini-Champions âgés de 5 à 7 ans.</strong></p>
+            <p>Avec nos coachs, chaque jour est une nouvelle aventure pour nos plus jeunes compagnons.</p>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
+            <ul class="space-y-2">
+              <li><strong>Lundi:</strong> Accueil des loulous et rencontres avec les familles</li>
+              <li><strong>Mardi à vendredi:</strong> Petit déjeuner 8h, accueil au Parc des Loisirs à 9h, tennis le matin, repas de midi avec les amis et activités encadrées l'après-midi (mini-golf, escalade, promenade, poney, gymnastique…) jusqu'à 16h00.</li>
+              <li><strong>Samedi:</strong> Fin de la semaine de camp et remise des prix sur la terrasse du Chalet d'Adrien ou du Vieux Verbier à 11h30 suivi d'un cocktail gourmand.</li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarif</h3>
+            <p><strong>Camp en ½ pension : CHF 690.-/semaine</strong></p>
+          </div>
+          <div class="mt-8">
+            <Button href="/contact/" variant="primary">
+              CONTACT ET RÉSERVATION
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Junior Camp Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <Image 
+            src={tom4908}
             alt="Junior Camp" 
             class="w-full rounded-lg shadow-lg"
           />
@@ -84,22 +125,28 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
             Junior camp
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p>Les internes seront hébergés <strong>dans deux différents chalets</strong>.</p>
-            <p><strong>Entraînement en groupe de 4 maximum par court</strong> afin d'avoir un encadrement performant et des niveaux homogènes, la journée sera intense.</p>
-            <p>Après un petit déjeuner en compagnie du team Advanced, vous partirez pour un échauffement physique suivi d'une matinée durant laquelle vous travaillerez en ateliers (physique et tennis). L'après-midi sera consacré (toujours sous forme d'ateliers) à la mise en place de schémas de jeu.</p>
-            <p><strong>A partir de 17h00 vous pourrez enfin vous reposer (temps libre, piscine, beach-volley, etc). Les coachs veilleront sur vous.</strong></p>
+            <p><strong>Le camp pour les compétiteurs et compétitrices accessible dès 8 ans !</strong></p>
+            <p>Au choix avec ou sans hébergement, les jeunes sont en immersion totale.</p>
+            <p><strong>Entraînement en groupe de 4 maximum par court afin d'avoir un encadrement performant et des niveaux homogènes, les journées seront intenses.</strong></p>
             
             <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
             <ul class="space-y-2">
-              <li><strong>Lundi:</strong> accueil des stagiaires au Parc des Loisirs – Route de Verbier – <strong>dès 8h45</strong> (<strong>le dimanche soir dès 16h pour les internes</strong>), remise du cadeau de bienvenue, évaluation des niveaux.</li>
-              <li><strong>Mardi à vendredi:</strong> petit déjeuner 8h, accueil au Parc des Loisirs à 9h, journée tennis jusqu'à 17h, temps libre avec accompagnement, diner 20h, retour aux chambres 21h15.</li>
-              <li><strong>Vendredi:</strong> début du masters Advanced Tennis Camp dès 14h (simples et doubles).</li>
+              <li><strong>Lundi:</strong> Accueil des stagiaires, rencontre de l'équipe et évaluation des niveaux.</li>
+              <li><strong>Mardi à vendredi:</strong> Petit déjeuner 8h, accueil au Parc des Loisirs à 9h, journée tennis (préparation physique, ateliers technique tennis, schéma de jeu) jusqu'à 17h puis repos et temps libre avec les coachs jusqu'au dîner à 20h et retour aux chambres 21h15.</li>
+              <li><strong>Vendredi:</strong> Début du masters Advanced Tennis Camp dès 14h (simples et doubles).</li>
               <li><strong>Samedi:</strong> Fin de stage et remise des prix sur la terrasse du Chalet d'Adrien ou du Vieux Verbier à 11h30 suivi d'un cocktail gourmand.</li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarifs</h3>
+            <ul class="space-y-2">
+              <li><strong>Camp avec hébergement et pension complète : CHF 1550.-/semaine</strong></li>
+              <li><strong>Camp sans hébergement en 1/2 pension : CHF 990.-/semaine</strong></li>
+              <li><strong>Semaine entière sur la base de 1/2 journées uniquement : CHF 650.-/semaine</strong></li>
             </ul>
           </div>
           <div class="mt-8">
-            <Button href="/programmes-et-tarifs/" variant="primary">
-              PLUS D'INFOS
+            <Button href="/contact/" variant="primary">
+              CONTACT ET RÉSERVATION
             </Button>
           </div>
         </div>
@@ -108,7 +155,7 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   </section>
   
   <!-- Advanced Training Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -116,20 +163,25 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
             Advanced training program
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p><strong>Notre expertise de l'entraînement d'athlètes de Ht-Niveau nous a conduits à développer un programme physique et tennis combiné en altitude.</strong></p>
-            <p>Que vous soyez en préparation pour un évènement majeur (championnat de France, Suisse ou tournois internationaux) ou simplement dans une phase d'apprentissage, ce programme vous est destiné.</p>
+            <p>Ce programme est destiné aux jeunes ayant l'habitude de s'entrainer au moins 4 fois par semaine en club et qui souhaitent développer leurs qualités de compétiteurs et compétitrices.</p>
+            <p><strong>Notre expertise de l'entraînement d'athlètes de Haut-Niveau nous a conduits à développer un programme physique et tennis combiné en altitude.</strong></p>
+            <p>En préparation pour un évènement majeur (championnat de France, Suisse ou tournois internationaux) ou simplement dans une phase d'apprentissage, ce programme est idéal.</p>
+            <p>Nous limitons l'entrainement à 4 personnes maximum par court.</p>
             
             <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
             <ul class="space-y-2">
-              <li><strong>Lundi:</strong> accueil des stagiaires au Parc des Loisirs – Route de Verbier – <strong>dès 9h45</strong> (le dimanche soir dès 16h pour les internes), remise du cadeau de bienvenue.</li>
-              <li><strong>Mardi à vendredi:</strong> accueil au Parc des Loisirs – Route de Verbier – 9h45, 10 à 11h30 entraînement physique (force, vitesse, coordination) en fonction des ages et des besoins ciblés; 16h30 à 18h entraînement tennis en relation avec le thème développé le matin.</li>
-              <li><strong>Vendredi:</strong> suivi en tournoi en Suisse <strong><em>(sur demande)</em></strong>.</li>
-              <li><strong>Samedi:</strong> suivi en tournoi en Suisse <strong><em>(sur demande)</em></strong>. Fin de stage et remise des prix sur la terrasse du Chalet d'Adrien ou du Vieux Verbier à 11h30 suivi d'un cocktail gourmand.</li>
+              <li><strong>Lundi :</strong> Accueil des stagiaires, rencontre de l'équipe et évaluation des niveaux.</li>
+              <li><strong>Mardi à vendredi :</strong> Rendez-vous au Parc de Loisirs à 9h45 pour l'entrainement physique de 10h à 11h30 (force, vitesse, coordination) en fonction des âges et des besoins ciblés; 16h30 à 18h entraînement tennis en relation avec le thème développé le matin.</li>
+              <li><strong>Vendredi :</strong> suivi en tournoi en Suisse (sur demande).</li>
+              <li><strong>Samedi :</strong> suivi en tournoi en Suisse (sur demande). Fin de stage et remise des prix sur la terrasse du Chalet d'Adrien ou du Vieux Verbier à 11h30 suivi d'un cocktail gourmand.</li>
             </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarif</h3>
+            <p><strong>5 jours : CHF 890.-/personne</strong></p>
           </div>
           <div class="mt-8">
-            <Button href="/programmes-et-tarifs/" variant="primary">
-              PLUS D'INFOS
+            <Button href="/contact/" variant="primary">
+              CONTACT ET RÉSERVATION
             </Button>
           </div>
         </div>
@@ -145,7 +197,7 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   </section>
   
   <!-- Programme école et tennis Section -->
-  <section class="py-12 bg-white">
+  <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
@@ -160,20 +212,29 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
             Programme école et tennis
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p><strong>En collaboration avec l'Ecole internationale de Verbier et Verbier Language School</strong> profitez d'une superbe semaine de tennis combinée avec du <strong>perfectionnement scolaire 1h15 par jour</strong> (discipline de votre choix, Mathématique, cours de langues etc…)</p>
+            <p><strong>En collaboration avec l'<a href="http://www.lvis.ch/" target="_blank" rel="noopener" class="text-primary hover:underline">Ecole Internationale de Verbier</a> et <a href="https://www.verbierlanguageschool.com/" target="_blank" rel="noopener" class="text-primary hover:underline">Verbier Language School</a></strong> profitez d'une superbe semaine de tennis combinée avec du perfectionnement langue 1h15 par jour.</p>
             
             <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
+            <p>Du lundi au vendredi :</p>
             <ul class="space-y-2">
-              <li>Du lundi au vendredi</li>
               <li>Tennis de 9h à 12h</li>
-              <li><strong>Perfectionnement scolaire de 13h à 14h30</strong></li>
               <li>Repas de midi tous ensemble</li>
+              <li>Perfectionnement scolaire de 13h à 14h30</li>
               <li>Tennis de 14h30 à 16h30</li>
             </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarifs</h3>
+            <ul class="space-y-2">
+              <li><strong>Sans hébergement : CHF 1390.-/semaine</strong></li>
+              <li><strong>Avec hébergement : CHF 1850.-/semaine</strong></li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Omnisports</h3>
+            <p><strong>La première partie du centre sportif est désormais opérationnelle.</strong> Avec plusieurs murs d'escalade, une grande salle de sport et des courts de squash et de tennis, nous utiliserons cette installation en cas de mauvais temps !</p>
           </div>
           <div class="mt-8">
-            <Button href="/programmes-et-tarifs/" variant="primary">
-              PLUS D'INFOS
+            <Button href="/contact/" variant="primary">
+              CONTACT ET RÉSERVATION
             </Button>
           </div>
         </div>
@@ -182,21 +243,31 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   </section>
   
   <!-- Senior Camp Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
-            Senior camp
+            Senior camp & 105
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p><strong>En groupe de 4 maximum* par court</strong>, préparez vous à transpirer !</p>
-            <p>Les coachs de l'Advanced Tennis Camp vous ont concoctés un programme où tous les coups de tennis seront abordés et bien sûr comme chacun le sait le jeu de jambes sera au centre des débats.</p>
-            <p><em><strong>* à partir de 17h00 et pendant 1h30 (autres horaires sur demande)</strong></em></p>
+            <p>En groupe de 4 maximum par court, préparez-vous à transpirer !</p>
+            <p>Les coachs de l'Advanced Tennis Camp vous ont concoctés un programme où tous les coups de tennis seront abordés et bien sûr comme chacun le sait le jeu de jambes sera au centre des débats. Tous les soirs rejoignez-nous de 17h à 19h00 en entrainement collectif où ensemble nous faisons rimer transpiration, rire et convivialité !</p>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarifs</h3>
+            <ul class="space-y-2">
+              <li><strong>Du lundi au vendredi sans hébergement : CHF 610.-</strong></li>
+              <li><strong>Cours privés en fonction des disponibilités de l'équipe :</strong>
+                <ul class="ml-6 mt-2 space-y-1">
+                  <li>CHF 110.-/heure</li>
+                  <li>CHF 300.- pour un pack de 3 heures.</li>
+                </ul>
+              </li>
+            </ul>
           </div>
           <div class="mt-8">
-            <Button href="/programmes-et-tarifs/" variant="primary">
-              PLUS D'INFOS
+            <Button href="/contact/" variant="primary">
+              CONTACT ET RÉSERVATION
             </Button>
           </div>
         </div>
@@ -211,8 +282,98 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
     </div>
   </section>
   
-  <!-- Partner Logos Section -->
+  <!-- BIKE + PLAY & GOLF + PLAY -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- BIKE + PLAY -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <Image 
+            src={bikePlayImg}
+            alt="BIKE + PLAY" 
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white p-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">BIKE + PLAY</h2>
+            <p class="text-center mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Le matin ou en début d'après-midi, vos enfants découvriront et s'exerceront sur différents types de vélos ! <strong>BMX, enduro, descente, Skate board pourront être programmés…</strong>
+            </p>
+            <Button href="/bike-play/" variant="secondary">
+              Programme complet
+            </Button>
+          </div>
+        </div>
+        
+        <!-- GOLF + PLAY -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <Image 
+            src={golfPlayImg}
+            alt="GOLF + PLAY" 
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white p-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">GOLF + PLAY</h2>
+            <p class="text-center mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Vos enfants rencontreront <strong>Mike et son équipe</strong> pour apprendre, jouer et performer sur le green ! Ceux qui ont rencontré Mike savent qu'ils sont entre de bonnes mains !
+            </p>
+            <Button href="/golf-play/" variant="secondary">
+              Programme complet
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Info Section -->
   <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-8">INFOS PRATIQUES</h1>
+      
+      <!-- Map -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary mb-4">RENDEZ-VOUS AU PARC DES LOISIRS</h2>
+        <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2766.755852111139!2d7.2236749748450375!3d46.09584379107546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ece34cd5330b3%3A0xd4a079d35d4fec8f!2sVerbier%20Leisure%20Park!5e0!3m2!1sen!2sfr!4v1706182249688!5m2!1sen!2sfr" 
+            class="w-full h-full"
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Téléphérique | Tennis au Châble</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>Pour que vos enfants profitent pleinement de l'atmosphère de Verbier, nous utiliserons également le court de tennis du Châble.</strong> Notre partenaire Televerbier veillera à ce que vos enfants soient transportés en toute sécurité en téléphérique jusqu'aux courts de tennis.
+          </p>
+          <a href="http://www.televerbier.ch/" target="_blank" rel="noopener" class="text-primary hover:underline font-medium">
+            www.televerbier.ch
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Petit déjeuner/déjeuner/dîner au Time Out Restaurant</h3>
+          <p class="text-gray-700">
+            Chaque jour, les étudiants prendront le petit déjeuner, le déjeuner et le dîner en centre-ville chez Martin. <strong>Connu de tous à Verbier et l'un des meilleurs endroits pour "se restaurer" en ville.</strong>
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Chalet d'Adrien</h3>
+          <p class="text-gray-700">
+            <strong>Fin du camp avec une cérémonie de remise des prix au prestigieux Relais Châteaux Chalet d'Adrien à 11h30</strong> suivie d'un cocktail sur la terrasse élue 'Meilleure d'Europe'.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Partner Logos Section -->
+  <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         <a href="https://www.philippe-roux.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">

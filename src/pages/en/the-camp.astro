@@ -14,6 +14,9 @@ import tom4908 from '@/assets/images/select/TOM_4908.avif';
 import advancedTrainingImg from '@/assets/images/select/11-3.avif';
 import lemaniaImg from '@/assets/images/camp/LEMANIA_ALPIMAGES-21-1024x684.jpg';
 import seniorCampImg from '@/assets/images/camp/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg';
+import miniChampionsImg from '@/assets/images/camp/camptennis-9564.jpg';
+import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
 // Partner logos
 import logoIntersport from '@/assets/images/logos/ATC_-logo-intersport.png';
 import logoCentreSportif from '@/assets/images/logos/ATC_-logo-centre-sportif.png';
@@ -39,18 +42,16 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
   <CampHero
     title="THE CAMP"
     subtitle="from 06 July to 15 August 2026"
-    buttonText="MORE INFO"
-    buttonLink="/en/programs-and-prices/"
+    buttonText="CONTACT & BOOKINGS"
+    buttonLink="/en/contact/"
     heroImage={camp3172}
     secondaryImage={essVerbierLogo}
     secondaryImageAlt="ESS Verbier"
   >
-    <p>For this 19th edition we will be present 6 weeks again, <strong>the camp will start on July 06th with a meeting point at 8.45 am at the Amusement Park – Route de Verbier –</strong> <strong>(boarders will check in the day before at 16h00)</strong> and run through until August 15th.</p>
-    <p><strong>A team of 12 coaches and two physical trainers will be present to share their passion and experience.</strong></p>
-    <p>Our love for the game and desire to communicate our enthusiasm to others lead us to organise the Advanced Junior Tour, a 'masters' style tournament for the young players which for the first time will be played in Verbier.</p>
-    <p><strong>This tournament will feature an under 14's and under 18's category with both singles and doubles being played <em>(if weather conditions permit)</em>.</strong></p>
-    <p>Professional trainers will be present during the weekend in order to help best the young competitors in their training. This includes assistance with warming up, training and nutrition – all essential factors that could influence the result of a competition.</p>
-    <p>For competitors and also enthusiastic adults, our team will offer a training programme adapted to push your expectations.</p>
+    <p><strong>Ready for the 19th edition?!</strong></p>
+    <p>The camp will begin on Monday 6 July with participants arriving at <strong>8.45 am at the Parc de Loisirs – Route de Verbier</strong> (boarders will be welcomed the day before at 4pm). It will end on Saturday 15 August.</p>
+    <p><strong>A team of 12 coaches, including two physical trainers, will be on hand to share their passion and experience.</strong> From mini tennis to the Junior Tour for the most competitive players, we have the support you need.</p>
+    <p>Finally, whether you're young players, competitors or enthusiastic adults, with the <a href="https://advancedtennisacademy.ch" target="_blank" rel="noopener" class="text-white hover:underline">Advanced Tennis Academy</a> our team is also available for private or group lessons. The Academy expanded in 2025 to also include Padel and Pickleball! Your turn to play!</p>
   </CampHero>
   
   <!-- Video Section -->
@@ -71,8 +72,47 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
     </div>
   </section>
   
-  <!-- Junior Camp Section -->
+  <!-- Mini Champions Section -->
   <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <Image 
+            src={miniChampionsImg}
+            alt="Mini Champions" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+            Mini champions (aged 5-7)
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p><strong>The place to be for your Mini Champions aged 5 to 7.</strong></p>
+            <p>With our coaches, every day is a new adventure for our youngest guests.</p>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
+            <ul class="space-y-2">
+              <li><strong>Monday:</strong> Welcome for the little ones and meet and greet with families</li>
+              <li><strong>Tuesday to Friday:</strong> Breakfast at 8am, welcome at the Leisure Park at 9am, tennis in the morning, lunch with friends and supervised activities in the afternoon (mini golf, climbing, walking, pony riding, gymnastics, etc.) until 4pm.</li>
+              <li><strong>Saturday:</strong> End of the camp week and prize-giving on the terrace of the Chalet d'Adrien or the Vieux Verbier at 11.30am, followed by a gourmet cocktail reception.</li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Price</h3>
+            <p><strong>Half-Board Camp: CHF 690.-/week</strong></p>
+          </div>
+          <div class="mt-8">
+            <Button href="/en/contact/" variant="primary">
+              CONTACT & BOOKINGS
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Junior Camp Section -->
+  <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
@@ -87,22 +127,28 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
             Junior camp
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p>Accomodation will be provided at <strong>two different chalets</strong>.</p>
-            <p><strong>Training will be in groups of 4 (maximum) for each lesson</strong> to ensure each child receives the very best tuition – the day will be intense!</p>
-            <p>After breakfast players will leave for training and also morning workshops. During the afternoon there will also be additional workshops to teach the young players tactics and match play schemes.</p>
-            <p><strong>From 5pm onwards there will be free time to rest or take part in extra activities including swimming and volley ball. All activities will be supervised by the Advanced Tennis Camp trainers.</strong></p>
+            <p><strong>The camp for competitors aged 8 and above!</strong></p>
+            <p>With a choice of accommodation or no accommodation, young people are fully immersed in the experience.</p>
+            <p><strong>Training in groups of no more than four per court ensures effective coaching and consistent levels, making for intense days.</strong></p>
             
             <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
             <ul class="space-y-2">
-              <li><strong>Monday:</strong> Welcome meeting with the trainers <strong>at the Amusement Park – Route de Verbier – at 8.45 am</strong> <strong>(boarders on Sunday afternoon at 4 pm)</strong>. A welcome package will also be given to each player.</li>
-              <li><strong>Tuesday to Friday:</strong> Breakfast at 8.00 am followed by a briefing at the Amusement Park at 9.00 am. Tennis throughout the day until 5:00 pm. Free time (supervised) onwards with dinner at 8:00 pm. Curfew at 9:15 pm.</li>
-              <li><strong>Friday:</strong> Beginning of the masters Advanced Junior Tour from 2 pm onwards (singles and doubles).</li>
-              <li><strong>Saturday:</strong> End of the camp with a prize ceremony held at Chalet d'Adrien at 11:30 am followed by a cocktail party.</li>
+              <li><strong>Monday:</strong> Welcome for participants, meeting the team and assessment of levels.</li>
+              <li><strong>Tuesday to Friday:</strong> Breakfast at 8 a.m., arrival at the Parc des Loisirs at 9 a.m., tennis day (physical training, technical tennis workshops, game strategy) until 5 p.m., then rest and free time with the coaches until dinner at 8 p.m. and return to rooms at 9:15 p.m.</li>
+              <li><strong>Friday:</strong> Start of the Advanced Tennis Camp Masters at 2pm (singles and doubles).</li>
+              <li><strong>Saturday:</strong> End of the course and prize-giving ceremony on the terrace of the Chalet d'Adrien or the Vieux Verbier at 11.30am, followed by a gourmet cocktail reception.</li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Prices</h3>
+            <ul class="space-y-2">
+              <li><strong>Camp including accommodation and full board: CHF 1550.-/week</strong></li>
+              <li><strong>Half-board camp (without accommodation): CHF 990.-/week</strong></li>
+              <li><strong>Full week based on ½ days only: CHF 650.-/week</strong></li>
             </ul>
           </div>
           <div class="mt-8">
-            <Button href="/en/programs-and-prices/" variant="primary">
-              MORE INFO
+            <Button href="/en/contact/" variant="primary">
+              CONTACT & BOOKINGS
             </Button>
           </div>
         </div>
@@ -111,7 +157,7 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
   </section>
   
   <!-- Advanced Training Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -119,20 +165,25 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
             Advanced training program
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p><strong>Our major expertise with high level athletes has brought us to develop a physical and tennis specific program whilst training at altitude.</strong></p>
-            <p>If you a preparing for a major event (French, Swiss or international tournament) or a dedicated amateur keen to improve, this program is made for you!</p>
+            <p>This programme is designed for young people who train at least four times a week at a club and want to develop their competitive skills.</p>
+            <p><strong>Our expertise in training high-level athletes has led us to develop a combined physical and tennis programme at altitude.</strong></p>
+            <p>This programme is ideal for preparing for a major event (French or Swiss championships or international tournaments) or simply for learning.</p>
+            <p>We limit training to a maximum of four people per court.</p>
             
             <h3 class="text-xl font-bold text-primary mt-8 mb-4">Program</h3>
             <ul class="space-y-2">
-              <li><strong>Monday:</strong> Welcome meeting with the trainers <strong>at the Amusement Park – Route de Verbier – at 9h45 (boarders on Sunday afternoon at 4.00 pm)</strong>. A welcome package will also be given to each player.</li>
-              <li><strong>Tuesday to Friday:</strong> Briefing at the Amusement Park at 9:45 am followed by physical training (strength, speed, coordination) according to ages and targeted needs from 10:00-11.30. Tennis training in relation to the theme developed from the morning session from 4:30-6:00 pm.</li>
-              <li><strong>Friday:</strong> Tournament in Switzerland <strong><em>(on request)</em></strong>.</li>
-              <li><strong>Saturday:</strong> Tournament in Switzerland <strong><em>(on request)</em></strong>. End of course and awards ceremony on the Chalet d'Adrien terrace at 11:30 am followed by a gourmet cocktail.</li>
+              <li><strong>Monday:</strong> Welcome for trainees, team meeting and assessment of levels.</li>
+              <li><strong>Tuesday to Friday:</strong> Meet at the Parc de Loisirs at 9:45 a.m. for physical training from 10 a.m. to 11:30 a.m. (strength, speed, coordination) according to age and specific needs; 4.30pm to 6pm tennis training related to the theme developed in the morning.</li>
+              <li><strong>Friday:</strong> tournament follow-up in Switzerland (on request).</li>
+              <li><strong>Saturday:</strong> tournament follow-up in Switzerland (on request). End of course and prize-giving on the terrace of the Chalet d'Adrien or the Vieux Verbier at 11.30am, followed by a gourmet cocktail reception.</li>
             </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Price</h3>
+            <p><strong>5 days: CHF 890.-/person</strong></p>
           </div>
           <div class="mt-8">
-            <Button href="/en/programs-and-prices/" variant="primary">
-              MORE INFO
+            <Button href="/en/contact/" variant="primary">
+              CONTACT & BOOKINGS
             </Button>
           </div>
         </div>
@@ -148,7 +199,7 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
   </section>
   
   <!-- Tennis School Program Section -->
-  <section class="py-12 bg-white">
+  <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
@@ -163,20 +214,29 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
             Tennis school program
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p><strong>In collaboration with the <a href="https://verbierinternationalschool.ch/" target="_blank" rel="noopener" class="text-primary hover:underline">Verbier International school</a> and <a href="https://verbierlanguageschool.com/" target="_blank" rel="noopener" class="text-primary hover:underline">Verbier Language School</a></strong>, enjoy a great tennis week and improve your academics combining <strong>1 hour 15mins daily classes</strong> (discipline of your choice such as maths, language courses, etc.)</p>
+            <p><strong>In collaboration with <a href="http://www.lvis.ch/" target="_blank" rel="noopener" class="text-primary hover:underline">Verbier International School</a> and <a href="https://www.verbierlanguageschool.com/" target="_blank" rel="noopener" class="text-primary hover:underline">Verbier Language School</a></strong> Enjoy an amazing week of tennis combined with language improvement for 1 hour and 15 minutes per day.</p>
             
             <h3 class="text-xl font-bold text-primary mt-8 mb-4">Program</h3>
+            <p>From Monday to Friday:</p>
             <ul class="space-y-2">
-              <li>From Monday till Friday</li>
-              <li>Tennis from 09:00-12:00</li>
-              <li>Academic work from 1:00-2:30 pm</li>
-              <li>Lunch all together</li>
-              <li>Tennis from 2:30-4:30 pm</li>
+              <li>Tennis from 9 am to 12 pm.</li>
+              <li>Lunch together with coaches and friends</li>
+              <li>Language improvement from 1 pm to 2.30 pm.</li>
+              <li>Tennis from 2.30 pm to 4.30pm.</li>
             </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Prices</h3>
+            <ul class="space-y-2">
+              <li><strong>Without accommodation: CHF 1390.-/week</strong></li>
+              <li><strong>With accommodation: CHF 1850.-/week</strong></li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Omnisports</h3>
+            <p><strong>The first part of the sports center is now operational.</strong> Featuring several climbing walls, large sports hall and both squash and tennis courts, we will look to utilise this facility in case of bad weather!</p>
           </div>
           <div class="mt-8">
-            <Button href="/en/programs-and-prices/" variant="primary">
-              MORE INFO
+            <Button href="/en/contact/" variant="primary">
+              CONTACT & BOOKINGS
             </Button>
           </div>
         </div>
@@ -185,20 +245,31 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
   </section>
   
   <!-- Senior Camp Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
-            Senior camp
+            Senior camp & 105
           </h2>
           <div class="prose prose-lg max-w-none">
-            <p><strong>Maximum 4 per lesson* – be prepared to sweat!</strong> The Advanced Tennis Camp has prepared a schedule in which any tennis motion will be studied and particularly the motions of the legs that will be analysed in depth. Improve your game with professional coaching in the stunning landscape of Verbier.</p>
-            <p><em><strong>* from 5 pm onwards for 1h30 (other time schedules on request)</strong></em></p>
+            <p>In groups of up to four per court, get ready to work up a sweat!</p>
+            <p>The coaches at Advanced Tennis Camp have put together a programme covering all tennis strokes and, of course, as everyone knows, footwork will be a key focus. Join us every evening from 5pm to 7pm for group training sessions where we combine hard work, laughter and fun!</p>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Prices</h3>
+            <ul class="space-y-2">
+              <li><strong>From Monday to Friday without accommodation: CHF 610.-</strong></li>
+              <li><strong>Private lessons according to our coaches availabilities:</strong>
+                <ul class="ml-6 mt-2 space-y-1">
+                  <li>CHF 110.-/hour</li>
+                  <li>CHF 300.- for 3 hours.</li>
+                </ul>
+              </li>
+            </ul>
           </div>
           <div class="mt-8">
-            <Button href="/en/programs-and-prices/" variant="primary">
-              MORE INFO
+            <Button href="/en/contact/" variant="primary">
+              CONTACT & BOOKINGS
             </Button>
           </div>
         </div>
@@ -213,8 +284,98 @@ const description = "The Camp in Verbier from July 6 to August 15, 2026. For thi
     </div>
   </section>
   
-  <!-- Partner Logos Section -->
+  <!-- BIKE + PLAY & GOLF + PLAY -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- BIKE + PLAY -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <Image 
+            src={bikePlayImg}
+            alt="BIKE + PLAY" 
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white p-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">BIKE + PLAY</h2>
+            <p class="text-center mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              On mornings or early in the afternoons, your children will enjoy discovering and performing on diverse type of bikes! <strong>BMX, enduro, downhill, Skate board could be scheduled…</strong>
+            </p>
+            <Button href="/en/bike-play/" variant="secondary">
+              Full program
+            </Button>
+          </div>
+        </div>
+        
+        <!-- GOLF + PLAY -->
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <Image 
+            src={golfPlayImg}
+            alt="GOLF + PLAY" 
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white p-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">GOLF + PLAY</h2>
+            <p class="text-center mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Your kids will meet <strong>Mike and his team</strong> to learn, play and perform on the green court! Whoever has met Mike know they are in good hands!
+            </p>
+            <Button href="/en/golf-play/" variant="secondary">
+              Full program
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Info Section -->
   <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-8">INFO</h1>
+      
+      <!-- Map -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-primary mb-4">MEETING AT THE AMUSEMENT PARK</h2>
+        <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2766.755852111139!2d7.2236749748450375!3d46.09584379107546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ece34cd5330b3%3A0xd4a079d35d4fec8f!2sVerbier%20Leisure%20Park!5e0!3m2!1sen!2sfr!4v1706182249688!5m2!1sen!2sfr" 
+            class="w-full h-full"
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Cable car | Tennis in Le Chable</h3>
+          <p class="text-gray-700 mb-2">
+            <strong>To make sure your children experience the full atmosphere of Verbier, we will also use the tennis court down in Le Chable.</strong> Our partner Televerbier will ensure your children are safely transported in the cable car down to the tennis courts.
+          </p>
+          <a href="http://www.televerbier.ch/" target="_blank" rel="noopener" class="text-primary hover:underline font-medium">
+            www.televerbier.ch
+          </a>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Breakfast/lunch/dinner at Time Out Restaurant</h3>
+          <p class="text-gray-700">
+            Every day, students will take breakfast, lunch and diner midtown at Chez Martin. <strong>Known all in Verbier and one of the best places to "get food" in town.</strong>
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-primary mb-4">Chalet d'Adrien</h3>
+          <p class="text-gray-700">
+            <strong>End of the camp with a prize ceremony held at Chalet d'Adrien prestigious relais Chateaux at 11:30</strong> followed by a cocktail party on the terrace elected 'Best of Europe'.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Partner Logos Section -->
+  <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         <a href="https://www.philippe-roux.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">
