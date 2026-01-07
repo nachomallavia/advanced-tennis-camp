@@ -118,12 +118,12 @@ export const DirectionAwareHover = ({
           )}
         />
         {/* Base dark overlay */}
-        <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-neutral-800/50 via-neutral-800/10 to-transparent z-10 pointer-events-none mix-blend-multiply" />
         
         {/* Animated extra dark overlay */}
         <div
           ref={overlayRef}
-          className="absolute inset-0 bg-black/30 z-11 pointer-events-none opacity-0"
+          className="absolute inset-0 bg-black/20 z-11 pointer-events-none opacity-0"
         />
         
         <div className={cn("absolute inset-0 z-20", childrenClassName)}>

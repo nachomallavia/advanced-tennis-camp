@@ -5,20 +5,20 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<footer class="bg-cover bg-center bg-no-repeat" style="background-image: url('/images/footer-bg.png');">
-  <div class="min-h-[200px]"></div>
+<footer class="bg-neutral-800 bg-center bg-no-repeat">
+
   
   <!-- Bottom bar -->
-  <div class="bg-white border-t border-neutral-200">
+  <div class=" border-t border-neutral-600">
     <div class="container mx-auto px-4 py-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-        <p class="text-neutral-600">
+        <p class="text-neutral-400">
           Copyright <a href="/" class="text-primary hover:underline">Advanced Tennis Camp</a> 2025 - All Rights Reserved.
         </p>
         <nav>
           <a 
             href={lang === 'fr' ? '/conditions/' : '/en/conditions/'} 
-            class="text-neutral-600 hover:text-primary transition-colors"
+            class="text-neutral-400 hover:text-primary transition-colors"
           >
             Conditions Générales
           </a>

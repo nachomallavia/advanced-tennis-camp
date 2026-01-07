@@ -34,41 +34,42 @@ const {
 ---
 
 <section class={cn("", className)}>
-  <div class="w-full h-full">
+  <div class="w-full">
     <div id="cta6-grid-container"
-      class="relative"
+      class="relative overflow-hidden"
     >
-    <div class="row-start-1 col-start-1 row-span-10 col-span-10 px-4 py-6 md:p-8 lg:px-16 z-10 bg-linear-to-t from-neutral-800/80 via-neutral-800/20 to-transparent flex flex-col justify-end items-center">
-      <h3 class="mb-3 text-2xl font-extrabold md:mb-4 md:text-4xl lg:mb-6 text-white">
+    <div id="cta6-content" class="row-start-1 col-start-1 row-span-10 col-span-10 px-4 py-6 md:p-8 lg:px-16 z-20 flex flex-col justify-end items-center">
+      <h3 class="mb-3 text-2xl font-extrabold md:mb-4 md:text-4xl lg:mb-6 text-white text-center">
         {headline}
       </h3>
-      <p class="mb-8 text-muted-foreground lg:text-lg text-white">
+      <p class="mb-8 lg:text-lg text-white text-center">
         {description}
       </p>
-      <div class="flex  sm:flex-row gap-4">
+      <div class="flex  sm:flex-row gap-4 mb-12 lg:mb-35">
         <Button variant="primary" href={buttonHref}>{buttonText}</Button>
         {
           secondaryButtonText && secondaryButtonHref && (
-            <Button href={secondaryButtonHref} variant="outline">
+            <Button href={secondaryButtonHref} variant="outline" class=" border-white hover:bg-white hover:text-neutral-900">
               {secondaryButtonText}
             </Button>
           )
         }
       </div>
     </div>
-      <div class="row-start-1 col-start-1 col-span-10 z-0">
+    <div class="row-start-1 col-start-1 row-span-10 col-span-10 z-10 bg-linear-to-t from-neutral-800/80 via-neutral-800/20 to-transparent mix-blend-multiply pointer-events-none"></div>
+      <div id="cta6-image" class="row-start-1 col-start-1 row-span-10 col-span-10 z-0">
         {
           typeof image.src === "string" ? (
             <img
               src={image.src}
               alt={image.alt}
-              class="aspect-3/2 w-full min-h-[100vh] rounded-t-md object-cover md:rounded-t-none md:rounded-l-md"
+              class="w-full h-full object-cover"
             />
           ) : (
             <Image
               src={image.src}
               alt={image.alt}
-              class="aspect-3/2 w-full min-h-[100vh] rounded-t-md object-cover md:rounded-t-none md:rounded-l-md"
+              class="w-full h-full object-cover"
             />
           )
         }
@@ -83,4 +84,37 @@ const {
     grid-template-columns: repeat(10, 10vw);
     grid-template-rows: repeat(10, 10vh);
   }
+
+  
 </style>
+
+<script>
+  import { animate, onScroll } from "animejs";
+
+  // Content animation - slides up from below and fades in (slower parallax)
+  animate("#cta6-content", {
+    translateY: [150, -50],
+    opacity: [0, 1],
+    ease: "linear",
+    autoplay: onScroll({
+      target: "#cta6-grid-container",
+      sync: true,
+      enter: "50% top",  // Triggers when section is 30% scrolled into view
+      leave: "top top"
+    })
+  });
+
+  // Image animation - parallax effect (moves faster upward)
+  animate("#cta6-image", {
+    translateY: [0, -25],
+    anchorPoint: 'center center',
+    scale: [1, 1.1],
+    ease: "linear",
+    autoplay: onScroll({
+      target: "#cta6-grid-container",
+      sync: true,
+      enter: "75% top",  // Same trigger point for coordinated movement
+      leave: "top top"
+    })
+  });
+</script>

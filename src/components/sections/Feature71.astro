@@ -57,13 +57,13 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
 }));
 ---
 
-<section class={cn("", className)}>
+<section class={cn("py-20 lg:py-40", className)} id="feature71">
   <div class="container mx-auto px-4 flex flex-col items-center gap-12">
     <!-- Grid Section -->
     <div class="grid w-full grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-4">
       <!-- First Featured Card -->
       {processedCards[0] && (
-        <div class="col-span-2 sm:max-lg:col-span-2 overflow-clip rounded-none">
+        <div class="col-span-2 sm:max-lg:col-span-2 overflow-clip rounded-none animated-feature">
           <DirectionAwareHover 
             client:load
             imageUrl={processedCards[0].imageUrl}
@@ -88,16 +88,16 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
       <!-- Metrics Grid -->
       {metrics.slice(0, 2).map((metric) => (
 
-          <MetricCard className="rounded-none" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
+          <MetricCard className="rounded-none animated-feature" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
       ))}
 
       {metrics.slice(2, 4).map((metric) => (
-        <MetricCard className="rounded-none" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
+        <MetricCard className="rounded-none animated-feature" title={metric.label} value={metric.value} imageUrl={metric.imageUrl} />
       ))}
 
       <!-- Second Featured Card -->
       {processedCards[1] && (
-        <div class="col-span-2 sm:max-lg:col-span-1 overflow-clip rounded-none">
+        <div class="col-span-2 overflow-clip rounded-none animated-feature">
           <DirectionAwareHover 
             client:load
             imageUrl={processedCards[1].imageUrl}
@@ -124,3 +124,23 @@ const processedCards = await Promise.all((featuredCards || []).map(async (card) 
   </div>
 </section>
 
+<script>
+  import { animate, onScroll, stagger } from 'animejs';
+  const animatedFeatures = document.querySelectorAll('.animated-feature');
+  if (animatedFeatures.length > 0) {
+    animate(animatedFeatures, {
+      translateY: [150, 0],
+      scale: [0.9, 1],
+      opacity: [0, 1],
+      duration: 6000,
+      ease: 'out(3)',
+      delay: stagger(1000),
+      autoplay: onScroll({
+        target: '#feature71',
+        enter: '90% top',
+        leave: '90% 80%',
+        sync: true,
+      }),
+    });
+  }
+</script>

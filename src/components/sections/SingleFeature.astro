@@ -30,7 +30,7 @@ const {
 } = Astro.props;
 ---
 
-<section  class={cn("py-16 single-feature-section", className)}>
+<section  class={cn("py-20 lg:py-40 single-feature-section", className)}>
   <div  class="container mx-auto px-4">
     <div class={cn(
       "flex flex-col gap-4 lg:gap-4 items-center",
@@ -51,7 +51,7 @@ const {
         <p class="mb-6 text-xs font-medium tracking-wider uppercase text-primary">
           {tagline}
         </p>
-        <h2 class="mb-3 text-3xl md:text-4xl font-bold text-primary text-pretty md:mb-4 lg:mb-6">
+        <h2 class="mb-3 text-3xl md:text-4xl font-extrabold text-primary text-pretty md:mb-4 lg:mb-6 tracking-normal">
           {headline}
         </h2>
         {description && (
@@ -77,7 +77,7 @@ const {
     </div>
   </div>
 </section>
-<script>
+<!-- <script>
   import { animate, onScroll } from 'animejs';
   const singleFeatureSection = document.querySelector('.single-feature-section');
   if (singleFeatureSection) {
@@ -89,11 +89,11 @@ const {
       ease: 'out(3)',
       autoplay: onScroll({
         target: singleFeatureSection,
-        enter: 'bottom top',
+        enter: '90% top',
         leave: '40% bottom',
         sync: true,
       }),
     });
   }
-</script>
+</script> -->
 
