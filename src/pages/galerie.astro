@@ -51,7 +51,7 @@ const images = [
       <!-- Gallery Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {images.map((image) => (
-          <div class="group relative aspect-square overflow-hidden rounded-lg shadow-lg">
+          <div class="group relative aspect-square overflow-hidden rounded-xs shadow-lg">
             <Image 
               src={image.src} 
               alt={image.alt}
@@ -63,7 +63,7 @@ const images = [
       </div>
       
       <!-- Photo Credits -->
-      <p class="text-center text-gray-600 italic">
+      <p class="text-center text-neutral-600 italic">
         Crédits Photos/Vidéos : Alpimages Verbier, Shibo Films
       </p>
     </div>

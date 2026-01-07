@@ -1,0 +1,86 @@
+---
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/starwind/button";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  class?: string;
+  image?: {
+    src: string | ImageMetadata;
+    alt: string;
+  };
+  headline?: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+}
+
+const {
+  class: className,
+  image = {
+    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+    alt: "placeholder hero",
+  },
+  headline = "Call to Action",
+  description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
+  buttonText = "Get Started",
+  buttonHref = "#",
+  secondaryButtonText,
+  secondaryButtonHref,
+} = Astro.props;
+---
+
+<section class={cn("", className)}>
+  <div class="w-full h-full">
+    <div id="cta6-grid-container"
+      class="relative"
+    >
+    <div class="row-start-1 col-start-1 row-span-10 col-span-10 px-4 py-6 md:p-8 lg:px-16 z-10 bg-linear-to-t from-neutral-800/80 via-neutral-800/20 to-transparent flex flex-col justify-end items-center">
+      <h3 class="mb-3 text-2xl font-extrabold md:mb-4 md:text-4xl lg:mb-6 text-white">
+        {headline}
+      </h3>
+      <p class="mb-8 text-muted-foreground lg:text-lg text-white">
+        {description}
+      </p>
+      <div class="flex  sm:flex-row gap-4">
+        <Button variant="primary" href={buttonHref}>{buttonText}</Button>
+        {
+          secondaryButtonText && secondaryButtonHref && (
+            <Button href={secondaryButtonHref} variant="outline">
+              {secondaryButtonText}
+            </Button>
+          )
+        }
+      </div>
+    </div>
+      <div class="row-start-1 col-start-1 col-span-10 z-0">
+        {
+          typeof image.src === "string" ? (
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="aspect-3/2 w-full min-h-[100vh] rounded-t-md object-cover md:rounded-t-none md:rounded-l-md"
+            />
+          ) : (
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="aspect-3/2 w-full min-h-[100vh] rounded-t-md object-cover md:rounded-t-none md:rounded-l-md"
+            />
+          )
+        }
+      </div>
+      
+    </div>
+  </div>
+</section>
+<style>
+  #cta6-grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 10vw);
+    grid-template-rows: repeat(10, 10vh);
+  }
+</style>

@@ -55,7 +55,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://advanced
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     
     <!-- Favicon -->
@@ -88,6 +87,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || 'https://advanced
     })} />
   </head>
   <body class="min-h-screen flex flex-col font-sans antialiased">
+     <!-- Patch addEventListener to make scroll events passive by default -->
+     <script>
+      import "@/lib/passive-listeners";
+    </script>
+     
      <!-- Anime.js v4 Animation Library -->
      <script>
       import { animate, stagger, onScroll, utils } from "animejs";

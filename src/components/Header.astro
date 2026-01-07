@@ -21,28 +21,28 @@ const routeKey = getRouteFromUrl(Astro.url);
 <header id="main-header" class:list={[
   "fixed top-0 left-0 right-0 z-50",
   transparent 
-    ? "bg-transparent lg:bg-linear-to-b from-gray-800/50 to-transparent border-b border-gray-200 backdrop-blur-[2px]"
-    : "bg-white border-b border-gray-200"
+    ? "bg-transparent lg:bg-linear-to-b from-neutral-800/50 to-transparent border-b border-neutral-200 backdrop-blur-[2px]"
+    : "bg-white border-b border-neutral-200"
 ]} data-transparent={transparent}>
   <!-- Top bar with language switcher -->
-  <div id="header-top-bar" class="border-y border-gray-100">
+  <div id="header-top-bar" class="border-y border-neutral-100">
     <div class="container mx-auto px-4 py-1 flex justify-end">
       <div class="flex items-center gap-1 text-sm font-bold">
         <a 
           href={lang === 'fr' ? currentPath : alternateUrl}
           class:list={[
             "px-2 py-1 rounded transition-colors",
-            lang === 'fr' ? "text-primary" : transparent ? "text-gray-50 hover:text-primary" : "text-gray-900 hover:text-primary"
+            lang === 'fr' ? "text-primary" : transparent ? "text-neutral-50 hover:text-primary" : "text-neutral-900 hover:text-primary"
           ]}
         >
           FR
         </a>
-        <span class="text-gray-300">|</span>
+        <span class="text-neutral-300">|</span>
         <a 
           href={lang === 'en' ? currentPath : alternateUrl}
           class:list={[
             "px-2 py-1 rounded transition-colors",
-            lang === 'en' ? "text-primary" : transparent ? "text-gray-50 hover:text-primary" : "text-gray-900 hover:text-primary"
+            lang === 'en' ? "text-primary" : transparent ? "text-neutral-50 hover:text-primary" : "text-neutral-900 hover:text-primary"
           ]}
         >
           EN
@@ -73,7 +73,7 @@ const routeKey = getRouteFromUrl(Astro.url);
               "nav-link px-3 xl:px-4 py-2 text-sm font-semibold uppercase tracking-wide transition-colors",
               routeKey === item.key 
                 ? transparent ? "nav-link-active text-black" : "nav-link-active text-primary"
-                : transparent ? "nav-link-inactive text-white hover:text-black" : "nav-link-inactive text-gray-900 hover:text-primary"
+                : transparent ? "nav-link-inactive text-white hover:text-black" : "nav-link-inactive text-neutral-900 hover:text-primary"
             ]}
           >
             {item.label}
@@ -81,7 +81,7 @@ const routeKey = getRouteFromUrl(Astro.url);
         ))}
         
         <!-- Social icons -->
-        <div class="flex items-center gap-2 ml-2 pl-2 border-l border-gray-100">
+        <div class="flex items-center gap-2 ml-2 pl-2 border-l border-neutral-100">
           <a 
             href="https://www.facebook.com/atcverbier" 
             target="_blank" 
@@ -117,7 +117,7 @@ const routeKey = getRouteFromUrl(Astro.url);
       <div id="mobile-menu-button" class="lg:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" aria-label="Open menu" class={transparent ? "text-white" : "text-gray-900"}>
+            <Button variant="ghost" size="icon" aria-label="Open menu" class={transparent ? "text-white" : "text-neutral-900"}>
               <svg class="w-6 h-6" fill="none"  stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -137,7 +137,7 @@ const routeKey = getRouteFromUrl(Astro.url);
                     "px-4 py-3 text-lg font-semibold transition-colors rounded-lg",
                     routeKey === item.key 
                       ? "text-primary bg-red-50" 
-                      : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                      : "text-neutral-700 hover:text-primary hover:bg-neutral-50"
                   ]}
                 >
                   {item.label}
@@ -150,7 +150,7 @@ const routeKey = getRouteFromUrl(Astro.url);
                   href="https://www.facebook.com/atcverbier" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="text-gray-500 hover:text-primary transition-colors"
+                  class="text-neutral-500 hover:text-primary transition-colors"
                   aria-label="Facebook"
                 >
                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -161,7 +161,7 @@ const routeKey = getRouteFromUrl(Astro.url);
                   href="https://www.instagram.com/advancedtenniscamp/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  class="text-gray-500 hover:text-primary transition-colors"
+                  class="text-neutral-500 hover:text-primary transition-colors"
                   aria-label="Instagram"
                 >
                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -205,14 +205,14 @@ const routeKey = getRouteFromUrl(Astro.url);
       if (scrolled) {
         if (isTransparent) {
           // Remove gradient classes for transparent header
-          header!.classList.remove("lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent", "bg-transparent");
+          header!.classList.remove("lg:bg-gradient-to-b", "from-neutral-800/50", "to-transparent", "bg-transparent");
           
           // Animate header slide up and background color change
-          // Using rgba to animate from transparent to gray-100 (#f3f4f6)
+          // Using rgba to animate from transparent to neutral-100 (#f5f5f5)
           if (header) {
             animate(header, {
               translateY: -hideHeight,
-              backgroundColor: ["rgba(243, 244, 246, 0)", "rgba(243, 244, 246, 1)"],
+              backgroundColor: ["rgba(245, 245, 245, 0)", "rgba(245, 245, 245, 1)"],
               duration: 300,
               ease: "outQuad"
             });
@@ -228,7 +228,7 @@ const routeKey = getRouteFromUrl(Astro.url);
           });
           navLinksInactive.forEach(link => {
             link.classList.remove("text-white");
-            link.classList.add("text-gray-900");
+            link.classList.add("text-neutral-900");
             link.classList.remove("hover:text-black");
             link.classList.add("hover:text-primary");
           });
@@ -239,7 +239,7 @@ const routeKey = getRouteFromUrl(Astro.url);
           
           if (mobileMenuButton) {
             mobileMenuButton.classList.remove("text-white");
-            mobileMenuButton.classList.add("text-gray-900");
+            mobileMenuButton.classList.add("text-neutral-900");
           }
         } else {
           // Solid header - just slide up
@@ -257,13 +257,13 @@ const routeKey = getRouteFromUrl(Astro.url);
           if (header) {
             animate(header, {
               translateY: 0,
-              backgroundColor: ["rgba(243, 244, 246, 1)", "rgba(243, 244, 246, 0)"],
+              backgroundColor: ["rgba(245, 245, 245, 1)", "rgba(245, 245, 245, 0)"],
               duration: 300,
               ease: "outQuad"
             }).then(() => {
               // Reset background and restore gradient classes after animation
               header.style.backgroundColor = "";
-              header.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-gray-800/50", "to-transparent");
+              header.classList.add("bg-transparent", "lg:bg-gradient-to-b", "from-neutral-800/50", "to-transparent");
             });
           }
           
@@ -277,7 +277,7 @@ const routeKey = getRouteFromUrl(Astro.url);
           });
           navLinksInactive.forEach(link => {
             link.classList.add("text-white");
-            link.classList.remove("text-gray-900");
+            link.classList.remove("text-neutral-900");
             link.classList.add("hover:text-black");
             link.classList.remove("hover:text-primary");
           });
@@ -288,7 +288,7 @@ const routeKey = getRouteFromUrl(Astro.url);
           
           if (mobileMenuButton) {
             mobileMenuButton.classList.add("text-white");
-            mobileMenuButton.classList.remove("text-gray-900");
+            mobileMenuButton.classList.remove("text-neutral-900");
           }
         } else {
           // Solid header - just slide down

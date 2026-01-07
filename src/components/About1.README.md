@@ -77,7 +77,7 @@ All Tailwind classes can be modified directly in the component. Key classes:
 - Container: `container mx-auto px-4`
 - Spacing: `py-16 md:py-24`
 - Typography: Font sizes use responsive classes
-- Colors: Uses `text-gray-*` and `text-primary`
+- Colors: Uses `text-neutral-*` and `text-primary`
 
 ## Example
 

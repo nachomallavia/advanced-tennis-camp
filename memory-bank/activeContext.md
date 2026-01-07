@@ -4,6 +4,9 @@
 - Completed the direction-aware hover effect implementation using Anime.js v4.
 
 ## Recent Changes
+- Removed Raleway font import and updated font stack to use Archivo only for improved performance.
+- Updated all Tailwind `neutral-*` color classes across the codebase.
+- Updated hardcoded RGBA values in `src/components/Header.astro` to match the `neutral-100` color for smooth background animations.
 - Extracted `CampHero.astro` component from `src/pages/en/the-camp.astro` and `src/pages/le-camp.astro`.
 - Centralized camp hero structure and added `data-` attributes for future animations.
 - Updated both English and French "The Camp" pages to use the new `CampHero` component, ensuring consistency by adding the hero image to the French version.

@@ -29,10 +29,10 @@ const {
   <div class="container mx-auto px-4">
     <!-- Main About Section -->
     <div class="max-w-4xl mb-16">
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6">
         {title}
       </h2>
-      <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+      <p class="text-lg md:text-xl text-neutral-600 leading-relaxed">
         {description}
       </p>
     </div>
@@ -41,12 +41,12 @@ const {
     {mission && (
       <div class="grid md:grid-cols-2 gap-12 mb-16">
         <div>
-          <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          <h3 class="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">
             {mission.title}
           </h3>
         </div>
         <div>
-          <p class="text-base md:text-lg text-gray-600 leading-relaxed">
+          <p class="text-base md:text-lg text-neutral-600 leading-relaxed">
             {mission.description}
           </p>
         </div>
@@ -60,14 +60,14 @@ const {
           {values.map((value) => (
             <div class="space-y-4">
               <div class="flex items-center justify-start">
-                <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-2xl">
+                <div class="w-12 h-12 rounded-lg bg-neutral-100 flex items-center justify-center text-2xl">
                   {value.icon}
                 </div>
               </div>
-              <h4 class="text-xl font-bold text-gray-900">
+              <h4 class="text-xl font-bold text-neutral-900">
                 {value.title}
               </h4>
-              <p class="text-gray-600 leading-relaxed">
+              <p class="text-neutral-600 leading-relaxed">
                 {value.description}
               </p>
             </div>
@@ -95,7 +95,7 @@ const {
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span class="text-gray-700 leading-relaxed">
+              <span class="text-neutral-700 leading-relaxed">
                 {objective.text}
               </span>
             </li>

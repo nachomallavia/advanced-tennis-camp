@@ -4,6 +4,8 @@
 - Basic Astro project structure.
 - Multi-language routing.
 - Initial UI components (Starwind UI).
+- Unified color palette using `neutral` instead of `gray`.
+- Optimized font loading (removed Raleway, using Archivo only).
 - `Hero.astro` section component for landing pages.
 - `CampHero.astro` section component for camp information pages.
 - `Feature71.astro` with interactive direction-aware hover effects using Anime.js v4.

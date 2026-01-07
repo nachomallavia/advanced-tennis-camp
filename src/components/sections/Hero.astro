@@ -23,7 +23,7 @@ const {
 ---
 
 <section data-hero-section class="relative h-screen flex items-center overflow-hidden">
-  <div data-hero-overlay class="absolute inset-0 w-full h-full bg-linear-to-br from-gray-800/80 via-gray-800/20 to-transparent z-1 mix-blend-multiply"></div>
+  <div data-hero-overlay class="absolute inset-0 w-full h-full bg-linear-to-br from-neutral-800/80 via-neutral-800/20 to-transparent z-1 mix-blend-multiply"></div>
   <video 
     data-hero-video
     src={videoSrc} 
@@ -40,7 +40,7 @@ const {
       <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-none tracking-[-0.05em] optical-sizing-auto mb-2" set:html={title} />
       
       <!-- Tagline -->
-      <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-gray-100 mb-6 leading-relaxed">
+      <p class="text-lg md:text-xl max-w-[300px] md:max-w-[520px] italic text-neutral-100 mb-6 leading-relaxed">
         {tagline}
       </p>
       
@@ -89,7 +89,7 @@ const {
       // making it appear to move slower than the content
       animate([heroVideo, heroOverlay, heroContent], {
         scale: isSmall ? [1, 0.8] : [1, 0.7],
-        borderRadius: isSmall ? [0, "2rem"] : [0, "8rem"],
+        borderRadius: isSmall ? [0, "1rem"] : [0, "1rem"],
         translateY: isSmall ? [0, 50] : [0, 100],
         autoplay: onScroll({
           target: heroSection,

@@ -102,7 +102,7 @@ export const DirectionAwareHover = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "group/card relative w-full h-full overflow-hidden bg-transparent rounded-lg",
+        "group/card relative w-full h-full overflow-hidden bg-transparent rounded-xs",
         clickable ? "cursor-pointer" : "cursor-default",
         className
       )}

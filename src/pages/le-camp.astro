@@ -39,28 +39,28 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   <!-- Hero Section -->
   <CampHero
     title="LE CAMP À VERBIER"
-    subtitle="du 06 Juillet au 15 Août 2026"
+    subtitle="6 SEMAINES du 06 Juillet au 15 Août 2026"
     buttonText="CONTACT ET RÉSERVATION"
     buttonLink="/contact/"
     heroImage={camp3172}
     secondaryImage={essVerbierLogo}
     secondaryImageAlt="ESS Verbier"
   >
-    <p><strong>Prêts pour la 19e édition ?!</strong></p>
+    <p class="text-2xl mb-2 "><strong>Prêts pour la 19e édition ?!</strong></p>
     <p>Le camp débutera le Lundi 06 Juillet avec l'accueil des participants <strong>dès 8h45 au Parc de Loisirs – Route de Verbier (les internes seront accueillis la veille dès 16h)</strong>. Il prendra fin le Samedi 15 Août.</p>
     <p><strong>Une équipe de 12 coachs dont 2 préparateurs physiques, sera présente pour transmettre sa passion et son expérience.</strong> Du mini tennis au Junior Tour pour les plus compétiteurs, nous avons l'accompagnement qu'il faut.</p>
     <p>Enfin, que vous soyez jeunes pratiquants, compétiteurs ou adultes passionnés, avec <a href="https://advancedtennisacademy.ch" target="_blank" rel="noopener" class="text-white hover:underline">l'Advanced Tennis Academy</a> notre équipe est également disponible pour des cours privés ou collectifs. L'Academy s'est agrandie en 2025, en accueillant également le Padel et le Pickleball dans ses disciplines ! A vous de jouer !</p>
   </CampHero>
   
   <!-- Video Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-neutral-50">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-bold text-primary text-center mb-8">
         Throwback ATC 2023
       </h2>
       <div class="max-w-4xl mx-auto aspect-video">
         <iframe 
-          class="w-full h-full rounded-lg shadow-lg"
+          class="w-full h-full rounded-xs shadow-lg"
           src="https://www.youtube.com/embed/QDSi3u4HOic"
           title="ATC 2023"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -70,57 +70,18 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
     </div>
   </section>
   
-  <!-- Minis Champions Section -->
+  <!-- Junior Camp Section -->
   <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1">
-          <Image 
-            src={miniChampionsImg}
-            alt="Minis Champions" 
-            class="w-full rounded-lg shadow-lg"
-          />
-        </div>
-        <div class="order-1 lg:order-2">
-          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
-            Minis champions (5 à 7 ans)
-          </h2>
-          <div class="prose prose-lg max-w-none">
-            <p><strong>Le rendez-vous pour vos Mini-Champions âgés de 5 à 7 ans.</strong></p>
-            <p>Avec nos coachs, chaque jour est une nouvelle aventure pour nos plus jeunes compagnons.</p>
-            
-            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
-            <ul class="space-y-2">
-              <li><strong>Lundi:</strong> Accueil des loulous et rencontres avec les familles</li>
-              <li><strong>Mardi à vendredi:</strong> Petit déjeuner 8h, accueil au Parc des Loisirs à 9h, tennis le matin, repas de midi avec les amis et activités encadrées l'après-midi (mini-golf, escalade, promenade, poney, gymnastique…) jusqu'à 16h00.</li>
-              <li><strong>Samedi:</strong> Fin de la semaine de camp et remise des prix sur la terrasse du Chalet d'Adrien ou du Vieux Verbier à 11h30 suivi d'un cocktail gourmand.</li>
-            </ul>
-            
-            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarif</h3>
-            <p><strong>Camp en ½ pension : CHF 690.-/semaine</strong></p>
-          </div>
-          <div class="mt-8">
-            <Button href="/contact/" variant="primary">
-              CONTACT ET RÉSERVATION
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Junior Camp Section -->
-  <section class="py-12 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1">
+        <div class="order-1">
           <Image 
             src={tom4908}
             alt="Junior Camp" 
-            class="w-full rounded-lg shadow-lg"
+            class="w-full rounded-xs shadow-lg"
           />
         </div>
-        <div class="order-1 lg:order-2">
+        <div class="order-2">
           <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
             Junior camp
           </h2>
@@ -155,10 +116,10 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   </section>
   
   <!-- Advanced Training Section -->
-  <section class="py-12 bg-white">
+  <section class="py-12 bg-neutral-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
+        <div class="order-2 lg:order-1">
           <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
             Advanced training program
           </h2>
@@ -185,29 +146,61 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
             </Button>
           </div>
         </div>
-        <div>
+        <div class="order-1 lg:order-2">
           <Image 
             src={advancedTrainingImg}
             alt="Advanced Training" 
-            class="w-full rounded-lg shadow-lg"
+            class="w-full rounded-xs shadow-lg"
           />
         </div>
       </div>
     </div>
   </section>
   
+  <!-- Minis Champions Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-1">
+          <Image 
+            src={miniChampionsImg}
+            alt="Minis Champions" 
+            class="w-full rounded-xs shadow-lg"
+          />
+        </div>
+        <div class="order-2">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
+            Minis champions (5 à 7 ans)
+          </h2>
+          <div class="prose prose-lg max-w-none">
+            <p><strong>Le rendez-vous pour vos Mini-Champions âgés de 5 à 7 ans.</strong></p>
+            <p>Avec nos coachs, chaque jour est une nouvelle aventure pour nos plus jeunes compagnons.</p>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Programme</h3>
+            <ul class="space-y-2">
+              <li><strong>Lundi:</strong> Accueil des loulous et rencontres avec les familles</li>
+              <li><strong>Mardi à vendredi:</strong> Petit déjeuner 8h, accueil au Parc des Loisirs à 9h, tennis le matin, repas de midi avec les amis et activités encadrées l'après-midi (mini-golf, escalade, promenade, poney, gymnastique…) jusqu'à 16h00.</li>
+              <li><strong>Samedi:</strong> Fin de la semaine de camp et remise des prix sur la terrasse du Chalet d'Adrien ou du Vieux Verbier à 11h30 suivi d'un cocktail gourmand.</li>
+            </ul>
+            
+            <h3 class="text-xl font-bold text-primary mt-8 mb-4">Tarif</h3>
+            <p><strong>Camp en ½ pension : CHF 690.-/semaine</strong></p>
+          </div>
+          <div class="mt-8">
+            <Button href="/contact/" variant="primary">
+              CONTACT ET RÉSERVATION
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- Programme école et tennis Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-neutral-50">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
-          <Image 
-            src={lemaniaImg}
-            alt="Programme école et tennis" 
-            class="w-full rounded-lg shadow-lg"
-          />
-        </div>
-        <div class="order-1 lg:order-2">
           <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
             Programme école et tennis
           </h2>
@@ -238,6 +231,13 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
             </Button>
           </div>
         </div>
+        <div class="order-1 lg:order-2">
+          <Image 
+            src={lemaniaImg}
+            alt="Programme école et tennis" 
+            class="w-full rounded-xs shadow-lg"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -246,7 +246,14 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   <section class="py-12 bg-white">
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
+        <div class="order-1">
+          <Image 
+            src={seniorCampImg}
+            alt="Senior Camp" 
+            class="w-full rounded-xs shadow-lg"
+          />
+        </div>
+        <div class="order-2">
           <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">
             Senior camp & 105
           </h2>
@@ -271,23 +278,16 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
             </Button>
           </div>
         </div>
-        <div>
-          <Image 
-            src={seniorCampImg}
-            alt="Senior Camp" 
-            class="w-full rounded-lg shadow-lg"
-          />
-        </div>
       </div>
     </div>
   </section>
   
   <!-- BIKE + PLAY & GOLF + PLAY -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-neutral-50">
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-8">
         <!-- BIKE + PLAY -->
-        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+        <div class="relative group overflow-hidden rounded-xs shadow-lg">
           <Image 
             src={bikePlayImg}
             alt="BIKE + PLAY" 
@@ -305,7 +305,7 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
         </div>
         
         <!-- GOLF + PLAY -->
-        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+        <div class="relative group overflow-hidden rounded-xs shadow-lg">
           <Image 
             src={golfPlayImg}
             alt="GOLF + PLAY" 
@@ -333,7 +333,7 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
       <!-- Map -->
       <div class="mb-12">
         <h2 class="text-2xl font-bold text-primary mb-4">RENDEZ-VOUS AU PARC DES LOISIRS</h2>
-        <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
+        <div class="aspect-video rounded-xs overflow-hidden shadow-lg">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2766.755852111139!2d7.2236749748450375!3d46.09584379107546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ece34cd5330b3%3A0xd4a079d35d4fec8f!2sVerbier%20Leisure%20Park!5e0!3m2!1sen!2sfr!4v1706182249688!5m2!1sen!2sfr" 
             class="w-full h-full"
@@ -347,7 +347,7 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
       <div class="grid md:grid-cols-3 gap-8">
         <div>
           <h3 class="text-xl font-bold text-primary mb-4">Téléphérique | Tennis au Châble</h3>
-          <p class="text-gray-700 mb-2">
+          <p class="text-neutral-700 mb-2">
             <strong>Pour que vos enfants profitent pleinement de l'atmosphère de Verbier, nous utiliserons également le court de tennis du Châble.</strong> Notre partenaire Televerbier veillera à ce que vos enfants soient transportés en toute sécurité en téléphérique jusqu'aux courts de tennis.
           </p>
           <a href="http://www.televerbier.ch/" target="_blank" rel="noopener" class="text-primary hover:underline font-medium">
@@ -357,14 +357,14 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
         
         <div>
           <h3 class="text-xl font-bold text-primary mb-4">Petit déjeuner/déjeuner/dîner au Time Out Restaurant</h3>
-          <p class="text-gray-700">
+          <p class="text-neutral-700">
             Chaque jour, les étudiants prendront le petit déjeuner, le déjeuner et le dîner en centre-ville chez Martin. <strong>Connu de tous à Verbier et l'un des meilleurs endroits pour "se restaurer" en ville.</strong>
           </p>
         </div>
         
         <div>
           <h3 class="text-xl font-bold text-primary mb-4">Chalet d'Adrien</h3>
-          <p class="text-gray-700">
+          <p class="text-neutral-700">
             <strong>Fin du camp avec une cérémonie de remise des prix au prestigieux Relais Châteaux Chalet d'Adrien à 11h30</strong> suivie d'un cocktail sur la terrasse élue 'Meilleure d'Europe'.
           </p>
         </div>
@@ -373,7 +373,7 @@ const description = "Le Camp à Verbier du 06 Juillet au 15 Août 2026. Pour cet
   </section>
   
   <!-- Partner Logos Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-12 bg-neutral-50">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
         <a href="https://www.philippe-roux.ch/" target="_blank" rel="noopener noreferrer" class="grayscale hover:grayscale-0 transition-all">

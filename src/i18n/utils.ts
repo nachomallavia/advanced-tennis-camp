@@ -52,7 +52,7 @@ export function getNavItems(lang: keyof typeof ui) {
   return [
     { key: 'home', label: t('nav.home'), href: routes[lang].home },
     { key: 'camp', label: t('nav.camp'), href: routes[lang].camp },
-    { key: 'programs', label: t('nav.programs'), href: routes[lang].programs },
+    
     { key: 'tournament', label: t('nav.tournament'), href: routes[lang].tournament },
     { key: 'bike', label: t('nav.bike'), href: routes[lang].bike },
     { key: 'golf', label: t('nav.golf'), href: routes[lang].golf },

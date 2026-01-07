@@ -23,13 +23,13 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-white overflow-hidden" data-camp-hero>
+<section class="bg-white overflow-hidden transform-gpu" data-camp-hero>
   <div class="mx-auto">
-    <div class="relative" data-hero-image-container>
+    <div class="relative overflow-hidden" data-hero-image-container>
       <Image 
         src={heroImage} 
         alt={title} 
-        class="w-full h-auto min-h-[65vh] object-cover z-0" 
+        class="w-full h-auto min-h-[100vh] object-cover z-0 transform-gpu" 
         data-hero-image
       />
     </div>
@@ -40,7 +40,7 @@ const {
       primaryButtonText={buttonText}
       primaryButtonHref={buttonLink}
       isReversed={true}
-      class="md:py-12"
+      class=""
     >
       <Image 
         slot="image"
@@ -52,4 +52,33 @@ const {
     </SingleFeature>
   </div>
 </section>
+<script>
+  import { animate, onScroll, createScope } from 'animejs';
+  const campHeroSection = document.querySelector('[data-camp-hero]') as HTMLElement;
+  const campHeroImageContainer = document.querySelector('[data-hero-image-container]') as HTMLElement;
+  const campHeroImage = document.querySelector('[data-hero-image]') as HTMLElement;
+  if (campHeroSection) {
+    animate(campHeroImageContainer, {
+      translateY: [0, -100],
+      anchorPoint: 'center top',
+      scale: [1, 0.65],
+
+      autoplay: onScroll({
+        target: campHeroSection,
+        enter: 'top top',
+        leave: 'top 25%',
+        sync: true,
+      }),
+    });
+    animate(campHeroImage, {
+      borderRadius: [0, "1rem"],
+      autoplay: onScroll({
+        target: campHeroImage,
+        enter: 'top top',
+        leave: 'top 25%',
+        sync: true,
+      }),
+    });
+  }
+</script>
 

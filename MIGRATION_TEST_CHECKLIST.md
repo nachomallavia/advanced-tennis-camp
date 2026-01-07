@@ -45,9 +45,9 @@ This checklist documents the testing performed for the GSAP to Motion.js migrati
 - [ ] Nav links are white
 - [ ] When scrolling past 50px:
   - [ ] Header slides up by top bar height
-  - [ ] Background changes to solid gray-100
+  - [ ] Background changes to solid neutral-100
   - [ ] Logo swaps to color version (logo.png)
-  - [ ] Nav links change to gray-900/primary
+  - [ ] Nav links change to neutral-900/primary
 - [ ] When scrolling back up:
   - [ ] Header slides down
   - [ ] Background returns to transparent
