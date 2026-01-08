@@ -24,16 +24,16 @@ const {
 ---
 
 <section class="bg-white overflow-hidden transform-gpu" data-camp-hero>
-  <div class="mx-auto">
+  <div id="hero-container" class="mx-auto">
     <div class="relative overflow-hidden" data-hero-image-container>
       <Image 
         src={heroImage} 
         alt={title} 
-        class="w-full h-auto min-h-[90vh] object-cover z-0 transform-gpu" 
+        class="w-full h-auto min-h-[100vh] object-cover z-0 transform-gpu" 
         data-hero-image
       />
     </div>
-    
+    <div id="camp-hero-content" class=" mx-auto max-w-7xl">
     <SingleFeature
       headline={title}
       tagline={subtitle}
@@ -50,6 +50,7 @@ const {
       />
       <slot />
     </SingleFeature>
+    </div>
   </div>
 </section>
 <script>
@@ -57,11 +58,13 @@ const {
   const campHeroSection = document.querySelector('[data-camp-hero]') as HTMLElement;
   const campHeroImageContainer = document.querySelector('[data-hero-image-container]') as HTMLElement;
   const campHeroImage = document.querySelector('[data-hero-image]') as HTMLElement;
+  const campHeroContent = document.querySelector('#camp-hero-content') as HTMLElement;
+  const heroContainer = document.querySelector('#hero-container') as HTMLElement;
   if (campHeroSection) {
     animate(campHeroImageContainer, {
-      translateY: [0, -100],
+      
       anchorPoint: 'center top',
-      scale: [1, 0.65],
+      scale: [1, 0.8],
 
       autoplay: onScroll({
         target: campHeroSection,
@@ -79,6 +82,17 @@ const {
         sync: true,
       }),
     });
+    // animate(campHeroContent, {
+    //   translateY: [0, -200],
+    
+    //   autoplay: onScroll({
+    //     target: campHeroSection,
+    //     enter: 'top top',
+    //     leave: 'top 25%',
+    //     sync: true,
+    //   }),
+    // });
+    
   }
 </script>
 

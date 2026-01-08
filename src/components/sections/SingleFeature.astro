@@ -30,10 +30,10 @@ const {
 } = Astro.props;
 ---
 
-<section  class={cn("py-20 lg:py-40 single-feature-section", className)}>
+<section  class={cn("single-feature-section", className)}>
   <div  class="container mx-auto px-4">
     <div class={cn(
-      "flex flex-col gap-4 lg:gap-4 items-center",
+      "flex flex-col gap-4 lg:gap-4 items-start",
       isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
     )}>
       <!-- Image Section -->

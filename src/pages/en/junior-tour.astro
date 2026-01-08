@@ -1,68 +1,44 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
+import CampHero from '@/components/sections/CampHero.astro';
 
 import itfLogo from '@/assets/images/sponsors/1200px-Logo_IFT.svg_.png';
-import tournoiImg from '@/assets/images/camp/WhatsApp-Image-2023-09-25-at-07.25.51-1024x1024.jpeg';
+import tournoiImg from '@/assets/images/select/junior-tournament.avif';
 
 const title = "Junior Tournament Grad 3 - Advanced Tennis Camp";
 const description = "We want to encourage young Swiss Tennis players to compete. 128 U18 players for 7 days.";
 ---
 
-<BaseLayout title={title} description={description}>
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Tournoi Junior Grad 3
-          </h1>
-          
-          <div class="prose prose-lg max-w-none">
-            <p class="italic">
-              We want to encourage young Swiss Tennis player to compete.
-            </p>
-            
-            <p>
-              For <strong>7 days in a row</strong>, <strong>128 U18 girls and boys players mainly from Switzerland will participate</strong>.
-            </p>
-            
-            <p class="text-xl font-bold text-primary mt-8">
-              SAVE THE DATE | FROM JUNE 27th TO JULY 04th 2026
-            </p>
-            
-            <p class="mt-4">
-              <strong>INFORMATION, HOSPITALITY & PRICES |</strong> Coming soon…
-            </p>
-            
-            <p class="italic text-primary mt-8">
-              #BUILDINGTHENEXTGENERATION
-            </p>
-          </div>
-          
-          <div class="mt-8">
-            <Image 
-              src={itfLogo}
-              alt="ITF Logo" 
-              class="h-24 w-auto mb-6"
-            />
-          </div>
-          
-          <p class="mt-4">
-            <a href="https://www.instagram.com/advanced.tennis.academy/" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">
-              Follow us on Instagram
-            </a>
-          </p>
-        </div>
-        
-        <div>
-          <Image 
-            src={tournoiImg}
-            alt="Junior Tournament" 
-            class="w-full rounded-xs shadow-xl"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+<BaseLayout title={title} description={description} transparentHeader={true}>
+  <CampHero
+    title="Junior Tournament Grad 3"
+    subtitle="FROM JUNE 27th TO JULY 04th 2026"
+    buttonText="CONTACT & BOOKINGS"
+    buttonLink="/en/contact/"
+    heroImage={tournoiImg}
+    secondaryImage={itfLogo}
+    secondaryImageAlt="ITF Logo"
+  >
+    <p class="italic">
+      We want to encourage young Swiss Tennis player to compete.
+    </p>
+    
+    <p>
+      For <strong>7 days in a row</strong>, <strong>128 U18 girls and boys players mainly from Switzerland will participate</strong>.
+    </p><br>
+    
+    <p>
+      <strong>INFORMATION, HOSPITALITY & PRICES |</strong> Coming soon…
+    </p><br>
+    
+    <p class="italic text-primary">
+      #BUILDINGTHENEXTGENERATION
+    </p><br>
+    
+    <p>
+      <a href="https://www.instagram.com/advanced.tennis.academy/" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">
+        Follow us on Instagram
+      </a>
+    </p>
+  </CampHero>
 </BaseLayout>

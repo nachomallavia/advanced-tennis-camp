@@ -25,7 +25,7 @@ const routeKey = getRouteFromUrl(Astro.url);
     : "bg-white border-b border-neutral-200"
 ]} data-transparent={transparent}>
   <!-- Top bar with language switcher -->
-  <div id="header-top-bar" class="border-y border-neutral-100">
+  <div id="header-top-bar" class="border-b border-neutral-100">
     <div class="container mx-auto px-4 py-1 flex justify-end">
       <div class="flex items-center gap-1 text-sm font-bold">
         <a 
@@ -70,10 +70,10 @@ const routeKey = getRouteFromUrl(Astro.url);
           <a 
             href={item.href}
             class:list={[
-              "nav-link px-3 xl:px-4 py-2 text-sm font-semibold uppercase tracking-wide transition-colors",
+              "nav-link px-3 xl:px-4 py-2 text-sm  leading-tight uppercase tracking-wide transition-colors",
               routeKey === item.key 
-                ? transparent ? "nav-link-active text-black" : "nav-link-active text-primary"
-                : transparent ? "nav-link-inactive text-white hover:text-black" : "nav-link-inactive text-neutral-900 hover:text-primary"
+                ? transparent ? "nav-link-active font-extrabold text-white hover:text-primary" : "nav-link-active text-primary font-semibold"
+                : transparent ? "nav-link-inactive text-white hover:text-primary font-semibold" : "nav-link-inactive text-neutral-900 hover:text-primary font-semibold"
             ]}
           >
             {item.label}
@@ -223,7 +223,7 @@ const routeKey = getRouteFromUrl(Astro.url);
           
           // Update nav link colors
           navLinksActive.forEach(link => {
-            link.classList.remove("text-black");
+            link.classList.remove("text-white");
             link.classList.add("text-primary");
           });
           navLinksInactive.forEach(link => {
@@ -272,18 +272,18 @@ const routeKey = getRouteFromUrl(Astro.url);
           
           // Restore nav link colors
           navLinksActive.forEach(link => {
-            link.classList.add("text-black");
+            link.classList.add("text-white");
             link.classList.remove("text-primary");
           });
           navLinksInactive.forEach(link => {
             link.classList.add("text-white");
             link.classList.remove("text-neutral-900");
-            link.classList.add("hover:text-black");
-            link.classList.remove("hover:text-primary");
+            link.classList.add("hover:text-primary");
+            link.classList.remove("hover:text-black");
           });
           socialIcons.forEach(icon => {
-            icon.classList.add("hover:text-black");
-            icon.classList.remove("hover:text-primary");
+            icon.classList.add("hover:text-primary");
+            icon.classList.remove("hover:text-black");
           });
           
           if (mobileMenuButton) {

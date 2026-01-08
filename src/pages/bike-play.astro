@@ -1,69 +1,57 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
-import { Image } from 'astro:assets';
+import CampHero from '@/components/sections/CampHero.astro';
 
-import bikePlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
+import bikePlayImg from '@/assets/images/select/WhatsApp-Image-2022-07-21-at-11.37.32.avif';
+import logoEssV from '@/assets/images/logos/ATC_-logo-ess-v.png';
 
 const title = "BIKE + PLAY - Advanced Tennis Camp";
 const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT enduro, VTT descente, Skate board au programme à Verbier.";
 ---
 
-<BaseLayout title={title} description={description}>
-  <!-- Intro Section -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
-            Bike+Play en relation avec l'Ecole Suisse de Ski de Verbier
-          </h2>
-          
-          <div class="prose prose-lg max-w-none">
-            <p>
-              <strong>Pour la première année en 2018,</strong> afin que les jeunes découvrent la montagne en la parcourant, nous avons mis en place <strong>un CAMP dès 7 ans combinant le vélo et le tennis!</strong>
-            </p>
-            <p>
-              Tout au long de la semaine, les matins ou en début d'après-midi, vos enfants découvriront, progresseront avec différentes formes de vélo: <strong>BMX, VTT enduro, VTT descente, Skate board peuvent être au programme.</strong>
-            </p>
-            <p>
-              <strong>Des professionnels de la Kids Bike League, les accompagneront pour assurer leur sécurité avant de rejoindre l'équipe de l'ATC pour « échanger » dans le décor grandiose de Verbier.</strong>
-            </p>
-            <p>
-              Groupes de 4 personnes maximum par tranche d'age.
-            </p>
-            
-            <h3 class="text-xl font-bold text-primary mt-8 mb-4">PROGRAMME</h3>
-            <ul class="space-y-2">
-              <li>Rendez-vous tous les matins au Parc des Loisirs à <strong>9h00</strong> avant de rejoindre le <strong>team de Kids Bike League.</strong></li>
-              <li><strong>La 1e matinée est dédiée à la confirmation du niveau de pratique afin de garantir les meilleures conditions de sécurité.</strong></li>
-              <li><strong>12h00</strong> retour Parc des Loisirs/ déjeuner Time OUT</li>
-              <li><strong>14h00</strong> début du programme tennis</li>
-              <li><strong>17h00</strong> fin de la journée</li>
-            </ul>
-            <p class="mt-4">
-              Remise des prix et des diplômes <strong>le samedi dès 11h30</strong> sur la terrasse du Chalet d'Adrien.
-            </p>
-          </div>
-        </div>
-        
-        <div>
-          <Image 
-            src={bikePlayImg}
-            alt="BIKE + PLAY" 
-            class="w-full rounded-xs shadow-xl"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+<BaseLayout title={title} description={description} transparentHeader={true}>
+  <CampHero
+    title="BIKE + PLAY"
+    subtitle="en relation avec l'Ecole Suisse de Ski de Verbier"
+    buttonText="CONTACT & INSCRIPTIONS"
+    buttonLink="/contact/"
+    heroImage={bikePlayImg}
+    secondaryImage={logoEssV}
+    secondaryImageAlt="ESS Verbier"
+  >
+    <p>
+      <strong>Pour la première année en 2018,</strong> afin que les jeunes découvrent la montagne en la parcourant, nous avons mis en place <strong>un CAMP dès 7 ans combinant le vélo et le tennis!</strong>
+    </p><br>
+    <p>
+      Tout au long de la semaine, les matins ou en début d'après-midi, vos enfants découvriront, progresseront avec différentes formes de vélo: <strong>BMX, VTT enduro, VTT descente, Skate board peuvent être au programme.</strong>
+    </p><br>
+    <p>
+      <strong>Des professionnels de la Kids Bike League, les accompagneront pour assurer leur sécurité avant de rejoindre l'équipe de l'ATC pour « échanger » dans le décor grandiose de Verbier.</strong>
+    </p><br>
+    <p>
+      Groupes de 4 personnes maximum par tranche d'age.
+    </p><br>
+    
+    <h3 class="text-xl font-bold text-primary mt-8 mb-4">PROGRAMME</h3>
+    <ul class="space-y-2">
+      <li>Rendez-vous tous les matins au Parc des Loisirs à <strong>9h00</strong> avant de rejoindre le <strong>team de Kids Bike League.</strong></li>
+      <li><strong>La 1e matinée est dédiée à la confirmation du niveau de pratique afin de garantir les meilleures conditions de sécurité.</strong></li>
+      <li><strong>12h00</strong> retour Parc des Loisirs/ déjeuner Time OUT</li>
+      <li><strong>14h00</strong> début du programme tennis</li>
+      <li><strong>17h00</strong> fin de la journée</li>
+    </ul>
+    <p class="mt-4">
+      Remise des prix et des diplômes <strong>le samedi dès 11h30</strong> sur la terrasse du Chalet d'Adrien.
+    </p>
+  </CampHero>
   
   <!-- Age Groups Section -->
   <section class="py-12 bg-neutral-50">
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-8">
         <!-- 7-10 ans -->
-        <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="bg-white rounded-sm shadow-sm p-8">
           <h3 class="text-2xl font-bold text-primary mb-6">7-10 ANS (2019-2016)</h3>
           <ul class="space-y-3 text-neutral-700 mb-6">
             <li><strong>Lundi:</strong> VTT – initiation (matin) / Tennis (après-midi)</li>
@@ -79,7 +67,7 @@ const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT e
         </div>
         
         <!-- 11-15 ans -->
-        <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="bg-white rounded-sm shadow-sm p-8">
           <h3 class="text-2xl font-bold text-primary mb-6">11-15 ANS (2015-2011)</h3>
           <ul class="space-y-3 text-neutral-700 mb-6">
             <li><strong>Lundi:</strong> VTT – initiation (matin) / Tennis (après-midi)</li>

@@ -1,64 +1,52 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
-import { Image } from 'astro:assets';
+import CampHero from '@/components/sections/CampHero.astro';
 
-import golfPlayImg from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
+import golfPlayImg from '@/assets/images/select/P1000261.avif';
+import logoGolf from '@/assets/images/logos/ATC_-logo-golf.png';
 
 const title = "GOLF + PLAY - Advanced Tennis Camp";
 const description = "Two ball sports, two games that use strategy and emotional management. A unique program combining golf and tennis in Verbier.";
 ---
 
-<BaseLayout title={title} description={description}>
-  <!-- Main Content -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        <div>
-          <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">
-            GOLF + PLAY
-          </h2>
-          
-          <div class="prose prose-lg max-w-none">
-            <p>
-              <strong>First edition of the program in 2019 !!!</strong><br />
-              Two ball sports, two games that use strategy and emotional management. What's more natural to associate them !!
-            </p>
-            
-            <p>
-              It's <strong>Mike Coppens</strong>, local pro who will be with your kids throughout the week. Those who know Mike knows that they're in "good hands"!
-            </p>
-            
-            <h3 class="text-2xl font-bold text-primary mt-8 mb-4">DAILY SCHEDULE</h3>
-            <ul class="space-y-2">
-              <li>Meeting point <strong>every morning at 9h00 at The Amusement Park – Route de Verbier –</strong> before joining Mike</li>
-              <li><strong>12h00</strong> return to Time Out Restaurant for lunch</li>
-              <li><strong>1h45 pm</strong> start of tennis program</li>
-              <li><strong>4h15 pm back on courts to end the day</strong></li>
-            </ul>
-            
-            <p class="mt-4">
-              <strong>Ceremony start every Saturday at 11h30 on the terrace of Chalet d'Adrien.</strong>
-            </p>
-          </div>
-        </div>
-        
-        <div>
-          <Image 
-            src={golfPlayImg}
-            alt="GOLF + PLAY" 
-            class="w-full rounded-xs shadow-xl"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+<BaseLayout title={title} description={description} transparentHeader={true}>
+  <CampHero
+    title="GOLF + PLAY"
+    subtitle="Two ball sports, two games of strategy and emotions"
+    buttonText="CONTACT & BOOKINGS"
+    buttonLink="/en/contact/"
+    heroImage={golfPlayImg}
+    secondaryImage={logoGolf}
+    secondaryImageAlt="Verbier Golf Club"
+  >
+    <p>
+      <strong>First edition of the program in 2019 !!!</strong><br />
+      Two ball sports, two games that use strategy and emotional management. What's more natural to associate them !!
+    </p>
+    
+    <p>
+      It's <strong>Mike Coppens</strong>, local pro who will be with your kids throughout the week. Those who know Mike knows that they're in "good hands"!
+    </p><br>
+    
+    <h3 class="text-xl font-bold text-primary mt-8 mb-4">DAILY SCHEDULE</h3>
+    <ul class="space-y-2">
+      <li>Meeting point <strong>every morning at 9h00 at The Amusement Park – Route de Verbier –</strong> before joining Mike</li>
+      <li><strong>12h00</strong> return to Time Out Restaurant for lunch</li>
+      <li><strong>1h45 pm</strong> start of tennis program</li>
+      <li><strong>4h15 pm back on courts to end the day</strong></li>
+    </ul>
+    
+    <p class="mt-4">
+      <strong>Ceremony start every Saturday at 11h30 on the terrace of Chalet d'Adrien.</strong>
+    </p>
+  </CampHero>
   
   <!-- Program Details Section -->
-  <section class="py-12 bg-neutral-50">
+  <section class="py-12 bg-neutral-200">
     <div class="container mx-auto px-4">
       <div class="max-w-2xl mx-auto">
-        <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="bg-white rounded-sm shadow-sm p-8">
           <h4 class="text-2xl font-bold text-primary mb-6">Children born in 2016-2011</h4>
           <ul class="space-y-3 text-neutral-700 mb-6">
             <li><strong>Monday :</strong> Driving-Range to evaluate the level</li>
