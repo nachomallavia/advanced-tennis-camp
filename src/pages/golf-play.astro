@@ -2,16 +2,17 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import CampHero from '@/components/sections/CampHero.astro';
-
+import Hero from '@/components/sections/Hero.astro';
+import SingleFeature from '@/components/sections/SingleFeature.astro';
 import golfPlayImg from '@/assets/images/select/P1000261.avif';
-import logoGolf from '@/assets/images/logos/ATC_-logo-golf.png';
-
+import logoGolf from '@/assets/images/logos/logo-golf.png';
+import { Image } from 'astro:assets';
 const title = "Golf+Play - Advanced Tennis Camp";
 const description = "Deux sports de balle, deux jeux qui font appel à la stratégie et à la gestion de ses émotions. Programme combinant golf et tennis à Verbier.";
 ---
 
 <BaseLayout title={title} description={description} transparentHeader={true}>
-  <CampHero
+  <!-- <CampHero
     title="GOLF + PLAY"
     subtitle="Deux sports de balle, deux jeux de stratégie et d'émotions"
     buttonText="CONTACT & INSCRIPTIONS"
@@ -20,6 +21,24 @@ const description = "Deux sports de balle, deux jeux qui font appel à la strat�
     secondaryImage={logoGolf}
     secondaryImageAlt="Verbier Golf Club"
   >
+    
+  </CampHero> -->
+  <Hero
+      title="GOLF + PLAY"
+      tagline="Deux sports de balle, deux jeux de stratégie et d'émotions"
+
+      sponsorLogo={logoGolf}
+      videoSrc="https://res.cloudinary.com/duykgwmak/video/upload/ac_none,br_1600k,vc_auto/v1768223935/Extra_tennis_Golf_hxgggf.webm"
+    />
+    <SingleFeature
+      headline="GOLF + PLAY"
+      tagline="Deux sports de balle, deux jeux de stratégie et d'émotions"
+      primaryButtonText="CONTACT & INSCRIPTIONS"
+      primaryButtonHref="/contact/"
+      showCTAs={false}
+      class="py-20"
+    >
+    <Image slot="image" src={golfPlayImg} alt="Golf+Play" class="rounded-xs" />
     <p>
       <strong>Première édition du programme en 2019 !!!</strong><br />
       Deux sports de balle, deux jeux qui font appel à la stratégie et à la gestion de ses émotions. Quoi de plus naturel de les associer !!
@@ -27,10 +46,6 @@ const description = "Deux sports de balle, deux jeux qui font appel à la strat�
     
     <p>
       C'est <strong>Mike Coppens et son TEAM</strong> qui accompagneront vos enfants tout au long de la semaine. Ceux qui connaissent Mike savent qu'ils sont entre de « bonnes mains » !
-    </p><br>
-    
-    <p>
-      Groupe de 6 personnes maximum afin de pouvoir différencier les niveaux et les ages.
     </p><br>
     
     <h3 class="text-xl font-bold text-primary mt-8 mb-4">PROGRAMME</h3>
@@ -44,14 +59,15 @@ const description = "Deux sports de balle, deux jeux qui font appel à la strat�
     <p class="mt-4">
       Remise des prix et des diplomes <strong>le samedi dès 11H30</strong> sur la terrasse du Chalet d'Adrien.
     </p>
-  </CampHero>
+    </SingleFeature>
+  
   
   <!-- Program Details Section -->
-  <section class="py-12 bg-neutral-50">
+  <section class="py-12 bg-neutral-200">
     <div class="container mx-auto px-4">
       <div class="max-w-2xl mx-auto">
-        <div class="bg-white rounded-lg shadow-lg p-8">
-          <h3 class="text-2xl font-bold text-primary mb-6">ENFANTS NÉS EN 2017-2012</h3>
+        <div class="bg-white rounded-sm shadow-sm p-8">
+          <h4 class="text-2xl font-bold text-primary mb-6">ENFANTS NÉS EN 2017-2012</h4>
           <ul class="space-y-3 text-neutral-700 mb-6">
             <li><strong>Lundi :</strong> Driving-Range pour évaluer le niveau</li>
             <li><strong>Mardi :</strong> Petit jeu, approches-puts</li>

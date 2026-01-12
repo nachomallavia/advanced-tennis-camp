@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 
 interface Props {
   videoSrc?: string;
-  title: string;
-  tagline: string;
-  dates: string;
-  sponsorLogo: ImageMetadata;
+  title?: string;
+  tagline?: string;
+  dates?: string;
+  sponsorLogo?: ImageMetadata;
   sponsorUrl?: string;
   sponsorAlt?: string;
 }
@@ -54,7 +54,7 @@ const {
           <Image 
             src={sponsorLogo}
             alt={sponsorAlt} 
-            class="inline-block h-16 w-auto"
+            class="inline-block max-w-50 max-h-24 h-auto w-auto"
           />
         </a>
       </div>

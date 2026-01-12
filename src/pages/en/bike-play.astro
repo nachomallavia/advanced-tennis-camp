@@ -2,16 +2,18 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import CampHero from '@/components/sections/CampHero.astro';
-
+import Hero from '@/components/sections/Hero.astro';
 import bikePlayImg from '@/assets/images/select/WhatsApp-Image-2022-07-21-at-11.37.32.avif';
-import logoEssV from '@/assets/images/logos/ATC_-logo-ess-v.png';
+import logoEssV from '@/assets/images/logos/ESS_verbier-300x300.png';
+import SingleFeature from '@/components/sections/SingleFeature.astro';
+import { Image } from 'astro:assets';
 
 const title = "BIKE + PLAY - Advanced Tennis Camp";
 const description = "Camp combining cycling and tennis for children aged 7 and above. BMX, mountain bike enduro, downhill MTB, Skateboard in Verbier.";
 ---
 
 <BaseLayout title={title} description={description} transparentHeader={true}>
-  <CampHero
+  <!-- <CampHero
     title="BIKE + PLAY"
     subtitle="in collaboration with Verbier Swiss Ski School"
     buttonText="CONTACT & BOOKINGS"
@@ -19,29 +21,35 @@ const description = "Camp combining cycling and tennis for children aged 7 and a
     heroImage={bikePlayImg}
     secondaryImage={logoEssV}
     secondaryImageAlt="ESS Verbier"
-  >
-    <p>
-      <strong>For the first time in 2018,</strong> the Advanced Tennis Camp have set up a camp combining cycling and tennis.<strong> For children aged 7 and above,</strong> the 'Bike+Play' camp is designed to allow youngsters to discover the mountain.</p> <br>
-      <p>Throughout the week in the mornings, children will be allowed to practice different forms of cycling including <strong>BMX, mountain bike enduro and mountain bike downhill. Skateboarding will also be available.</strong>
-    </p><br>
-    <p>
-      <strong>Professionals in each discipline</strong> will accompany the youngsters to ensure their safety before joining the ATC team to 'play' tennis in the beautiful setting of Verbier.
-    </p><br>
-    <p>
-      <strong>Groups of 4 people maximum per age group.</strong>
-    </p><br>
+  > -->
+    <Hero
+      title="BIKE + PLAY"
+      tagline="in collaboration with Verbier Swiss Ski School"
+
+      sponsorLogo={logoEssV}
+      videoSrc="https://res.cloudinary.com/duykgwmak/video/upload/ac_none,br_1600k,vc_auto/v1768223981/Extra_tennis_bike_ngnjjo.webm"
+    />
+    <SingleFeature
+      headline="BIKE + PLAY"
+      tagline="in collaboration with Verbier Swiss Ski School"
+      primaryButtonText="CONTACT & BOOKINGS"
+      primaryButtonHref="/en/contact/"
+      showCTAs={false}
+      class="py-20"
+    >
+    <Image slot="image" src={bikePlayImg} alt="Bike+Play" class="rounded-xs" />
+      <p>
+        <strong>For the first time in 2018,</strong> the Advanced Tennis Camp have set up a camp combining cycling and tennis.<strong> For children aged 7 and above,</strong> the 'Bike+Play' camp is designed to allow youngsters to discover the mountain.</p> <br>
+        <p>Throughout the week in the mornings, children will be allowed to practice different forms of cycling including <strong>BMX, mountain bike enduro and mountain bike downhill. Skateboarding will also be available.</strong>
+      </p><br>
+      <p>
+        <strong>Professionals in each discipline</strong> will accompany the youngsters to ensure their safety before joining the ATC team to 'play' tennis in the beautiful setting of Verbier.
+      </p><br>
+      <p>
+        <strong>Groups of 4 people maximum per age group.</strong>
+      </p><br>
+    </SingleFeature>
     
-    <h3 class="text-xl font-bold text-primary mt-8 mb-4">PROGRAMME</h3>
-    <ul class="space-y-2">
-      <li><strong>Every morning at 09:00</strong> chez Martin before joining the Kids Bike League</li>
-      <li><strong>12:00</strong> return to Martin for lunch</li>
-      <li><strong>14:00</strong> start of the tennis program</li>
-      <li><strong>17:00</strong> end of the day</li>
-    </ul>
-    <p class="mt-4">
-      An award ceremony will take place on <strong>Saturday from 11:30</strong> on the terrace of Chalet d'Adrien.
-    </p>
-  </CampHero>
   
   <!-- Age Groups Section -->
   <section class="py-12 bg-neutral-200">

@@ -2,16 +2,17 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import CampHero from '@/components/sections/CampHero.astro';
-
+import Hero from '@/components/sections/Hero.astro';
+import SingleFeature from '@/components/sections/SingleFeature.astro';
 import golfPlayImg from '@/assets/images/select/P1000261.avif';
-import logoGolf from '@/assets/images/logos/ATC_-logo-golf.png';
-
+import logoGolf from '@/assets/images/logos/logo-golf.png';
+import { Image } from 'astro:assets';
 const title = "GOLF + PLAY - Advanced Tennis Camp";
 const description = "Two ball sports, two games that use strategy and emotional management. A unique program combining golf and tennis in Verbier.";
 ---
 
 <BaseLayout title={title} description={description} transparentHeader={true}>
-  <CampHero
+  <!-- <CampHero
     title="GOLF + PLAY"
     subtitle="Two ball sports, two games of strategy and emotions"
     buttonText="CONTACT & BOOKINGS"
@@ -20,6 +21,24 @@ const description = "Two ball sports, two games that use strategy and emotional 
     secondaryImage={logoGolf}
     secondaryImageAlt="Verbier Golf Club"
   >
+    
+  </CampHero> -->
+  <Hero
+      title="GOLF + PLAY"
+      tagline="Two ball sports, two games of strategy and emotions"
+
+      sponsorLogo={logoGolf}
+      videoSrc="https://res.cloudinary.com/duykgwmak/video/upload/ac_none,br_1600k,vc_auto/v1768223935/Extra_tennis_Golf_hxgggf.webm"
+    />
+    <SingleFeature
+      headline="GOLF + PLAY"
+      tagline="Two ball sports, two games of strategy and emotions"
+      primaryButtonText="CONTACT & BOOKINGS"
+      primaryButtonHref="/en/contact/"
+      showCTAs={false}
+      class="py-20"
+    >
+    <Image slot="image" src={golfPlayImg} alt="Golf+Play" class="rounded-xs" />
     <p>
       <strong>First edition of the program in 2019 !!!</strong><br />
       Two ball sports, two games that use strategy and emotional management. What's more natural to associate them !!
@@ -40,7 +59,7 @@ const description = "Two ball sports, two games that use strategy and emotional 
     <p class="mt-4">
       <strong>Ceremony start every Saturday at 11h30 on the terrace of Chalet d'Adrien.</strong>
     </p>
-  </CampHero>
+    </SingleFeature>
   
   <!-- Program Details Section -->
   <section class="py-12 bg-neutral-200">

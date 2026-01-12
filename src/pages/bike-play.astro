@@ -2,16 +2,18 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import CampHero from '@/components/sections/CampHero.astro';
-
+import Hero from '@/components/sections/Hero.astro';
 import bikePlayImg from '@/assets/images/select/WhatsApp-Image-2022-07-21-at-11.37.32.avif';
-import logoEssV from '@/assets/images/logos/ATC_-logo-ess-v.png';
+import logoEssV from '@/assets/images/logos/ESS_verbier-300x300.png';
+import SingleFeature from '@/components/sections/SingleFeature.astro';
+import { Image } from 'astro:assets';
 
 const title = "BIKE + PLAY - Advanced Tennis Camp";
 const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT enduro, VTT descente, Skate board au programme à Verbier.";
 ---
 
 <BaseLayout title={title} description={description} transparentHeader={true}>
-  <CampHero
+  <!-- <CampHero
     title="BIKE + PLAY"
     subtitle="en relation avec l'Ecole Suisse de Ski de Verbier"
     buttonText="CONTACT & INSCRIPTIONS"
@@ -19,40 +21,43 @@ const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT e
     heroImage={bikePlayImg}
     secondaryImage={logoEssV}
     secondaryImageAlt="ESS Verbier"
-  >
-    <p>
-      <strong>Pour la première année en 2018,</strong> afin que les jeunes découvrent la montagne en la parcourant, nous avons mis en place <strong>un CAMP dès 7 ans combinant le vélo et le tennis!</strong>
-    </p><br>
-    <p>
-      Tout au long de la semaine, les matins ou en début d'après-midi, vos enfants découvriront, progresseront avec différentes formes de vélo: <strong>BMX, VTT enduro, VTT descente, Skate board peuvent être au programme.</strong>
-    </p><br>
-    <p>
-      <strong>Des professionnels de la Kids Bike League, les accompagneront pour assurer leur sécurité avant de rejoindre l'équipe de l'ATC pour « échanger » dans le décor grandiose de Verbier.</strong>
-    </p><br>
-    <p>
-      Groupes de 4 personnes maximum par tranche d'age.
-    </p><br>
-    
-    <h3 class="text-xl font-bold text-primary mt-8 mb-4">PROGRAMME</h3>
-    <ul class="space-y-2">
-      <li>Rendez-vous tous les matins au Parc des Loisirs à <strong>9h00</strong> avant de rejoindre le <strong>team de Kids Bike League.</strong></li>
-      <li><strong>La 1e matinée est dédiée à la confirmation du niveau de pratique afin de garantir les meilleures conditions de sécurité.</strong></li>
-      <li><strong>12h00</strong> retour Parc des Loisirs/ déjeuner Time OUT</li>
-      <li><strong>14h00</strong> début du programme tennis</li>
-      <li><strong>17h00</strong> fin de la journée</li>
-    </ul>
-    <p class="mt-4">
-      Remise des prix et des diplômes <strong>le samedi dès 11h30</strong> sur la terrasse du Chalet d'Adrien.
-    </p>
-  </CampHero>
+  > -->
+    <Hero
+      title="BIKE + PLAY"
+      tagline="en relation avec l'Ecole Suisse de Ski de Verbier"
+
+      sponsorLogo={logoEssV}
+      videoSrc="https://res.cloudinary.com/duykgwmak/video/upload/ac_none,br_1600k,vc_auto/v1768223981/Extra_tennis_bike_ngnjjo.webm"
+    />
+    <SingleFeature
+      headline="BIKE + PLAY"
+      tagline="en relation avec l'Ecole Suisse de Ski de Verbier"
+      primaryButtonText="CONTACT & INSCRIPTIONS"
+      primaryButtonHref="/contact/"
+      showCTAs={false}
+      class="py-20"
+    >
+    <Image slot="image" src={bikePlayImg} alt="Bike+Play" class="rounded-xs" />
+      <p>
+        <strong>Pour la première année en 2018,</strong> afin que les jeunes découvrent la montagne en la parcourant, nous avons mis en place <strong>un CAMP dès 7 ans combinant le vélo et le tennis!</strong></p> <br>
+        <p>Tout au long de la semaine, les matins ou en début d'après-midi, vos enfants découvriront, progresseront avec différentes formes de vélo: <strong>BMX, VTT enduro, VTT descente, Skate board peuvent être au programme.</strong>
+      </p><br>
+      <p>
+        <strong>Des professionnels de la Kids Bike League, les accompagneront pour assurer leur sécurité avant de rejoindre l'équipe de l'ATC pour « échanger » dans le décor grandiose de Verbier.</strong>
+      </p><br>
+      <p>
+        <strong>Groupes de 4 personnes maximum par tranche d'age.</strong>
+      </p><br>
+    </SingleFeature>
+  
   
   <!-- Age Groups Section -->
-  <section class="py-12 bg-neutral-50">
+  <section class="py-12 bg-neutral-200">
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-8">
         <!-- 7-10 ans -->
         <div class="bg-white rounded-sm shadow-sm p-8">
-          <h3 class="text-2xl font-bold text-primary mb-6">7-10 ANS (2019-2016)</h3>
+          <h4 class="text-2xl font-bold text-primary mb-6">7-10 ANS (2019-2016)</h4>
           <ul class="space-y-3 text-neutral-700 mb-6">
             <li><strong>Lundi:</strong> VTT – initiation (matin) / Tennis (après-midi)</li>
             <li><strong>Mardi:</strong> VTT– parcours (matin) / Tennis (après-midi)</li>
@@ -68,7 +73,7 @@ const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT e
         
         <!-- 11-15 ans -->
         <div class="bg-white rounded-sm shadow-sm p-8">
-          <h3 class="text-2xl font-bold text-primary mb-6">11-15 ANS (2015-2011)</h3>
+          <h4 class="text-2xl font-bold text-primary mb-6">11-15 ANS (2015-2011)</h4>
           <ul class="space-y-3 text-neutral-700 mb-6">
             <li><strong>Lundi:</strong> VTT – initiation (matin) / Tennis (après-midi)</li>
             <li><strong>Mardi:</strong> VTT – parcours (matin) / Tennis (après-midi)</li>
@@ -76,7 +81,7 @@ const description = "Camp combinant le vélo et le tennis dès 7 ans. BMX, VTT e
             <li><strong>Jeudi:</strong> VTT – enduro (matin) / Tennis (après-midi)</li>
             <li><strong>Vendredi:</strong> VTT – descente (matin) / Tennis (après-midi)</li>
           </ul>
-          <p class="text-xl font-bold text-primary mb-6">Price: 1450 CHF</p>
+          <p class="text-xl font-bold text-primary mb-6">Prix: 1450 CHF</p>
           <Button href="/contact/" variant="primary">
             CONTACT & INSCRIPTIONS
           </Button>
