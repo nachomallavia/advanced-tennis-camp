@@ -235,10 +235,13 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
                 alt={image.alt}
                 width={image.aspect === 'aspect-video'?800:400}
                 height={image.aspect === 'aspect-video'?(800/image.width)*image.height:(400/image.width)*image.height}
+
                 format="webp"
                 quality={50}
                 sizes={image.aspect==='aspect-video' ? "100vw" : "50vw"}
                 class="!w-full !h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading={index < 8 ? 'eager' : 'lazy'}
+                fetchpriority={index < 8 ? 'high' : 'low'}
               />
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
             </button>
@@ -265,6 +268,8 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
                 quality={50}
                 sizes={image.aspect==='aspect-video' ? "(min-width: 1680px) 840px, 50vw" : "(min-width: 1680px) 420px, 25vw"}
                 class="!w-full !h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading={index < 8 ? 'eager' : 'lazy'}
+                fetchpriority={index < 8 ? 'high' : 'low'}
               />
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
             </button>
