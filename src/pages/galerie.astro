@@ -256,8 +256,8 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
                 id={image.id}
                 src={image.src} 
                 alt={image.alt}
-                width={image.width}
-                height={image.height}
+                width={image.aspect === 'aspect-video'?1200:600}
+                height={image.aspect === 'aspect-video'?(1200/image.width)*image.height:(600/image.width)*image.height}
                 format="webp"
                 sizes={image.aspect==='aspect-video' ? "(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 880px" : "(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px" }
 
