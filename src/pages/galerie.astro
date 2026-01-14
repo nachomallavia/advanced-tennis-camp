@@ -258,6 +258,8 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
                 alt={image.alt}
                 width={image.width}
                 height={image.height}
+                sizes={image.aspect==='aspect-video' ? "(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 880px" : "(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px" }
+
                 class="!w-full !h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
@@ -287,7 +289,7 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
         </div>
       </dialog>
       <!-- Photo Credits -->
-      <p class="text-center text-neutral-600 italic text-sm mt-12">
+      <p class="text-center text-neutral-600 italic text-sm my-12">
         Crédits Photos/Vidéos : Alpimages Verbier, Shibo Films
       </p>
     </div>
