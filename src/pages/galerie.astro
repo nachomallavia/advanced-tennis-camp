@@ -258,6 +258,7 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
                 alt={image.alt}
                 width={image.width}
                 height={image.height}
+                format="webp,avif"
                 sizes={image.aspect==='aspect-video' ? "(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 880px" : "(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px" }
 
                 class="!w-full !h-full object-cover transition-transform duration-300 group-hover:scale-105"
