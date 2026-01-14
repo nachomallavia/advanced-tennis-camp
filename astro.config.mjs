@@ -9,7 +9,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://advancedtenniscamp.ch',
-  output: 'hybrid',
+  output: 'server',
   adapter: vercel(),
   integrations: [sitemap({
     i18n: {

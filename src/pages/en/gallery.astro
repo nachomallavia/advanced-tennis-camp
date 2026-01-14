@@ -233,7 +233,7 @@ const filteredImages = arrangeInSmartGrid(filterImagesByYear(year || ''));
       
       <!-- Gallery Grid -->
        <div class="h-[100vh] overflow-y-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 ">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
         {filteredImages.map((image) => (
           <div class={`group relative w-full h-full overflow-hidden rounded-none ${image.aspect} shadow-lg ${image.aspect==='aspect-video'? 'lg:col-span-2 ' :''}`}>
             <CldImage 
