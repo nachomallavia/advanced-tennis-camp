@@ -35,7 +35,8 @@ function shuffle(array: any[]) {
 // Gallery images - curated selection
 function filterImagesByYear(year: string) {
   if (year==="" || year=== null || year=== undefined){
-    return images.filter((image) => image.highlight);
+    const shuffledImages = shuffle(images);
+    return shuffledImages.filter((image) => image.highlight);
   } else{
     const shuffledImages = shuffle(images);
     return shuffledImages.filter((image) => image.year === year);
@@ -217,7 +218,7 @@ const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
       
       
       <!-- Gallery Grid -->
-      <div class="h-[100vh] overflow-y-auto" id="gallery-grid">
+      <div class="h-[100vh] max-w-[1680px] mx-auto overflow-y-auto" id="gallery-grid">
         <!-- Mobile Grid (2 columns) -->
         <div id="grid-target" class="grid md:hidden grid-cols-2 gap-1">
           {mobileImages.map((image, index) => (

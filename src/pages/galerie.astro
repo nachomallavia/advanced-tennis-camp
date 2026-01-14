@@ -1,71 +1,436 @@
 ---
+export const prerender = false;
+
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 
-// Import gallery images
-import img1 from '@/assets/images/camp/WhatsApp-Image-2022-07-27-at-06.29.56-1.jpeg';
-import img2 from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-11.37.32.jpeg';
-import img3 from '@/assets/images/camp/WhatsApp-Image-2022-07-18-at-15.05.02-1.jpeg';
-import img4 from '@/assets/images/camp/WhatsApp-Image-2022-07-25-at-15.48.26.jpeg';
-import img5 from '@/assets/images/camp/WhatsApp-Image-2022-08-05-at-10.52.31-1.jpeg';
-import img6 from '@/assets/images/camp/WhatsApp-Image-2022-07-25-at-15.48.25-2.jpeg';
-import img7 from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-09.25.26.jpeg';
-import img8 from '@/assets/images/camp/WhatsApp-Image-2022-07-21-at-17.43.55.jpeg';
-import img9 from '@/assets/images/camp/WhatsApp-Image-2021-07-22-at-11.58.58-1.jpeg';
+import { CldImage } from 'astro-cloudinary';
+import { getCollection } from 'astro:content';
+const gallery = await getCollection('gallery');
 
+
+ const images = gallery.map((image) => ({
+  id: image.data.public_id,
+  src: image.data.url,
+  alt: image.data.tags?.find(tag => /^\d{4}$/.test(tag)) || '',
+  width: image.data.width,
+  height: image.data.height,
+  year: image.data.tags?.find(tag => /^\d{4}$/.test(tag)) || '',
+  highlight: image.data.tags?.includes('highlight') || false,
+  aspect: image.data.width / image.data.height > 1.1 ? 'aspect-video' : image.data.width / image.data.height < 0.9 ? 'aspect-portrait' : 'aspect-square'
+}));
 const title = "Galerie - Advanced Tennis Camp";
 const description = "Découvrez les photos de l'Advanced Tennis Camp à Verbier. Tennis, activités, moments de partage avec nos jeunes athlètes.";
 
 // Gallery years
-const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
+const years = [2025,2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016];
+
+
+const year = Astro.url.searchParams.get('year') || '';
+
+function shuffle(array: any[]) {
+  return array.sort(() => Math.random() - 0.5);
+}
 
 // Gallery images - curated selection
-const images = [
-  { src: img1, alt: "Tennis Camp" },
-  { src: img2, alt: "BIKE + PLAY" },
-  { src: img3, alt: "GOLF + PLAY" },
-  { src: img4, alt: "Activités" },
-  { src: img5, alt: "Tennis Training" },
-  { src: img6, alt: "Camp Life" },
-  { src: img7, alt: "Tennis Courts" },
-  { src: img8, alt: "Team" },
-  { src: img9, alt: "Senior Camp" },
-];
+function filterImagesByYear(year: string) {
+  if (year==="" || year=== null || year=== undefined){
+    const shuffledImages = shuffle(images);
+    return shuffledImages.filter((image) => image.highlight);
+  } else{
+    const shuffledImages = shuffle(images);
+    return shuffledImages.filter((image) => image.year === year);
+  }
+}
+
+// Smart grid layout patterns (total 4 columns)
+// Pattern 1: [pt/sq - landscape - pt/sq]
+// Pattern 2: [landscape - pt/sq - pt/sq]
+// Pattern 3: [pt/sq - pt/sq - landscape]
+// Pattern 4: [pt/sq - pt/sq - pt/sq - pt/sq]
+function arrangeInSmartGrid(imagesList: typeof images) {
+  const landscapes = imagesList.filter(img => img.aspect === 'aspect-video');
+  const portraitsAndSquares = imagesList.filter(img => img.aspect !== 'aspect-video');
+  
+  const arranged: typeof images = [];
+  const patterns = [
+    { landscape: 1, portraitSquare: 2 },  // Pattern 1, 2, 3
+    { landscape: 0, portraitSquare: 4 },  // Pattern 4
+  ];
+  
+  let landscapeIndex = 0;
+  let psIndex = 0;
+  let patternIndex = 0;
+  
+  while (landscapeIndex < landscapes.length || psIndex < portraitsAndSquares.length) {
+    const pattern = patterns[patternIndex % patterns.length];
+    
+    // Check if we have enough images for this pattern
+    const hasEnoughLandscape = landscapeIndex + pattern.landscape <= landscapes.length;
+    const hasEnoughPS = psIndex + pattern.portraitSquare <= portraitsAndSquares.length;
+    
+    if (pattern.landscape > 0 && hasEnoughLandscape && hasEnoughPS) {
+      // Patterns 1, 2, 3 with 1 landscape
+      const landscapePos = Math.floor(Math.random() * 3); // Random position: 0 (start), 1 (middle), 2 (end)
+      
+      for (let i = 0; i < 3; i++) {
+        if (i === landscapePos) {
+          arranged.push(landscapes[landscapeIndex++]);
+        } else {
+          arranged.push(portraitsAndSquares[psIndex++]);
+        }
+      }
+    } else if (pattern.landscape === 0 && psIndex + 4 <= portraitsAndSquares.length) {
+      // Pattern 4: 4 portraits/squares
+      for (let i = 0; i < 4; i++) {
+        arranged.push(portraitsAndSquares[psIndex++]);
+      }
+    } else if (landscapeIndex < landscapes.length && psIndex + 2 <= portraitsAndSquares.length) {
+      // Fallback: use pattern with landscape if we have the resources
+      const landscapePos = Math.floor(Math.random() * 3);
+      for (let i = 0; i < 3; i++) {
+        if (i === landscapePos) {
+          arranged.push(landscapes[landscapeIndex++]);
+        } else {
+          arranged.push(portraitsAndSquares[psIndex++]);
+        }
+      }
+    } else {
+      // Add remaining images
+      while (landscapeIndex < landscapes.length) {
+        arranged.push(landscapes[landscapeIndex++]);
+      }
+      while (psIndex < portraitsAndSquares.length) {
+        arranged.push(portraitsAndSquares[psIndex++]);
+      }
+      break;
+    }
+    
+    patternIndex++;
+  }
+  
+  return arranged;
+}
+
+// Smart grid layout patterns for mobile (total 2 columns)
+// Pattern 1: [landscape] - full width landscape
+// Pattern 2: [pt/sq - pt/sq] - two portraits/squares side by side
+function arrangeInSmartGridMobile(imagesList: typeof images) {
+  const landscapes = imagesList.filter(img => img.aspect === 'aspect-video');
+  const portraitsAndSquares = imagesList.filter(img => img.aspect !== 'aspect-video');
+  
+  const arranged: typeof images = [];
+  const patterns = [
+    { landscape: 1, portraitSquare: 0 },  // Pattern 1: Full-width landscape
+    { landscape: 0, portraitSquare: 2 },  // Pattern 2: Two portraits/squares
+  ];
+  
+  let landscapeIndex = 0;
+  let psIndex = 0;
+  let patternIndex = 0;
+  
+  while (landscapeIndex < landscapes.length || psIndex < portraitsAndSquares.length) {
+    const pattern = patterns[patternIndex % patterns.length];
+    
+    // Check if we have enough images for this pattern
+    const hasEnoughLandscape = landscapeIndex + pattern.landscape <= landscapes.length;
+    const hasEnoughPS = psIndex + pattern.portraitSquare <= portraitsAndSquares.length;
+    
+    if (pattern.landscape > 0 && hasEnoughLandscape) {
+      // Pattern 1: Full-width landscape
+      arranged.push(landscapes[landscapeIndex++]);
+    } else if (pattern.landscape === 0 && hasEnoughPS) {
+      // Pattern 2: Two portraits/squares side by side
+      for (let i = 0; i < 2; i++) {
+        arranged.push(portraitsAndSquares[psIndex++]);
+      }
+    } else if (landscapeIndex < landscapes.length) {
+      // Fallback: add remaining landscapes
+      arranged.push(landscapes[landscapeIndex++]);
+    } else if (psIndex < portraitsAndSquares.length) {
+      // Fallback: add remaining portraits/squares (add 2 at a time if possible, otherwise 1)
+      arranged.push(portraitsAndSquares[psIndex++]);
+      if (psIndex < portraitsAndSquares.length) {
+        arranged.push(portraitsAndSquares[psIndex++]);
+      }
+    } else {
+      break;
+    }
+    
+    patternIndex++;
+  }
+  
+  return arranged;
+}
+
+const desktopImages = arrangeInSmartGrid(filterImagesByYear(year || ''));
+const mobileImages = arrangeInSmartGridMobile(filterImagesByYear(year || ''));
+
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
+  <section class=" bg-white">
+    <div class="">
       <!-- Year Navigation -->
-      <nav class="flex flex-wrap justify-center gap-4 mb-12">
-        {years.map((year) => (
-          <a 
-            href={`/galerie/${year}/`}
-            class="px-6 py-3 text-lg font-bold text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
-          >
-            {year}
-          </a>
-        ))}
-      </nav>
-      
-      <!-- Gallery Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {images.map((image) => (
-          <div class="group relative aspect-square overflow-hidden rounded-xs shadow-lg">
-            <Image 
-              src={image.src} 
-              alt={image.alt}
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300"></div>
+      <div class="relative overflow-hidden">
+        <nav id="year-nav" class="overflow-x-auto md:overflow-x-visible py-4 -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth">
+          <div class="flex md:flex-wrap md:justify-center gap-2 min-w-max md:min-w-0">
+            <a 
+              href="/galerie"
+              class={`px-4 py-2 font-bold rounded-full transition-colors whitespace-nowrap ${!year ? 'bg-primary text-white' : 'text-primary hover:bg-primary hover:text-white'}`}
+            >
+              Highlights
+            </a>
+            {years.map((y) => (
+              <a 
+                href={`/galerie?year=${y}`}
+                class={`px-4 py-2 font-bold rounded-full transition-colors whitespace-nowrap ${year === String(y) ? 'bg-primary text-white' : 'text-primary hover:bg-primary hover:text-white'}`}
+              >
+                {y}
+              </a>
+            ))}
           </div>
-        ))}
+        </nav>
+        
+        <!-- Left scroll arrow (mobile only) -->
+        <button 
+          id="scroll-arrow-left"
+          class="md:hidden absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-r from-white via-white to-transparent pr-12 pl-0 py-8 pointer-events-auto opacity-0 transition-opacity"
+          aria-label="Retour"
+        >
+          <svg class="w-6 h-6 text-primary animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        
+        <!-- Right scroll arrow (mobile only) -->
+        <button 
+          id="scroll-arrow-right"
+          class="md:hidden absolute right-0 top-1/2 -translate-y-1/2 bg-gradient-to-l from-white via-white to-transparent pl-12 pr-0 py-8 pointer-events-auto transition-opacity"
+          aria-label="Voir plus d'années"
+        >
+          <svg class="w-6 h-6 text-primary animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
       </div>
       
+      
+      
+      <!-- Gallery Grid -->
+      <div class="h-[100vh] max-w-[1680px] mx-auto overflow-y-auto" id="gallery-grid">
+        <!-- Mobile Grid (2 columns) -->
+        <div id="grid-target" class="grid md:hidden grid-cols-2 gap-1">
+          {mobileImages.map((image, index) => (
+            <button 
+              type="button"
+              data-image-index={index}
+              data-grid="mobile"
+              class={`animated-gallery-item group relative w-full h-full overflow-hidden bg-neutral-200 rounded-none ${image.aspect} shadow-lg ${image.aspect==='aspect-video'? 'col-span-2 ' :''} cursor-pointer`}
+              aria-label={`Voir ${image.alt} en taille réelle`}
+            >
+              <CldImage
+                id={image.id}
+                src={image.src} 
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                class="!w-full !h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
+            </button>
+          ))}
+        </div>
+        
+        <!-- Desktop Grid (4 columns) -->
+        <div class="hidden md:grid grid-cols-4 gap-1">
+          {desktopImages.map((image, index) => (
+            <button 
+              type="button"
+              data-image-index={index}
+              data-grid="desktop"
+              class={`animated-gallery-item group relative w-full h-full overflow-hidden bg-neutral-200 rounded-none ${image.aspect} shadow-lg ${image.aspect==='aspect-video'? 'col-span-2 ' :''} cursor-pointer`}
+              aria-label={`Voir ${image.alt} en taille réelle`}
+            >
+              <CldImage
+                id={image.id}
+                src={image.src} 
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                class="!w-full !h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
+            </button>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Image Modal Dialog -->
+      <dialog id="image-modal" class="backdrop:bg-black/90 bg-transparent p-0 w-screen h-screen max-w-none max-h-none border-0 m-0">
+        <div id="modal-backdrop" class="relative w-full h-full flex items-center justify-center p-4 cursor-pointer">
+          <!-- Close Button -->
+          <button 
+            id="close-modal"
+            class="fixed top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
+            aria-label="Fermer"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          
+          <!-- Image Container -->
+          <div id="modal-image-container" class="flex items-center justify-center max-w-full max-h-full cursor-default">
+            <!-- Image will be inserted here -->
+          </div>
+        </div>
+      </dialog>
       <!-- Photo Credits -->
-      <p class="text-center text-neutral-600 italic">
+      <p class="text-center text-neutral-600 italic text-sm mt-12">
         Crédits Photos/Vidéos : Alpimages Verbier, Shibo Films
       </p>
     </div>
   </section>
+  <script>
+    const nav = document.getElementById('year-nav');
+    const arrowLeft = document.getElementById('scroll-arrow-left');
+    const arrowRight = document.getElementById('scroll-arrow-right');
+    
+    if (nav && arrowLeft && arrowRight) {
+      // Check scroll position and update arrow visibility
+      function updateArrowVisibility() {
+        const isScrollable = nav.scrollWidth > nav.clientWidth;
+        const isAtStart = nav.scrollLeft <= 10;
+        const isAtEnd = nav.scrollLeft >= nav.scrollWidth - nav.clientWidth - 10;
+        
+        // Left arrow - show when scrollable and not at start
+        if (isScrollable && !isAtStart) {
+          arrowLeft.style.opacity = '1';
+          arrowLeft.style.pointerEvents = 'auto';
+        } else {
+          arrowLeft.style.opacity = '0';
+          arrowLeft.style.pointerEvents = 'none';
+        }
+        
+        // Right arrow - show when scrollable and not at end
+        if (isScrollable && !isAtEnd) {
+          arrowRight.style.opacity = '1';
+          arrowRight.style.pointerEvents = 'auto';
+        } else {
+          arrowRight.style.opacity = '0';
+          arrowRight.style.pointerEvents = 'none';
+        }
+      }
+      
+      // Scroll to active year button on page load
+      function scrollToActiveYear() {
+        const activeButton = nav.querySelector('a.bg-primary');
+        if (activeButton) {
+          // Wait a bit for the page to render
+          setTimeout(() => {
+            activeButton.scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'center'
+            });
+            // Update arrows after scrolling
+            setTimeout(updateArrowVisibility, 300);
+          }, 100);
+        }
+      }
+      
+      // Scroll left
+      arrowLeft.addEventListener('click', () => {
+        nav.scrollBy({ left: -200, behavior: 'smooth' });
+      });
+      
+      // Scroll right
+      arrowRight.addEventListener('click', () => {
+        nav.scrollBy({ left: 200, behavior: 'smooth' });
+      });
+      
+      // Update arrows on scroll
+      nav.addEventListener('scroll', updateArrowVisibility);
+      
+      // Initial setup
+      scrollToActiveYear();
+      updateArrowVisibility();
+      
+      // Recheck on resize
+      window.addEventListener('resize', updateArrowVisibility);
+    }
+  </script>
+  
+  <script define:vars={{ mobileImages, desktopImages }}>
+    // Image Modal functionality
+    const modal = document.getElementById('image-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalContainer = document.getElementById('modal-image-container');
+    const closeButton = document.getElementById('close-modal');
+    const imageButtons = document.querySelectorAll('[data-image-index]');
+    
+    if (modal && modalBackdrop && modalContainer && closeButton) {
+      // Open modal with clicked image
+      imageButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const index = parseInt(button.getAttribute('data-image-index') || '0');
+          const grid = button.getAttribute('data-grid');
+          
+          // Use the appropriate image array based on which grid was clicked
+          const images = grid === 'mobile' ? mobileImages : desktopImages;
+          const image = images[index];
+          
+          if (image) {
+            // Clear previous content
+            modalContainer.innerHTML = '';
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.alt;
+            img.className = 'max-w-full max-h-[90vh] object-contain rounded-lg';
+            
+            modalContainer.appendChild(img);
+            
+            // Show modal
+            modal.showModal();
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+      
+      // Close modal
+      function closeModal() {
+        modal.close();
+        document.body.style.overflow = '';
+      }
+      
+      closeButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeModal();
+      });
+      
+      // Close on backdrop click (but not on image)
+      modalBackdrop.addEventListener('click', (e) => {
+        // Only close if clicking directly on the backdrop, not the image
+        if (e.target === modalBackdrop) {
+          closeModal();
+        }
+      });
+      
+      // Prevent clicks on image from closing modal
+      modalContainer.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+      
+      // Close on ESC key
+      modal.addEventListener('cancel', (e) => {
+        e.preventDefault();
+        closeModal();
+      });
+    }
+  </script>
+  
+  
 </BaseLayout>
