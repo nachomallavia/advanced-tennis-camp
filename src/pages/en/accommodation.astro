@@ -23,7 +23,7 @@ const description = "Accommodation for families and children in Verbier. Family 
       
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Family Pack Section -->
-        <div>
+        <div class="flex flex-col justify-between items-center">
           <div class="prose prose-lg max-w-none mb-8">
             <h2 class="text-2xl font-bold text-primary mb-4">Family pack</h2>
             <p>
@@ -42,7 +42,7 @@ const description = "Accommodation for families and children in Verbier. Family 
           
           <!-- Family Carousel -->
           {family.length > 0 ? (
-            <div class="relative">
+            <div class="relative mb-8">
               <Carousel 
                 id="family-carousel"
                 class="w-full"
@@ -83,7 +83,7 @@ const description = "Accommodation for families and children in Verbier. Family 
         </div>
         
         <!-- Kids Section -->
-        <div>
+        <div class="flex flex-col justify-between items-center">
           <div class="prose prose-lg max-w-none mb-8">
             <h2 class="text-2xl font-bold text-primary mb-4">"Kids"</h2>
             <p>
@@ -93,7 +93,7 @@ const description = "Accommodation for families and children in Verbier. Family 
           
           <!-- Kids Carousel -->
           {kids.length > 0 ? (
-            <div class="relative">
+            <div class="relative mb-8">
               <Carousel 
                 id="kids-carousel"
                 class="w-full"
