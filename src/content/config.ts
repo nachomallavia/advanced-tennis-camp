@@ -8,4 +8,11 @@ export const collections = {
         }),
         
     }),
+    accomodation: defineCollection({
+        loader: cldAssetsLoader({
+            folder: 'atc/accomodation',
+            tags: true,
+            metadata: true,
+        }),
+    })
 }

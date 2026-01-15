@@ -10,4 +10,12 @@ export const collections = {
         }),
         
     }),
+    accomodation: defineCollection({
+        loader: cldAssetsLoader({
+            folder: 'atc/accommodation',
+            tags: true,
+            metadata: true,
+            limit: 300,
+        }),
+    }),
 }

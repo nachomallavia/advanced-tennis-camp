@@ -12,8 +12,8 @@ export const ui = {
     'nav.camp': 'Verbier Camp',
     'nav.programs': 'Programmes & Tarifs',
     'nav.tournament': 'Tournoi ITF Junior',
-    'nav.bike': 'BIKE + PLAY',
-    'nav.golf': 'GOLF + PLAY',
+    'nav.bike': 'BIKE+PLAY',
+    'nav.golf': 'GOLF+PLAY',
     'nav.accommodation': 'Hébergement',
     'nav.gallery': 'Galerie',
     'nav.contact': 'Contact',
@@ -32,7 +32,7 @@ export const ui = {
     'hero.hashtag': '#BUILDTHENEXTGENERATION',
     
     // Footer
-    'footer.copyright': '© 2025 Advanced Tennis Camp. Tous droits réservés.',
+    'footer.copyright': '© 2026 Advanced Tennis Camp. Tous droits réservés.',
     'footer.address': 'Verbier, Valais, Suisse',
     'footer.terms': 'Conditions Générales',
     
@@ -48,8 +48,8 @@ export const ui = {
     'nav.camp': 'Verbier Camp',
     'nav.programs': 'Programs & Prices',
     'nav.tournament': 'ITF Junior Tournament',
-    'nav.bike': 'BIKE + PLAY',
-    'nav.golf': 'GOLF + PLAY',
+    'nav.bike': 'BIKE+PLAY',
+    'nav.golf': 'GOLF+PLAY',
     'nav.accommodation': 'Accommodation',
     'nav.gallery': 'Gallery',
     'nav.contact': 'Contact',
@@ -68,7 +68,7 @@ export const ui = {
     'hero.hashtag': '#BUILDTHENEXTGENERATION',
     
     // Footer
-    'footer.copyright': '© 2025 Advanced Tennis Camp. All rights reserved.',
+    'footer.copyright': '© 2026 Advanced Tennis Camp. All rights reserved.',
     'footer.address': 'Verbier, Valais, Switzerland',
     'footer.terms': 'Terms & Conditions',
     

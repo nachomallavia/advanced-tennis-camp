@@ -13,14 +13,14 @@ const t = useTranslations(lang);
     <div class="container mx-auto px-4 py-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
         <p class="text-neutral-400">
-          Copyright <a href="/" class="text-primary hover:underline">Advanced Tennis Camp</a> 2025 - All Rights Reserved.
+          {t('footer.copyright')}
         </p>
         <nav>
           <a 
             href={lang === 'fr' ? '/conditions/' : '/en/conditions/'} 
             class="text-neutral-400 hover:text-primary transition-colors"
           >
-            Conditions Générales
+            {t('footer.terms')}
           </a>
         </nav>
       </div>

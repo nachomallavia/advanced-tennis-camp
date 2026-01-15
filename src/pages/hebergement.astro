@@ -2,9 +2,13 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Button } from '@/components/starwind/button';
 import { Image } from 'astro:assets';
+import { CldImage } from 'astro-cloudinary';
+import { getCollection } from 'astro:content';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/starwind/carousel';
 
-import chaletImg from '@/assets/images/accommodation/image-11-1024x800.png';
-import enfantsImg from '@/assets/images/accommodation/image-2.png';
+const accomodation = await getCollection('accomodation');
+const family = accomodation.filter((item) => item.data.tags?.includes('family'));
+const kids = accomodation.filter((item) => item.data.tags?.includes('kids'));
 
 const title = "Hébergement - Advanced Tennis Camp";
 const description = "Hébergement pour familles et enfants à Verbier. Family pack en partenariat avec le Chalet d'Adrien et chalets pour les enfants.";
@@ -18,49 +22,204 @@ const description = "Hébergement pour familles et enfants à Verbier. Family pa
       </h1>
       
       <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Family Pack -->
-        <div class="prose prose-lg max-w-none">
-          <h2 class="text-2xl font-bold text-primary mb-4">Family pack</h2>
-          <p>
-            <strong>Mis en place pour la première en fois en 2018, nous proposons aux familles de profiter de la montagne en « toute liberté ».</strong> En partenariat avec le Chalet d'Adrien, l'équipe de l'Advanced Tennis Camp s'occupe de votre séjour sportif et de celui de vos enfants.
-          </p>
-          <p>
-            <a href="/hebergement/chalet-dadrien/" class="text-primary font-bold hover:underline">On vous en dit davantage ici !</a>
-          </p>
-          <p>
-            Jouer au tennis, visiter la région en E-Bike, découvrez les sentiers de Verbier, prenez soin de vous; dans un cadre verdoyant, majestueux, nous ferons en sorte que votre séjour soit inoubliable!!
-          </p>
-          <p>
-            Tout sur <em><strong>Le Chalet d'Adrien – Le Charme et l'Authenticité Moments uniques à Verbier</strong></em> <a href="https://chalet-adrien.com/" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">cliquez ici !</a>
-          </p>
+        <!-- Family Pack Section -->
+        <div>
+          <div class="prose prose-lg max-w-none mb-8">
+            <h2 class="text-2xl font-bold text-primary mb-4">Family pack</h2>
+            <p>
+              <strong>Mis en place pour la première en fois en 2018, nous proposons aux familles de profiter de la montagne en « toute liberté ».</strong> En partenariat avec le Chalet d'Adrien, l'équipe de l'Advanced Tennis Camp s'occupe de votre séjour sportif et de celui de vos enfants.
+            </p>
+            <p>
+              <a href="/hebergement/chalet-dadrien/" class="text-primary font-bold hover:underline">On vous en dit davantage ici !</a>
+            </p>
+            <p>
+              Jouer au tennis, visiter la région en E-Bike, découvrez les sentiers de Verbier, prenez soin de vous; dans un cadre verdoyant, majestueux, nous ferons en sorte que votre séjour soit inoubliable!!
+            </p>
+            <p>
+              Tout sur <em><strong>Le Chalet d'Adrien – Le Charme et l'Authenticité Moments uniques à Verbier</strong></em> <a href="https://chalet-adrien.com/" target="_blank" rel="noopener" class="text-primary font-bold hover:underline">cliquez ici !</a>
+            </p>
+          </div>
+          
+          <!-- Family Carousel -->
+          {family.length > 0 ? (
+            <div class="relative">
+              <Carousel 
+                id="family-carousel"
+                class="w-full"
+                opts={{ loop: true }}
+              >
+                <CarouselContent>
+                  {family.map((img) => (
+                    <CarouselItem>
+                      <CldImage
+                        src={img.id}
+                        alt={img.data.context?.custom?.alt || "Family accommodation"}
+                        width={800}
+                        height={600}
+                        class="w-full h-[400px] object-cover rounded-xs "
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+              <!-- Navigation: Arrows and Dots -->
+              <div class="flex items-center justify-center gap-4 mt-4">
+                <CarouselPrevious class="static translate-x-0 translate-y-0" />
+                <div class="flex justify-center gap-2" data-carousel-dots="family-carousel">
+                  {family.map((_, index) => (
+                    <button
+                      class="w-2 h-2 rounded-full bg-gray-300 hover:bg-primary transition-colors duration-200 dot"
+                      data-index={index}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                <CarouselNext class="static translate-x-0 translate-y-0" />
+              </div>
+            </div>
+          ) : (
+            <p class="text-gray-500">No family images available</p>
+          )}
         </div>
         
-        <!-- Enfants -->
-        <div class="prose prose-lg max-w-none">
-          <h2 class="text-2xl font-bold text-primary mb-4">Enfants</h2>
-          <p>
-            <strong>Deux chalets sont à notre disposition pour accueillir et loger vos enfants durant leur séjour tennistique à Verbier.</strong> Nos coachs seront bien entendu répartis pour être présents dans les deux chalets afin que vos enfants ne soient jamais seuls. <strong>Nous disposons de chambres simples, doubles, ou triples dans un environnement classique de montagne, de pleine nature qui rendra ce camp inoubliable.</strong>
-          </p>
-        </div>
-      </div>
-      
-      <!-- Images Section -->
-      <div class="grid md:grid-cols-2 gap-8 mt-12">
+        <!-- Kids Section -->
         <div>
-          <Image 
-            src={chaletImg}
-            alt="Chalet d'Adrien" 
-            class="w-full rounded-xs shadow-xl"
-          />
-        </div>
-        <div>
-          <Image 
-            src={enfantsImg}
-            alt="Hébergement enfants" 
-            class="w-full rounded-xs shadow-xl"
-          />
+          <div class="prose prose-lg max-w-none mb-8">
+            <h2 class="text-2xl font-bold text-primary mb-4">Enfants</h2>
+            <p>
+              <strong>Deux chalets sont à notre disposition pour accueillir et loger vos enfants durant leur séjour tennistique à Verbier.</strong> Nos coachs seront bien entendu répartis pour être présents dans les deux chalets afin que vos enfants ne soient jamais seuls. <strong>Nous disposons de chambres simples, doubles, ou triples dans un environnement classique de montagne, de pleine nature qui rendra ce camp inoubliable.</strong>
+            </p>
+          </div>
+          
+          <!-- Kids Carousel -->
+          {kids.length > 0 ? (
+            <div class="relative">
+              <Carousel 
+                id="kids-carousel"
+                class="w-full"
+                opts={{ loop: true }}
+              >
+                <CarouselContent>
+                  {kids.map((img) => (
+                    <CarouselItem>
+                      <CldImage
+                        src={img.id}
+                        alt={img.data.context?.custom?.alt || "Kids accommodation"}
+                        width={800}
+                        height={600}
+                        class="w-full h-[400px] object-cover rounded-xs "
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+              <!-- Navigation: Arrows and Dots -->
+              <div class="flex items-center justify-center gap-4 mt-4">
+                <CarouselPrevious class="static translate-x-0 translate-y-0" />
+                <div class="flex justify-center gap-2" data-carousel-dots="kids-carousel">
+                  {kids.map((_, index) => (
+                    <button
+                      class="w-2 h-2 rounded-full bg-gray-300 hover:bg-primary transition-colors duration-200 dot"
+                      data-index={index}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
+                <CarouselNext class="static translate-x-0 translate-y-0" />
+              </div>
+            </div>
+          ) : (
+            <p class="text-gray-500">No kids images available</p>
+          )}
         </div>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  import { initCarousel } from '@/components/starwind/carousel';
+  
+  const setupCarouselDots = () => {
+    // Setup dots for family carousel
+    const familyCarousel = document.getElementById('family-carousel');
+    const familyDotsContainer = document.querySelector('[data-carousel-dots="family-carousel"]');
+    
+    if (familyCarousel && familyDotsContainer) {
+      const familyManager = initCarousel(familyCarousel);
+      
+      if (familyManager) {
+        const familyDots = familyDotsContainer.querySelectorAll('.dot');
+        
+        // Update active dot
+        const updateFamilyDots = () => {
+          const selectedIndex = familyManager.api.selectedScrollSnap();
+          familyDots.forEach((dot, index) => {
+            if (index === selectedIndex) {
+              dot.classList.add('bg-primary');
+              dot.classList.remove('bg-gray-300');
+            } else {
+              dot.classList.remove('bg-primary');
+              dot.classList.add('bg-gray-300');
+            }
+          });
+        };
+        
+        // Click handler for dots
+        familyDots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index') || '0');
+            familyManager.api.scrollTo(index);
+          });
+        });
+        
+        // Listen to carousel changes
+        familyManager.api.on('select', updateFamilyDots);
+        familyManager.api.on('init', updateFamilyDots);
+        updateFamilyDots();
+      }
+    }
+    
+    // Setup dots for kids carousel
+    const kidsCarousel = document.getElementById('kids-carousel');
+    const kidsDotsContainer = document.querySelector('[data-carousel-dots="kids-carousel"]');
+    
+    if (kidsCarousel && kidsDotsContainer) {
+      const kidsManager = initCarousel(kidsCarousel);
+      
+      if (kidsManager) {
+        const kidsDots = kidsDotsContainer.querySelectorAll('.dot');
+        
+        // Update active dot
+        const updateKidsDots = () => {
+          const selectedIndex = kidsManager.api.selectedScrollSnap();
+          kidsDots.forEach((dot, index) => {
+            if (index === selectedIndex) {
+              dot.classList.add('bg-primary');
+              dot.classList.remove('bg-gray-300');
+            } else {
+              dot.classList.remove('bg-primary');
+              dot.classList.add('bg-gray-300');
+            }
+          });
+        };
+        
+        // Click handler for dots
+        kidsDots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index') || '0');
+            kidsManager.api.scrollTo(index);
+          });
+        });
+        
+        // Listen to carousel changes
+        kidsManager.api.on('select', updateKidsDots);
+        kidsManager.api.on('init', updateKidsDots);
+        updateKidsDots();
+      }
+    }
+  };
+  
+  document.addEventListener('DOMContentLoaded', setupCarouselDots);
+  document.addEventListener('astro:after-swap', setupCarouselDots);
+</script>

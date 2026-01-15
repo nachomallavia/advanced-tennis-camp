@@ -70,7 +70,7 @@ const routeKey = getRouteFromUrl(Astro.url);
           <a 
             href={item.href}
             class:list={[
-              "nav-link px-3 xl:px-4 py-2 text-sm  leading-tight uppercase tracking-wide transition-colors",
+              "nav-link px-3 xl:px-2 py-2 text-sm  leading-tight uppercase tracking-wide transition-colors",
               routeKey === item.key 
                 ? transparent ? "nav-link-active font-extrabold text-white hover:text-primary" : "nav-link-active text-primary font-semibold"
                 : transparent ? "nav-link-inactive text-white hover:text-primary font-semibold" : "nav-link-inactive text-neutral-900 hover:text-primary font-semibold"
