@@ -30,8 +30,9 @@ const routeKey = getRouteFromUrl(Astro.url);
       <div class="flex items-center gap-1 text-sm font-bold">
         <a 
           href={lang === 'fr' ? currentPath : alternateUrl}
+          data-lang="fr"
           class:list={[
-            "px-2 py-1 rounded transition-colors",
+            "lang-switcher px-2 py-1 rounded transition-colors",
             lang === 'fr' ? "text-primary" : transparent ? "text-neutral-50 hover:text-primary" : "text-neutral-900 hover:text-primary"
           ]}
         >
@@ -40,8 +41,9 @@ const routeKey = getRouteFromUrl(Astro.url);
         <span class="text-neutral-300">|</span>
         <a 
           href={lang === 'en' ? currentPath : alternateUrl}
+          data-lang="en"
           class:list={[
-            "px-2 py-1 rounded transition-colors",
+            "lang-switcher px-2 py-1 rounded transition-colors",
             lang === 'en' ? "text-primary" : transparent ? "text-neutral-50 hover:text-primary" : "text-neutral-900 hover:text-primary"
           ]}
         >
@@ -314,6 +316,18 @@ const routeKey = getRouteFromUrl(Astro.url);
     }, { passive: true });
   }
 
+  // Language switcher - set cookie before navigation
+  document.querySelectorAll('.lang-switcher').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      const lang = target.getAttribute('data-lang');
+      if (lang) {
+        // Set cookie with 1 year expiration
+        document.cookie = `preferred_lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+      }
+    });
+  });
+  
   // Run on page load
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initHeader);

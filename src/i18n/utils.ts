@@ -7,6 +7,15 @@ export function getLangFromUrl(url: URL): keyof typeof ui {
   return defaultLang;
 }
 
+export function getDomainPreferredLang(hostname: string): keyof typeof ui {
+  // .com domains default to English
+  if (hostname.includes('.com')) {
+    return 'en';
+  }
+  // .ch domains and localhost default to French
+  return 'fr';
+}
+
 export function useTranslations(lang: keyof typeof ui) {
   return function t(key: UIKey): string {
     return ui[lang][key] || ui[defaultLang][key];
