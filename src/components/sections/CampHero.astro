@@ -5,8 +5,8 @@ import SingleFeature from './SingleFeature.astro';
 interface Props {
   title: string;
   subtitle: string;
-  buttonText: string;
-  buttonLink: string;
+  buttonText?: string;
+  buttonLink?: string;
   heroImage: ImageMetadata;
   secondaryImage: ImageMetadata;
   secondaryImageAlt?: string;
@@ -39,6 +39,7 @@ const {
       tagline={subtitle}
       primaryButtonText={buttonText}
       primaryButtonHref={buttonLink}
+      showCTAs={buttonText ? true : false}
       isReversed={true}
       class=""
     >
