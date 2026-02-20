@@ -57,14 +57,20 @@ const routeKey = getRouteFromUrl(Astro.url);
   <div id="header-main" class="container mx-auto px-4 transition-colors duration-300">
     <div class="flex items-center justify-between py-2">
       <!-- Logo -->
-      <a href={lang === 'fr' ? '/' : '/en/'} class="shrink-0">
-        <img 
-          id="header-logo"
-          src={transparent ? "/images/logo-bw2.png" : "/images/logo.png"}
-          alt="Advanced Tennis Camp" 
-          class="h-12 md:h-14 w-auto transition-opacity duration-300"
-        />
-      </a>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href={lang === 'fr' ? '/' : '/en/'}>
+          <img 
+            id="header-logo"
+            src={transparent ? "/images/logo-bw2.png" : "/images/logo.png"}
+            alt="Advanced Tennis Camp" 
+            class="h-12 md:h-14 w-auto transition-opacity duration-300"
+          />
+        </a>
+        <span id="header-stars" class:list={[
+          "font-bold text-xl leading-none tracking-wider select-none",
+          transparent ? "text-yellow-300" : "text-yellow-400"
+        ]} title="20th edition - 2 decades">★★</span>
+      </div>
       
       <!-- Desktop Navigation - inline with logo -->
       <nav id="header-nav" class="hidden lg:flex items-center gap-1">
@@ -187,6 +193,7 @@ const routeKey = getRouteFromUrl(Astro.url);
     const isTransparent = header?.getAttribute("data-transparent") === "true";
     const topBar = document.getElementById("header-top-bar");
     const logo = document.getElementById("header-logo") as HTMLImageElement;
+    const stars = document.getElementById("header-stars");
     const navLinksActive = document.querySelectorAll(".nav-link-active");
     const navLinksInactive = document.querySelectorAll(".nav-link-inactive");
     const socialIcons = document.querySelectorAll(".social-icon");
@@ -222,6 +229,12 @@ const routeKey = getRouteFromUrl(Astro.url);
           
           // Swap logo
           if (logo) logo.src = "/images/logo.png";
+          
+          // Update stars color
+          if (stars) {
+            stars.classList.remove("text-yellow-300");
+            stars.classList.add("text-yellow-400");
+          }
           
           // Update nav link colors
           navLinksActive.forEach(link => {
@@ -271,6 +284,12 @@ const routeKey = getRouteFromUrl(Astro.url);
           
           // Swap logo back
           if (logo) logo.src = "/images/logo-bw2.png";
+          
+          // Restore stars color
+          if (stars) {
+            stars.classList.remove("text-yellow-400");
+            stars.classList.add("text-yellow-300");
+          }
           
           // Restore nav link colors
           navLinksActive.forEach(link => {
