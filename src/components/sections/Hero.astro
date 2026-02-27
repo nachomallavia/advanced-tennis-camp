@@ -9,6 +9,8 @@ interface Props {
   sponsorLogo?: ImageMetadata;
   sponsorUrl?: string;
   sponsorAlt?: string;
+  ctaButtonText?: string;
+  ctaButtonHref?: string;
 }
 
 const { 
@@ -18,7 +20,9 @@ const {
   dates, 
   sponsorLogo,
   sponsorUrl = "https://www.brainvest.com/",
-  sponsorAlt = "Brainvest - Sponsor"
+  sponsorAlt = "Brainvest - Sponsor",
+  ctaButtonText,
+  ctaButtonHref,
 } = Astro.props;
 ---
 
@@ -47,6 +51,18 @@ const {
       <h2 class="text-lg max-w-[200px] md:max-w-full md:text-xl lg:text-2xl font-bold text-white mt-4">
         {dates}
       </h2>
+
+      {ctaButtonText && ctaButtonHref && (
+        <a
+          href={ctaButtonHref}
+          class="mt-8 inline-flex items-center justify-center gap-2 rounded-md px-8 py-3 text-base font-semibold bg-primary text-white hover:bg-neutral-100 hover:text-primary transition-colors duration-200"
+        >
+          {ctaButtonText}
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      )}
       
       <!-- Sponsor logo -->
       <div class="mt-12">
