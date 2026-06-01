@@ -7,6 +7,7 @@ export const routes = {
     'golf': '/golf-play/',
     'accommodation': '/hebergement/',
     'gallery': '/galerie/',
+    'coach': '/devenir-coach/',
     'contact': '/contact/',
   },
   en: {
@@ -17,6 +18,7 @@ export const routes = {
     'golf': '/en/golf-play/',
     'accommodation': '/en/accommodation/',
     'gallery': '/en/gallery/',
+    'coach': '/en/become-a-coach/',
     'contact': '/en/contact/',
   },
 } as const;
@@ -30,6 +32,7 @@ export const routeToKey: Record<string, string> = {
   '/golf-play/': 'golf',
   '/hebergement/': 'accommodation',
   '/galerie/': 'gallery',
+  '/devenir-coach/': 'coach',
   '/contact/': 'contact',
   '/en/': 'home',
   '/en/the-camp/': 'camp',
@@ -38,6 +41,7 @@ export const routeToKey: Record<string, string> = {
   '/en/golf-play/': 'golf',
   '/en/accommodation/': 'accommodation',
   '/en/gallery/': 'gallery',
+  '/en/become-a-coach/': 'coach',
   '/en/contact/': 'contact',
 };
 

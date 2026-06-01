@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CampHero from '@/components/sections/CampHero.astro';
+import CoachPhotosCarousel from '@/components/sections/CoachPhotosCarousel.astro';
+import CoachesClosingMessage from '@/components/sections/CoachesClosingMessage.astro';
+
+import coachHero from '@/assets/coaches/coach-hero.jpg';
+import coach1 from '@/assets/coaches/coach-1.jpg';
+import coach2 from '@/assets/coaches/coach-2.jpg';
+import coach3 from '@/assets/coaches/coach-3.jpg';
+import coach4 from '@/assets/coaches/coach-4.jpg';
+import coach5 from '@/assets/coaches/coach-5.jpg';
+
+const title = "Become an ATC Coach - Advanced Tennis Camp";
+const description = "Since 2007, the Advanced Tennis Camp has welcomed passionate coaches in Verbier. Join our team and share your passion for tennis in a majestic setting.";
+
+const coachImages = [
+  { src: coach1, alt: "Advanced Tennis Camp coaches" },
+  { src: coach2, alt: "Coaching at the Advanced Tennis Camp" },
+  { src: coach3, alt: "Advanced Tennis Camp" },
+  { src: coach4, alt: "Advanced Tennis Camp" },
+  { src: coach5, alt: "Advanced Tennis Camp" },
+];
+---
+
+<BaseLayout title={title} description={description} transparentHeader={true}>
+  <CampHero
+    title="BECOME AN ATC COACH"
+    subtitle="Join the adventure in Verbier"
+    heroImage={coachHero}
+  >
+    <p>Since 2007, our passion for the game of tennis has not waned.</p><br>
+    <p>Over the years, we have welcomed around a hundred coaches, some of whom, thanks to the ATC, have found year-round work with us or elsewhere in Switzerland and Europe.</p><br>
+    <p>Coming to the ATC isn't just a summer adventure in the mountains at a camp.</p><br>
+    <p><strong>It's about sharing your knowledge, your passion and your enthusiasm for the game with as many people as possible, whatever their level, in a majestic yet highly demanding environment !!!</strong></p>
+  </CampHero>
+
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <CoachPhotosCarousel images={coachImages} />
+    </div>
+  </section>
+
+  <section class="py-16 bg-neutral-50">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <h2 class="text-2xl md:text-3xl font-bold text-primary text-center mb-12">
+        What we are looking for
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-sm shadow-sm p-8 flex flex-col items-center text-center gap-4">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-primary">Discipline</h3>
+          <p class="text-neutral-600 leading-relaxed">Daily discipline in managing operations</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white rounded-sm shadow-sm p-8 flex flex-col items-center text-center gap-4">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-primary">Enthusiasm</h3>
+          <p class="text-neutral-600 leading-relaxed">Inspire and help our trainees progress — <strong>five and a half days to do it !!</strong></p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white rounded-sm shadow-sm p-8 flex flex-col items-center text-center gap-4">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-primary">Positive Attitude</h3>
+          <p class="text-neutral-600 leading-relaxed">Constant encouragement to do your very best, every single day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CoachesClosingMessage
+    heading="So if, like us, you're CRAZY, CRAZY about this sport, CRAZY about sharing your passion, join us:"
+    lang="en"
+  />
+</BaseLayout>

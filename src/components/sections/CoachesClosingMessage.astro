@@ -1,0 +1,118 @@
+---
+import { Button } from '@/components/starwind/button';
+
+interface Props {
+  heading: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  lang?: string;
+}
+
+const {
+  heading,
+  ctaHref = 'mailto:info@advancedtennisacademy.ch?subject=Join%20ATC',
+  ctaLabel = 'CONTACT',
+  lang = 'fr',
+} = Astro.props;
+---
+
+<section class="coaches-closing-message py-40 bg-white" lang={lang}>
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4 mx-auto max-w-[90%] md:max-w-[75%] px-4 mb-10">
+    <div class="coaches-closing-line hidden lg:block min-w-[3px] min-h-[120px] h-full bg-primary mx-4"></div>
+    <h3 class="coaches-closing-heading text-3xl md:text-5xl font-extrabold text-primary leading-[1.05] text-center md:text-left">
+      {heading}
+    </h3>
+  </div>
+  <div class="coaches-closing-cta text-center">
+    <Button href={ctaHref} variant="primary" size="lg">
+      {ctaLabel}
+    </Button>
+  </div>
+</section>
+
+<style>
+  /* Applied before first paint — no JS flash */
+  .coaches-closing-message {
+    opacity: 0;
+  }
+  .coaches-closing-line {
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+  .coaches-closing-cta {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+</style>
+
+<script>
+  import { animate, stagger, splitText } from 'animejs';
+
+  const initClosingMessages = () => {
+    (document.querySelectorAll('.coaches-closing-message') as NodeListOf<HTMLElement>).forEach((section) => {
+      if (section.dataset.initialized === 'true') return;
+      section.dataset.initialized = 'true';
+
+      const heading = section.querySelector('.coaches-closing-heading') as HTMLElement | null;
+      const line    = section.querySelector('.coaches-closing-line')    as HTMLElement | null;
+      const cta     = section.querySelector('.coaches-closing-cta')     as HTMLElement | null;
+
+      if (!heading) return;
+
+      const playAnimation = () => {
+        // Reveal wrapper (was opacity:0 via CSS)
+        section.style.opacity = '1';
+
+        // Lines slide up from below their clip containers
+        splitText(heading, {
+          lines: { wrap: 'clip', clone: 'bottom' },
+        }).addEffect(({ lines }) => {
+          return animate(lines, {
+            translateY: ['150%', '0%'],
+            delay: stagger(110),
+            duration: 750,
+            ease: 'out(3)',
+          });
+        });
+
+        // Vertical bar grows down
+        if (line) {
+          animate(line, {
+            scaleY: [0, 1],
+            duration: 900,
+            delay: 100,
+            ease: 'out(3)',
+          });
+        }
+
+        // CTA fades + rises after text
+        if (cta) {
+          animate(cta, {
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 600,
+            delay: 700,
+            ease: 'out(3)',
+          });
+        }
+      };
+
+      // IntersectionObserver is the most reliable one-shot viewport trigger
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            observer.unobserve(section);
+            playAnimation();
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      observer.observe(section);
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initClosingMessages);
+  document.addEventListener('astro:after-swap', initClosingMessages);
+</script>

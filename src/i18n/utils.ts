@@ -67,6 +67,7 @@ export function getNavItems(lang: keyof typeof ui) {
     { key: 'golf', label: t('nav.golf'), href: routes[lang].golf },
     { key: 'accommodation', label: t('nav.accommodation'), href: routes[lang].accommodation },
     { key: 'gallery', label: t('nav.gallery'), href: routes[lang].gallery },
+    { key: 'coach', label: t('nav.coach'), href: routes[lang].coach },
     { key: 'contact', label: t('nav.contact'), href: routes[lang].contact },
   ];
 }
