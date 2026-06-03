@@ -16,7 +16,7 @@ export const ui = {
     'nav.golf': 'GOLF+PLAY',
     'nav.accommodation': 'Hébergement',
     'nav.gallery': 'Galerie',
-    'nav.coach': 'Deviens Coach ATC',
+    'nav.coach': 'Devenir Coach',
     'nav.contact': 'Contact',
     
     // CTAs
@@ -53,7 +53,7 @@ export const ui = {
     'nav.golf': 'GOLF+PLAY',
     'nav.accommodation': 'Accommodation',
     'nav.gallery': 'Gallery',
-    'nav.coach': 'Become an ATC Coach',
+    'nav.coach': 'Become a Coach',
     'nav.contact': 'Contact',
     
     // CTAs
