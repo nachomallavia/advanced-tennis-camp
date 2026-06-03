@@ -73,12 +73,13 @@ const routeKey = getRouteFromUrl(Astro.url);
       </div>
       
       <!-- Desktop Navigation - inline with logo -->
-      <nav id="header-nav" class="hidden lg:flex items-center gap-1">
+      <nav id="header-nav" class="hidden xl:flex items-center gap-1 justify-start">
+        <div class="flex items-center gap-1">
         {navItems.map((item) => (
           <a 
             href={item.href}
             class:list={[
-              "nav-link px-3 xl:px-2 py-2 text-sm  leading-tight uppercase tracking-wide transition-colors",
+              "shrink nav-link inline-flex  text-center max-w-[7rem] 2xl:max-w-none px-3 xl:px-2 py-2 text-xs  leading-tight uppercase tracking-wide transition-colors",
               routeKey === item.key 
                 ? transparent ? "nav-link-active font-extrabold text-white hover:text-primary" : "nav-link-active text-primary font-semibold"
                 : transparent ? "nav-link-inactive text-white hover:text-primary font-semibold" : "nav-link-inactive text-neutral-900 hover:text-primary font-semibold"
@@ -87,7 +88,7 @@ const routeKey = getRouteFromUrl(Astro.url);
             {item.label}
           </a>
         ))}
-        
+        </div>  
         <!-- Social icons -->
         <div class="flex items-center gap-2 ml-2 pl-2 border-l border-neutral-100">
           <a 
@@ -122,7 +123,7 @@ const routeKey = getRouteFromUrl(Astro.url);
       </nav>
       
       <!-- Mobile menu button -->
-      <div id="mobile-menu-button" class="lg:hidden">
+      <div id="mobile-menu-button" class="xl:hidden">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" aria-label="Open menu" class={transparent ? "text-white" : "text-neutral-900"}>
