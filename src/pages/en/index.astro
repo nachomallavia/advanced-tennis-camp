@@ -15,19 +15,18 @@ import brainvestLogo from '@/assets/images/sponsors/BRAINVEST_1024x1024-e1710144
 import cyrilImg from '@/assets/images/misc/cyril.jpeg';
 import singleFeatureImg from '@/assets/images/select/TOM_4878-scaled.avif';
 import ctaBackgroundImg from '@/assets/images/select/semaine-3-scaled-2.avif';
-import camp3172 from '@/assets/images/select/camp-3172.avif';
-import featureCardImg1 from '@/assets/images/select/camp-3172.avif';
-import featureCardImg2 from '@/assets/images/select/11-3.avif';
 import experienceImg from '@/assets/images/select/experience.avif';
-import playersTrainedImg from '@/assets/images/select/players-trained.avif';
-import weeksPerSummerImg from '@/assets/images/select/weeks.avif';
-import tennisCourtsImg from '@/assets/images/select/courts.avif';
+import discoverTheCampImg from '@/assets/images/home/feature 71/discover-the-camp.jpg';
+import bookNowImg from '@/assets/images/home/feature 71/book-now.webp';
+import playersTrainedImg from '@/assets/images/home/feature 71/players-trained.jpg';
+import weeksPerSummerImg from '@/assets/images/home/feature 71/weeks-per-summer.jpg';
+import tennisCourtsImg from '@/assets/images/home/feature 71/tennis-courts.jpg';
 const title = "Advanced Tennis Camp - The Premier Tennis Camp in Valais";
 const description = "Advanced Tennis Camp is a tennis camp for children and adolescents. Since 2007, it takes place over 6 weeks each summer in Verbier!";
 
 // Feature71 content
 const featureMetrics = [
-  { value: "19", label: "Years of Experience", imageUrl: experienceImg.src },
+  { value: "20", label: "Years of Experience", imageUrl: experienceImg.src },
   { value: "500+", label: "Players Trained", imageUrl: playersTrainedImg.src },
   { value: "6", label: "Weeks per Summer", imageUrl: weeksPerSummerImg.src },
   { value: "4", label: "Tennis Courts", imageUrl: tennisCourtsImg.src },
@@ -36,14 +35,14 @@ const featureMetrics = [
 const featureCards = [
   {
     href: "/en/the-camp/",
-    backgroundImage: featureCardImg1,
+    backgroundImage: discoverTheCampImg,
     logo: "/images/logo-bw.png",
     logoAlt: "Advanced Tennis Camp",
     linkText: "Discover the camp",
   },
   {
     href: "/en/contact/",
-    backgroundImage: featureCardImg2,
+    backgroundImage: bookNowImg,
     logo: "/images/logo-bw.png",
     logoAlt: "Our programs",
     linkText: "Book now",
@@ -55,7 +54,7 @@ const featureCards = [
   <Hero 
     title="Advanced<br/>Tennis Camp"
     tagline="Develop and advance your game with professional tuition in the stunning alpine surroundings of Verbier"
-    dates="6 WEEKS IN 2026 July 6 - August 15"
+    dates="6 WEEKS IN 2027 July 5 - August 14"
     sponsorLogo={brainvestLogo}
     ctaButtonText="Register Now"
     ctaButtonHref="/en/contact/"
@@ -63,10 +62,10 @@ const featureCards = [
   
   <!-- Welcome Section -->
   <WelcomeSection 
-    editionNumber="20"
-    editionSuffix="th"
+    editionNumber="21"
+    editionSuffix="st"
     editionLabel="edition"
-    heading="Everyone at the Advanced Tennis Camp is delighted to welcome you to the 20th edition of the camp in Verbier."
+    heading="Everyone at the Advanced Tennis Camp is delighted to welcome you to the 21st edition of the camp in Verbier."
     lang="en"
   />
   
@@ -103,7 +102,7 @@ const featureCards = [
   
   <!-- CTA Section -->
   <Cta6
-    headline="Registrations Open for Summer 2026"
+    headline="Registrations Open for Summer 2027"
     description="Book your spot now for an unforgettable tennis experience in Verbier. Limited places available!"
     buttonText="Register Now"
     buttonHref="/en/contact/"

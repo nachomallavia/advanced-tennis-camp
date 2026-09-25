@@ -27,8 +27,8 @@ export const ui = {
     
     // Hero
     'hero.tagline': 'Faites progresser votre jeu avec du coaching professionnel dans le décor grandiose de Verbier',
-    'hero.weeks': '6 SEMAINES EN 2026',
-    'hero.dates': '06 Juillet - 15 Août',
+    'hero.weeks': '6 SEMAINES EN 2027',
+    'hero.dates': '05 Juillet - 14 Août',
     'hero.welcome': 'L\'équipe de Advanced Tennis Camp vous souhaite la bienvenue pour sa 19ème édition à Verbier',
     'hero.hashtag': '#BUILDTHENEXTGENERATION',
     
@@ -51,7 +51,7 @@ export const ui = {
     'nav.tournament': 'ITF Junior Tournament',
     'nav.bike': 'BIKE+PLAY',
     'nav.golf': 'GOLF+PLAY',
-    'nav.accommodation': 'Accommodation',
+    'nav.accommodation': 'Lodging',
     'nav.gallery': 'Gallery',
     'nav.coach': 'Become a Coach',
     'nav.contact': 'Contact',
@@ -64,8 +64,8 @@ export const ui = {
     
     // Hero
     'hero.tagline': 'Develop and advance your game with professional tuition in the stunning alpine surroundings of Verbier',
-    'hero.weeks': '6 WEEKS IN 2026',
-    'hero.dates': 'July 6 - August 15',
+    'hero.weeks': '6 WEEKS IN 2027',
+    'hero.dates': 'July 5 - August 14',
     'hero.welcome': 'Everyone at the Advanced Tennis Camp are delighted to welcome you to the 19th edition of the camp in Verbier',
     'hero.hashtag': '#BUILDTHENEXTGENERATION',
     
